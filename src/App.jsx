@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import PostPage from './pages/PostPage';
-import QuizzPage from './pages/QuizzPage';
+import QuizPage from './pages/QuizPage';
 
 import Error from './components/Error'
 
@@ -22,7 +22,7 @@ function App() {
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='/post' element={<PostPage />} />
-      <Route path='/quizz' element={<QuizzPage />} />
+      <Route path='/quiz' element={<QuizPage />} />
       <Route path='/signup' element={<SignupPage />} />
       <Route path='/login' element={<LoginPage />} />
     </Routes>

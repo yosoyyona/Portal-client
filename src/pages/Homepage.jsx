@@ -9,8 +9,8 @@ function HomePage() {
       <Link to="/post">
         <button>Post</button>
       </Link>
-      <Link to="/quizz">
-        <button>Quizz</button>
+      <Link to="/quiz">
+        <button>Quiz</button>
       </Link>
     </div>
   )
