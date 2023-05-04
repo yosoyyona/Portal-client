@@ -14,9 +14,11 @@ function Navbar() {
       </Link>
 
       {isLoggedIn && (
-        <>        
+        <div>        
           <button>Logout</button>
-        </>
+          <Link to='/:userId'>Profile</Link>
+        </div>
+        
       )}
 
         
