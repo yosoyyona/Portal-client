@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from './components/Navbar';
-import HomePage from './pages/HomePage'
+import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 
@@ -22,14 +22,7 @@ function App() {
       <Route path='/signup' element={<SignupPage />} />
       <Route path='/login' element={<LoginPage />} />
     </Routes>
-
     
-      <Navbar />
-
-      <Routes>
-          <Route path={`/`} element={<HomePage />} />
-      </Routes>
-
       {
         error && <Error error={error} />
       }

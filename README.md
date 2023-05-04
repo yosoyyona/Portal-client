@@ -103,8 +103,8 @@ password - String // required
 Post model
 
 ```
-author - ObjectID<User> // required
 title - String // required
+author - ObjectID<User> // required
 game name - String // required
 genre - String // required
 review - String // required
