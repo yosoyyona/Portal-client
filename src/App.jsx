@@ -2,8 +2,11 @@ import './App.css'
 import { useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 
-import Homepage from './pages/Homepage'
 import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage'
+import SignupPage from './pages/SignUpPage';
+import LoginPage from './pages/LoginPage';
+
 import Error from './components/Error'
 
 function App() {
@@ -12,11 +15,19 @@ function App() {
 
   return (
     <div className="App">
+    <Navbar />
+
+    <Routes>
+      <Route path='/' element={<HomePage />} />
+      <Route path='/signup' element={<SignupPage />} />
+      <Route path='/login' element={<LoginPage />} />
+    </Routes>
+
     
       <Navbar />
 
       <Routes>
-          <Route path={`/`} element={<Homepage />} />
+          <Route path={`/`} element={<HomePage />} />
       </Routes>
 
       {
