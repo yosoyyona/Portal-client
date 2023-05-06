@@ -95,7 +95,7 @@ Quiz:
 User model
 
 ```
-username - String // required
+name - String // required
 email - String // required & unique
 password - String // required
 ```
@@ -142,11 +142,11 @@ game - [String]
 ```
 
 ## API Endpoints/Backend Routes
-
+<!-- 
 - GET /auth/me
 - POST /auth/signup
   - body:
-    - username
+    - name
     - email
     - password
 - POST /auth/login
@@ -167,7 +167,7 @@ game - [String]
     - phone
     - address
 - GET /restaurant/:id
-
+ -->
   
 
 ## Links

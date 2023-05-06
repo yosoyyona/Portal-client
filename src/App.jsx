@@ -11,6 +11,7 @@ import LoginPage from './pages/LoginPage';
 import PostPage from './pages/PostPage';
 import QuizPage from './pages/QuizPage';
 import UserPage from './pages/UserPage';
+import PostCreatePage from './pages/PostCreatePage';
 
 import Error from './components/Error'
 
@@ -25,6 +26,7 @@ function App() {
     <Routes>
       <Route path='/' element={<HomePage />} />
       <Route path='/posts' element={<PostPage />} />
+      <Route path='/posts/create' element={<PostCreatePage />} />
       <Route path='/quiz' element={<QuizPage />} />
       <Route path='/signup' element={<IsAnon> <SignupPage /> </IsAnon>} />
       <Route path='/login' element={<IsAnon> <LoginPage /> </IsAnon>} />

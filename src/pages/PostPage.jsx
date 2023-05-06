@@ -20,7 +20,7 @@ function PostPage() {
     return (
         <div>
 
-            <button>Create Post</button>
+            <Link to="/posts/create">Create Post</Link>
 
             {post.map((post) => {
             return(
