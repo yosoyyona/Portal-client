@@ -31,14 +31,14 @@ Quiz:
 - / - Homepage
 - /auth/signup - Signup form
 - /auth/login - Login form
-- /post - post list
-- /post/create - create a post of game
-- /post/:id - post detail
+- /posts - post list
+- /posts/create - create a post of game
+- /posts/:id - post detail
 - /search - search form
 - /search?keyword= - search results
-- /quiz - quiz list to select
-- /quiz/create - create a quiz of game
-- /quiz/:id - quiz detail
+- /quizzes - quiz list to select
+- /quizzes/create - create a quiz of game
+- /quizzes/:id - quiz detail
 - /userProfile/me - my details, my posts and favorite games
 - /userProfile/me/gameList - list of all my favorite games
 - /userProfile/:id - other user details and her/his posts
@@ -75,12 +75,12 @@ Quiz:
 
 ## Services
 
-- Auth Service
+<!-- - Auth Service
   - auth.login(user)
   - auth.signup(user)
   - auth.logout()
   - auth.me()
-  - auth.getUser() // synchronous
+  - auth.getUser() // synchronous -->
 <!-- - Restaurant Service
   - restaurant.list()
   - restaurant.create(data)
@@ -95,7 +95,7 @@ Quiz:
 User model
 
 ```
-username - String // required
+name - String // required
 email - String // required & unique
 password - String // required
 ```
@@ -142,11 +142,11 @@ game - [String]
 ```
 
 ## API Endpoints/Backend Routes
-
+<!-- 
 - GET /auth/me
 - POST /auth/signup
   - body:
-    - username
+    - name
     - email
     - password
 - POST /auth/login
@@ -167,7 +167,7 @@ game - [String]
     - phone
     - address
 - GET /restaurant/:id
-
+ -->
   
 
 ## Links

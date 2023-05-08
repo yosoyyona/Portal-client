@@ -6,10 +6,10 @@ import { AuthContext } from "../context/auth.context";
 function HomePage() {
   return (
     <div>
-      <Link to="/post">
+      <Link to="/posts">
         <button>Post</button>
       </Link>
-      <Link to="/quiz">
+      <Link to="/quizzes">
         <button>Quiz</button>
       </Link>
     </div>
