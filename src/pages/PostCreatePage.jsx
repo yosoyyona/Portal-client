@@ -1,8 +1,10 @@
 import React, { useState, useContext, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
-import { TextInputField, TextareaField, SelectField, FileUploader, Pane, Button } from 'evergreen-ui'
+import { TextInputField, TextareaField, SelectField, Pane, FileUploader, FileCard, Button } from 'evergreen-ui'
 import axios from 'axios'
+
+const API_URL = "http://localhost:5005";
 
 const PostCreatePage = () => {
   
@@ -13,11 +15,10 @@ const PostCreatePage = () => {
   const navigate = useNavigate()
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (e) => {
 
-    event.preventDefault()
-
-    const form = event.target
+    e.preventDefault()
+    const form = e.target
 
     const newPost = { 
       title: form.title.value, 
@@ -25,13 +26,13 @@ const PostCreatePage = () => {
       gameName: form.gameName.value, 
       genre: form.genre.value, 
       review: form.review.value, 
-      image, 
-      rating 
+      // image: form.image.value, 
+      rating: form.rating.value
     }
     console.log(newPost)
 
     // 🍊 check!
-    axios.post(`http://localhost:5005/posts/`, newPost,
+    axios.post(`${API_URL}/posts`, newPost,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
         if (response.data) {
@@ -45,18 +46,18 @@ const PostCreatePage = () => {
   const storedToken = localStorage.getItem('authToken');
   
   // file uploader for image
-  const [files, setFiles] = useState([])
+  /* const [files, setFiles] = useState([])
   const [fileRejections, setFileRejections] = useState([])
   const handleFileChange = useCallback((files) => setFiles([files[0]]), [])
   const handleRejected = useCallback((fileRejections) => setFileRejections([fileRejections[0]]), [])
   const handleRemove = useCallback(() => {
     setFiles([])
     setFileRejections([])
-  }, [])
+  }, []) */
 
   return (
     <div>
-      <h1> Create a post📝 </h1>
+      <h2> Create a post📝 </h2>
 
       <form onSubmit={handleSubmit}>
 
@@ -99,6 +100,7 @@ const PostCreatePage = () => {
           validationMessage="This field is required"
         />
         
+        {/* file uploader for image
         <Pane maxWidth={654}>
           <FileUploader
             label="Upload Image"
@@ -126,7 +128,7 @@ const PostCreatePage = () => {
             }}
             values={files}
           />
-        </Pane>
+        </Pane> */}
         
         {/* star rating */}
         <SelectField

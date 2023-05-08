@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Pane, Button, TextInputField } from 'evergreen-ui'
 import axios from "axios";
 
 const API_URL = "http://localhost:5005";
@@ -19,7 +20,7 @@ function SignupPage(props) {
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = { email, password, name };
+    const requestBody = { name, email, password };
 
     // Make an axios request to the API
     // If the POST request is a successful redirect to the login page
@@ -35,41 +36,48 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
+    <Pane className="SignupPage">
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" 
-        name="email" 
-        value={email} 
-        onChange={handleEmail} 
+        <TextInputField
+          required isInvalid={false}
+          label="Name"
+          name='name'
+          type="text"
+          value={name}
+          onChange={handleName}
+          validationMessage="This field is required"
         />
 
-        <label>Password:</label>
-        <input
+        <TextInputField
+          required isInvalid={false}
+          label="Email"
+          name='email'
+          type="email"
+          value={email}
+          onChange={handleEmail}
+          validationMessage="This field is required"
+        />
+
+        <TextInputField
+          required isInvalid={false}
+          label="Password"
+          name='password'
           type="password"
-          name="password"
+          hint="Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter."
           value={password}
           onChange={handlePassword}
+          validationMessage="This field is required"
         />
-
-        <label>Name:</label>
-        <input 
-          type="text"
-          name="name" 
-          value={name} 
-          onChange={handleName} 
-        />
-
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>Already have account?</p>
       <Link to={"/login"}> Login</Link>
-    </div>
+    </Pane>
   );
 }
 

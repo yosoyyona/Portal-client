@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { Pane, Button, TextInputField } from 'evergreen-ui'
+import axios from "axios";
 
 const API_URL = "http://localhost:5005";
 
@@ -38,33 +39,37 @@ function LoginPage(props) {
   };
   
   return (
-    <div className="LoginPage">
+    <Pane className="LoginPage">
       <h1>Login</h1>
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input 
+        <TextInputField
+          required isInvalid={false}
+          label="Email"
+          name='email'
           type="email"
-          name="email"
           value={email}
           onChange={handleEmail}
+          validationMessage="This field is required"
         />
 
-        <label>Password:</label>
-        <input
+        <TextInputField
+          required isInvalid={false}
+          label="Password"
+          name='password'
           type="password"
-          name="password"
           value={password}
           onChange={handlePassword}
+          validationMessage="This field is required"
         />
 
-        <button type="submit">Login</button>
+        <Button type="submit">Login</Button>
       </form>
       { errorMessage && <p className="error-message">{errorMessage}</p> }
 
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>
-    </div>
+    </Pane>
   )
 }
 
