@@ -2,17 +2,20 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { Button, Pane, Text, majorScale } from 'evergreen-ui'
 
 function HomePage() {
   return (
-    <div>
+    
+    <Pane display="flex" alignItems="center" marginX={majorScale(2)}>
       <Link to="/posts">
-        <button>Post</button>
+        <Button>Post</Button>
       </Link>
       <Link to="/quizzes">
-        <button>Quiz</button>
+        <Button>Quiz</Button>
       </Link>
-    </div>
+    </Pane>
+
   )
 }
 
