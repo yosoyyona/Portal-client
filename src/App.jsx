@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
-/* import HomePage from './pages/HomePage'; */
+import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import PostPage from './pages/PostPage';
@@ -24,7 +24,7 @@ function App() {
     <Navbar />
 
     <Routes>
-      {/* <Route path='/' element={<HomePage />} /> */}
+      <Route path='/' element={<HomePage />} />
       <Route path='/posts' element={<PostPage />} />
       <Route path='/posts/create' element={<PostCreatePage />} />
       <Route path='/quizzes' element={<QuizPage />} />
