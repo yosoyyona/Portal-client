@@ -2,34 +2,35 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import { Pane, Heading, Button } from 'evergreen-ui'
 
-function Navbar() {
+function NavBar() {
 
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
+      <Pane display="flex" padding={16} background="tint2" borderRadius={3} marginBottom={10}>
+        <Pane flex={1} alignItems="center" display="flex">
+          <Heading size={600} marginRight={10}><Link to="/">Home</Link></Heading>
+        </Pane>
 
-      {isLoggedIn && (
-        <div>        
-          <Link to={`/${user._id}`}>Profile</Link>
-          <button onClick={logOutUser}>Logout</button>
-        </div>
-        
-      )}
-
-        
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup"> <button>Sign Up</button> </Link>
-          <Link to="/login"> <button>Login</button> </Link>
-        </>
-      )}
-    </nav>
+        <Pane>
+          {isLoggedIn && (
+            <>        
+              <Link to={`/${user._id}`}><Button marginLeft={10}>Profile</Button></Link>
+              <Button onClick={logOutUser}>Logout</Button>
+            </>
+          )}
+            
+          {!isLoggedIn && (
+            <>
+              <Link to="/signup"> <Button marginLeft={10}>Sign Up</Button> </Link>
+              <Link to="/login"> <Button>Login</Button> </Link>
+            </>
+          )}
+        </Pane>
+      </Pane>
   )
 }
 
-export default Navbar
+export default NavBar

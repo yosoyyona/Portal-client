@@ -2,11 +2,13 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { Button } from 'evergreen-ui'
 
 const API_URL = "http://localhost:5005";
 
 function PostPage() {
     const [post, setPost] = useState([])
+    const { isLoggedIn } = useContext(AuthContext);
 
     const getAllPost = () => {
         axios.get(`${API_URL}/posts`)
@@ -19,8 +21,10 @@ function PostPage() {
     }, [])
     return (
         <div>
-
-            <Link to="/posts/create">Create Post</Link>
+            
+            {isLoggedIn && 
+                <Link to="/posts/create"><Button>Create Post</Button></Link>
+            }
 
             {post.map((post) => {
             return(

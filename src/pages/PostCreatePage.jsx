@@ -81,7 +81,7 @@ const PostCreatePage = () => {
           label="Genre of the game"
           name="genre"
         >
-          <option value="Action" selected>Action</option>
+          <option value="Action" defaultValue>Action</option>
           <option value="Adventure">Adventure</option>
           <option value="MMO">MMO</option>
           <option value="Puzzle">Puzzle</option>
