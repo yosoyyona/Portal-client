@@ -9,18 +9,18 @@ const API_URL = "http://localhost:5005";
 const PostCreatePage = () => {
   
   const [ post, setPost ] = useState([])
-
-  const { user } = useContext(AuthContext)
-
   const navigate = useNavigate()
 
-
+  const { user } = useContext(AuthContext)
+  
   const handleSubmit = (e) => {
-
+    
     e.preventDefault()
     const form = e.target
 
-    const newPost = { 
+    const storedToken = localStorage.getItem('authToken');
+
+    const requestBody = { 
       title: form.title.value, 
       author: user._id, 
       gameName: form.gameName.value, 
@@ -29,22 +29,16 @@ const PostCreatePage = () => {
       // image: form.image.value, 
       rating: form.rating.value
     }
-    console.log(newPost)
+    console.log(requestBody)
 
     // 🍊 check!
-    axios.post(`${API_URL}/posts`, newPost,
+    axios.post(`${API_URL}/api/posts`, requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
-        if (response.data) {
-          const newPosts = response.data
-          setPost(newPosts)
-        }
+        if (response.data) setPost(response.data)
       })
   }
 
-  // 🍊 check!
-  const storedToken = localStorage.getItem('authToken');
-  
   // file uploader for image
   /* const [files, setFiles] = useState([])
   const [fileRejections, setFileRejections] = useState([])

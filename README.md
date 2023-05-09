@@ -31,14 +31,15 @@ Quiz:
 - / - Homepage
 - /auth/signup - Signup form
 - /auth/login - Login form
-- /posts - post list
-- /posts/create - create a post of game
-- /posts/:id - post detail
+- /api/posts - post list
+- /api/posts/create - create a post of game
+- /api/posts/:id - post detail
+<!-- - /api/comments -->
 - /search - search form
 - /search?keyword= - search results
-- /quizzes - quiz list to select
-- /quizzes/create - create a quiz of game
-- /quizzes/:id - quiz detail
+- /api/quizzes - quiz list to select
+- /api/quizzes/create - create a quiz of game
+- /api/quizzes/:id - quiz detail
 - /userProfile/me - my details, my posts and favorite games
 - /userProfile/me/gameList - list of all my favorite games
 - /userProfile/:id - other user details and her/his posts

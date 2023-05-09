@@ -11,7 +11,7 @@ function UserPage() {
   const API_URL = "http://localhost:5005";
 
   useEffect(() => {
-    axios.get(`${API_URL}/${userId}`)
+    axios.get(`${API_URL}/user/${userId}`)
       .then(function (response) {
         setUser(response.data)
       }).catch(function (error) {
