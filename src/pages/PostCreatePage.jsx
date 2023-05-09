@@ -129,7 +129,7 @@ const PostCreatePage = () => {
           label="Rating"
           name="rating"
         >
-          <option value="0" selected>☆☆☆☆☆</option>
+          <option value="0" defaultValue>☆☆☆☆☆</option>
           <option value="1">★☆☆☆☆</option>
           <option value="2">★★☆☆☆</option>
           <option value="3">★★★☆☆</option>
