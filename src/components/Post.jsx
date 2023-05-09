@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from "react-router-dom";
-import { Button } from 'evergreen-ui'
+import Container from 'react-bootstrap/Container';
 
 const Post = ({post}) => {
 
-  
   let date = new Date(post.date)
   let dateString = date.toDateString()
   
@@ -13,26 +12,28 @@ const Post = ({post}) => {
   // rating expressed with stars
   
   return (
-    <Link to={`/posts/${post._id}`}>
-      <div className="text-center post">
-        <h2>{post.gameName}</h2>
-        
-        <h2>{post.title}</h2>
-        
-        <h4>{dateString}</h4>
+    <Container className="post">
+      <Link to={`/posts/${post._id}`}>
+        <div>
+          <div className="vw-70 m-3">
+            <h2>{post.gameName}</h2>
+            
+            <h2>{post.title}</h2>
+            
+            <h4>{dateString}</h4>
 
-        <p>{post.author}</p>
-        <p>{post.genre}</p>
-        <p>{post.rating}</p>
-        
-        <p>{post.review}</p>
-        
-        <img src="/images/stardew valley.png" 
-          className='img-fluid shadow-4' alt='...'
-        />
-      </div>
-    </Link>
-      
+            <p>{post.author}</p>
+            <p>{post.genre}</p>
+            <p>{post.rating}</p>
+            
+            <p>{post.review}</p>
+          </div>
+          <div>
+            <img src="/images/stardew valley.png" className='img-fluid shadow-4' alt='...' />
+          </div>
+        </div>
+      </Link>
+    </Container>
 
   )
 }

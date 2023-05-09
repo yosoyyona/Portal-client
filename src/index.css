@@ -71,3 +71,8 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.post {
+  display: flex;
+  
+}
