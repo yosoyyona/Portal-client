@@ -21,7 +21,6 @@ function PostPage() {
     .catch((error) => console.log(error))
   }
 
-
   useEffect(() => {
     getAllPost()
   }, [])

@@ -9,9 +9,10 @@ import HomePage from './pages/HomePage';
 import SignupPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import PostPage from './pages/PostPage';
+import PostCreatePage from './pages/PostCreatePage';
+import PostDetailsPage from './pages/PostDetailsPage';
 import QuizPage from './pages/QuizPage';
 import UserPage from './pages/UserPage';
-import PostCreatePage from './pages/PostCreatePage';
 
 import Error from './components/Error'
 
@@ -27,6 +28,7 @@ function App() {
       <Route path='/' element={<HomePage />} />
       <Route path='/posts' element={<PostPage />} />
       <Route path='/posts/create' element={<PostCreatePage />} />
+      <Route path='/posts/:postId' element={<PostDetailsPage />} />
       <Route path='/quizzes' element={<QuizPage />} />
       <Route path='/signup' element={<IsAnon> <SignupPage /> </IsAnon>} />
       <Route path='/login' element={<IsAnon> <LoginPage /> </IsAnon>} />
