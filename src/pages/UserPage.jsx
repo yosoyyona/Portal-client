@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { AuthContext } from "../context/auth.context";
 import axios from 'axios'
 
 function UserPage() {
 
   const { userId } = useParams()  
-  const [user, setUser] = useState(null)
   const [error, setError] = useState(null)
   
-  const API_URL = "http://localhost:5005";
-
-  useEffect(() => {
-    axios.get(`${API_URL}/user/${userId}`)
-      .then(function (response) {
-        setUser(response.data)
-      }).catch(function (error) {
-        setError(`Error - ${error.message}`)
-      })
-
-    console.log(user)
-  }, [])
-
+  const { user } = useContext(AuthContext)
+  
   return (
-    <div id='users'>
+    <div id='user'>
 
-      <h3>Hello</h3>
+      <h3>Hello, {user.name}</h3>
 
     </div>
   )
