@@ -36,6 +36,7 @@ const PostCreatePage = () => {
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
         if (response.data) setPost(response.data)
+        navigate("/posts")
       })
   }
 
