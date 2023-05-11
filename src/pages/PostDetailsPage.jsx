@@ -24,6 +24,8 @@ function PostDetailsPage() {
     <div>
       <h2>{post.title}</h2>
       <Comment />
+      <Link to='/posts'><button>Back</button> </Link>
+
     </div>
   )
 }

@@ -3,16 +3,39 @@ import { useNavigate } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
 import { TextInputField, TextareaField, SelectField, Pane, FileUploader, FileCard, Button } from 'evergreen-ui'
 import axios from 'axios'
+import service from "../api/service";
 
 const API_URL = "http://localhost:5005";
 
 const PostCreatePage = () => {
   
   const [ post, setPost ] = useState([])
+  const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate()
 
   const { user } = useContext(AuthContext)
   
+    // ******** this method handles the file upload ********
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    const uploadData = new FormData();
+
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new post in POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    service
+      .uploadImage(uploadData)
+      .then(response => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setImageUrl(response.fileUrl);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+    }; 
+
+
   const handleSubmit = (e) => {
     
     e.preventDefault()
@@ -26,29 +49,19 @@ const PostCreatePage = () => {
       gameName: form.gameName.value, 
       genre: form.genre.value, 
       review: form.review.value, 
-      // image: form.image.value, 
+      imageUrl,
       rating: form.rating.value
     }
     console.log(requestBody)
 
     // 🍊 check!
-    axios.post(`${API_URL}/posts`, requestBody,
+    axios.post(`${API_URL}/posts/create`, requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
         if (response.data) setPost(response.data)
         navigate("/posts")
       })
   }
-
-  // file uploader for image
-  /* const [files, setFiles] = useState([])
-  const [fileRejections, setFileRejections] = useState([])
-  const handleFileChange = useCallback((files) => setFiles([files[0]]), [])
-  const handleRejected = useCallback((fileRejections) => setFileRejections([fileRejections[0]]), [])
-  const handleRemove = useCallback(() => {
-    setFiles([])
-    setFileRejections([])
-  }, []) */
 
   return (
     <div>
@@ -95,35 +108,8 @@ const PostCreatePage = () => {
           validationMessage="This field is required"
         />
         
-        {/* file uploader for image
-        <Pane maxWidth={654}>
-          <FileUploader
-            label="Upload Image"
-            name="image"
-            description="You can upload 1 file. File can be up to 50 MB."
-            maxSizeInBytes={50 * 1024 ** 2}
-            maxFiles={1}
-            onChange={handleFileChange}
-            onRejected={handleRejected}
-            renderFile={(file) => {
-              const { name, size, type } = file
-              const fileRejection = fileRejections.find((fileRejection) => fileRejection.file === file)
-              const { message } = fileRejection || {}
-              return (
-                <FileCard
-                  key={name}
-                  isInvalid={fileRejection != null}
-                  name={name}
-                  onRemove={handleRemove}
-                  sizeInBytes={size}
-                  type={type}
-                  validationMessage={message}
-                />
-              )
-            }}
-            values={files}
-          />
-        </Pane> */}
+        {/* image */}
+        <input type="file" onChange={(e) => handleFileUpload(e)} />
         
         {/* star rating */}
         <SelectField

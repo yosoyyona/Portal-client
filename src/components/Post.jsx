@@ -29,7 +29,7 @@ const Post = ({post}) => {
             <p>{post.review}</p>
           </div>
           <div>
-            <img src="/images/stardew valley.png" className='img-fluid shadow-4' alt='...' />
+            <img src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
           </div>
         </div>
       </Link>
