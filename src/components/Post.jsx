@@ -24,7 +24,7 @@ const Post = ({post}) => {
 
             <p>{post.author}</p>
             <p>{post.genre}</p>
-            <p>{post.rating}</p>
+            <p>{post.rating}/5</p>
             
             <p>{post.review}</p>
           </div>

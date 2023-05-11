@@ -1,6 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
+import { Button } from 'evergreen-ui'
+import Post from '../components/Post'
+
 
 function PostDetailsPage() {
 
@@ -21,7 +25,11 @@ function PostDetailsPage() {
 
   return (
     <div>
-      <h2>{post.title}</h2>
+      <h3>{post.title}</h3>
+      <p>{post.review}</p>
+      <div>
+            <img src="/images/stardew valley.png" className='img-fluid shadow-4' alt='...' />
+      </div>
 
       <Link to='/posts'><button>Back</button> </Link>
 
