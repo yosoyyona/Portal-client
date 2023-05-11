@@ -12,7 +12,7 @@ function PostDetailsPage() {
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get(`${API_URL}/api/posts/${postId}`,
+    axios.get(`${API_URL}/posts/${postId}`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
     .then((response) => setPost(response.data))
@@ -22,6 +22,8 @@ function PostDetailsPage() {
   return (
     <div>
       <h2>{post.title}</h2>
+
+      <Link to='/posts'><button>Back</button> </Link>
 
     </div>
   )
