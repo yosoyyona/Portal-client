@@ -35,7 +35,7 @@ function QuizCreatePage() {
             if (response.data) setQuiz(response.data)
             navigate("/quizzes")
           })
-      }
+    }
 
   const { user } = useContext(AuthContext)
   return (
