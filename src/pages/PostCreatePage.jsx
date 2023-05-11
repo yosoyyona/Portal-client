@@ -32,7 +32,7 @@ const PostCreatePage = () => {
     console.log(requestBody)
 
     // 🍊 check!
-    axios.post(`${API_URL}/api/posts`, requestBody,
+    axios.post(`${API_URL}/posts`, requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
         if (response.data) setPost(response.data)

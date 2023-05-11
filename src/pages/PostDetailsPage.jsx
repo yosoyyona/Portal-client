@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link, useParams, useNavigate } from 'react-router-dom'
+import Comment from '../components/Comment'
+import axios from "axios";
 
 function PostDetailsPage() {
 
@@ -12,7 +13,7 @@ function PostDetailsPage() {
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get(`${API_URL}/api/posts/${postId}`,
+    axios.get(`${API_URL}/posts/${postId}`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
     .then((response) => setPost(response.data))
@@ -22,7 +23,7 @@ function PostDetailsPage() {
   return (
     <div>
       <h2>{post.title}</h2>
-
+      <Comment />
     </div>
   )
 }
