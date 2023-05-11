@@ -8,7 +8,10 @@ const API_URL = "http://localhost:5005";
 
 function QuizCreatePage() {
     const [ quiz, setQuiz ] = useState([])
+    
     const navigate = useNavigate()
+
+    const { user } = useContext(AuthContext)
 
     const handleSubmit = (e) => {
     
@@ -37,7 +40,7 @@ function QuizCreatePage() {
           })
     }
 
-  const { user } = useContext(AuthContext)
+  
   return (
     <div>
     <h2>Create your Quiz!!</h2>
@@ -61,7 +64,7 @@ function QuizCreatePage() {
 
         <SelectField
           label="Genre of the game"
-          name="genre"
+          name="theme"
         >
           <option value="retro" defaultValue>Retro</option>
           <option value="new">New</option>

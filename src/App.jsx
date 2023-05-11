@@ -31,11 +31,14 @@ function App() {
 
     <Routes>
       <Route path='/' element={<HomePage />} />
+      
       <Route path='/posts' element={<PostPage />} />
       <Route path='/posts/create' element={<PostCreatePage />} />
       <Route path='/posts/:postId' element={<PostDetailsPage />} />
+
       <Route path='/quizzes' element={<QuizPage />} />
       <Route path='/quizzes/create' element={<QuizCreatePage />} />
+
       <Route path='/signup' element={<IsAnon> <SignupPage /> </IsAnon>} />
       <Route path='/login' element={<IsAnon> <LoginPage /> </IsAnon>} />
       <Route path='/:userId' element={<IsPrivate> <UserPage /> </IsPrivate>} />
