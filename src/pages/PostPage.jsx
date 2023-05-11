@@ -14,7 +14,7 @@ function PostPage() {
   const storedToken = localStorage.getItem('authToken');
 
   const getAllPost = () => {
-    axios.get(`${API_URL}/api/posts`,
+    axios.get(`${API_URL}/posts`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
     .then((response) => setPosts(response.data))
