@@ -1,7 +1,7 @@
 import React, { useState, useContext, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
-import { TextInputField, TextareaField, SelectField, Pane, FileUploader, FileCard, Button } from 'evergreen-ui'
+import { TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui'
 import axios from 'axios'
 import service from "../api/service";
 

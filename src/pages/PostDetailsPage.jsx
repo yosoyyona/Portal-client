@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import PostDetail from "../components/PostDetail";
 import Comment from '../components/Comment'
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import { TextInputField, TextareaField, Button } from 'evergreen-ui'
 import axios from "axios";
 
 function PostDetailsPage() {
 
   const { postId } = useParams()
   const [post, setPost] = useState([])
+  const [ comment, setComment ] = useState([])
+
   const navigate = useNavigate()
 
   const API_URL = "http://localhost:5005";
@@ -22,9 +26,21 @@ function PostDetailsPage() {
 
   return (
     <div>
-      <h2>{post.title}</h2>
-      <Comment />
-      <Link to='/posts'><button>Back</button> </Link>
+      <Link to='/posts'><Button display="flex" size="small">Back</Button></Link>
+      
+      <PostDetail post={post} />
+      <Comment post={post} />
+
+      <form>
+        <TextareaField
+          required isInvalid={false}
+          label="Comment"
+          name='message'
+          type='text'
+          validationMessage="This field is required"
+        />
+        <Button type="submit" size="small">Submit</Button>
+      </form>
 
     </div>
   )

@@ -23,7 +23,7 @@ const Post = ({post}) => {
             <h4>{dateString}</h4>
 
             <p>{post.author}</p>
-            <p>{post.genre}</p>
+            
             <p>{post.rating}/5</p>
             
             <p>{post.review}</p>
