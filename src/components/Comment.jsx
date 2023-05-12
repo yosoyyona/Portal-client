@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Container from 'react-bootstrap/Container';
-import { TextInputField, TextareaField, Button } from 'evergreen-ui'
+import { Pane, Avatar } from 'evergreen-ui'
 import axios from 'axios'
 
 const API_URL = "http://localhost:5005";
@@ -20,6 +20,10 @@ const Comment = ({post}) => {
   return (
     <Container className="comment">
       
+      <Pane>
+        <Avatar name="Author!" size={30} marginRight={16} shape="square" />
+        
+      </Pane>
       
     </Container>
   )

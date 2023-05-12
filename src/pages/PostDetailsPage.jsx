@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import PostDetail from "../components/PostDetail";
 import Comment from '../components/Comment'
+import { AuthContext } from "../context/auth.context";
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { TextInputField, TextareaField, Button } from 'evergreen-ui'
+import { Pane, Avatar, TextareaField, Button, Heading  } from 'evergreen-ui'
 import axios from "axios";
 
 function PostDetailsPage() {
@@ -10,8 +11,9 @@ function PostDetailsPage() {
   const { postId } = useParams()
   const [post, setPost] = useState([])
   const [ comment, setComment ] = useState([])
-
   const navigate = useNavigate()
+
+  const { user } = useContext(AuthContext)
 
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem('authToken');
@@ -31,16 +33,21 @@ function PostDetailsPage() {
       <PostDetail post={post} />
       <Comment post={post} />
 
-      <form>
-        <TextareaField
-          required isInvalid={false}
-          label="Comment"
-          name='message'
-          type='text'
-          validationMessage="This field is required"
-        />
-        <Button type="submit" size="small">Submit</Button>
-      </form>
+      <Heading is="h3">Comment</Heading>
+
+      <Pane display="flex" className="align-top">
+        <Avatar name={user.name} size={30} marginRight={16} shape="square" />
+        <form>
+          <TextareaField
+            isInvalid={false}
+            name='message'
+            type='text'
+            validationMessage="This field is required"
+          />
+          <Button type="submit" size="small">Submit</Button>
+        </form>
+
+      </Pane>
 
     </div>
   )
