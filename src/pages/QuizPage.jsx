@@ -30,7 +30,11 @@ function QuizPage() {
 
   return (
     <div>
-      <Link to='/quizzes/create'><button>create a quiz!!</button> </Link>
+
+       {isLoggedIn && 
+        <Link to='/quizzes/create'><button>create a quiz!!</button> </Link>
+       }
+      
 
       <div id="post-list" >
         {quiz.map(quiz =>{

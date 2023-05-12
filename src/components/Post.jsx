@@ -12,15 +12,15 @@ const Post = ({post}) => {
   // rating expressed with stars
   
   return (
-    <Container className="post">
+    <Container className="post d-flex">
       <Link to={`/posts/${post._id}`}>
-        <div>
+        <div className=''>
           <div className="vw-70 m-3">
-            <h2>{post.gameName}</h2>
+            <h2 className=''>{post.gameName}</h2>
             
             <h2>{post.title}</h2>
             
-            <h4>{dateString}</h4>
+            
 
             <p>{post.author}</p>
             
@@ -29,8 +29,9 @@ const Post = ({post}) => {
             <p>{post.review}</p>
           </div>
           <div>
-            <img src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
+            <img src={post.imageUrl} width={"200em"} className='img-fluid shadow-4' alt='...' />
           </div>
+          <h4>{dateString}</h4>
         </div>
       </Link>
     </Container>

@@ -19,6 +19,7 @@ function HomePage() {
         <Link to="/quizzes">
           Quiz
         </Link>
+        
       </Pane>
     </Pane>
 

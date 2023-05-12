@@ -13,6 +13,7 @@ import LoginPage from './pages/LoginPage';
 import PostPage from './pages/PostPage';
 import PostCreatePage from './pages/PostCreatePage';
 import PostDetailsPage from './pages/PostDetailsPage';
+import PostEditPage from './pages/PostEditPage';
 
 import QuizPage from './pages/QuizPage';
 import QuizCreatePage from './pages/QuizCreatePage';
@@ -35,6 +36,7 @@ function App() {
       <Route path='/posts' element={<PostPage />} />
       <Route path='/posts/create' element={<PostCreatePage />} />
       <Route path='/posts/:postId' element={<PostDetailsPage />} />
+      <Route path='/posts/:postId/edit' element={<PostEditPage />} />
 
       <Route path='/quizzes' element={<QuizPage />} />
       <Route path='/quizzes/create' element={<QuizCreatePage />} />

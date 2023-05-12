@@ -9,7 +9,7 @@ const API_URL = "http://localhost:5005";
 
 function PostPage() {
   const [posts, setPosts] = useState([])
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   const storedToken = localStorage.getItem('authToken');
 
@@ -29,18 +29,30 @@ function PostPage() {
     <div>
         
       {isLoggedIn && 
+      <div>
         <Link to="/posts/create"><Button>Create Post</Button></Link>
+        <div id="post-list">
+          {posts.map(post => 
+          <Post key={post._id} post={post}></Post>
+          )}
+        </div>
+      </div>
+        
       }
 
       {
         !posts.length && <></>
       }
 
-      <div id="post-list">
+      {!isLoggedIn && (
+        <div id="post-list">
         {posts.map(post => 
         <Post key={post._id} post={post}></Post>
         )}
       </div>
+      )}
+
+      
 
     </div>
   )
