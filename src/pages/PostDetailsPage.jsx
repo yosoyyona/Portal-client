@@ -3,15 +3,14 @@ import PostDetail from "../components/PostDetail";
 import Comment from '../components/Comment'
 import { AuthContext } from "../context/auth.context";
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Pane, Avatar, TextareaField, Button, Heading  } from 'evergreen-ui'
+import { Pane, Avatar, TextareaField, Button  } from 'evergreen-ui'
 import axios from "axios";
-import { AuthContext } from "../context/auth.context";
 
 function PostDetailsPage() {
 
   const { postId } = useParams()
   const [post, setPost] = useState([])
-  const [ comment, setComment ] = useState([])
+  const [comment, setComment] = useState([])
   const navigate = useNavigate()
 
   const { user } = useContext(AuthContext)
@@ -42,41 +41,42 @@ function PostDetailsPage() {
 
         if(deletePost._id !== id){
           throw 'something went wrong'
-        }navigate('/posts')
-        
+        }
+        navigate('/posts')
         
       }).catch(err => {
         console.error(err)
       })
   }
 
-  const editPost = () => {
-
-  }
-
   return (
     <div>
-      <Link to='/posts'><Button display="flex" size="small">Back</Button></Link>
-
-      <Link to='/posts'><button onClick={() => deletePost(post._id)}>Delete this post</button></Link>
-      <Link to={`/posts/${postId}/edit`}>edit this post</Link>
+      <Pane display="flex" padding={16}>
+        <Pane flex={1} alignItems="center" display="flex">
+          <Link to='/posts'><Button size="small" appearance="primary">Back</Button></Link>
+        </Pane>
+        <Pane>
+          {/* Below you can see the marginRight property on a Button. */}
+          <Link to={`/posts/${postId}/edit`}><Button marginRight={3} size="small">Edit</Button></Link>
+          <Link to='/posts'><Button size="small" onClick={() => deletePost(post._id)}>Delete</Button></Link>
+        </Pane>
+      </Pane>
+      
       <PostDetail post={post} />
       <Comment post={post} />
-
-      <Heading is="h3">Comment</Heading>
-
+      
       <Pane display="flex" className="align-top">
         <Avatar name={user.name} size={30} marginRight={16} shape="square" />
         <form>
           <TextareaField
             isInvalid={false}
+            label="Comment"
             name='message'
             type='text'
             validationMessage="This field is required"
           />
           <Button type="submit" size="small">Submit</Button>
         </form>
-
       </Pane>
 
     </div>

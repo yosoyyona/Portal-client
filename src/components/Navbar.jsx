@@ -11,20 +11,20 @@ function NavBar() {
   return (
       <Pane display="flex" padding={16} background="tint2" borderRadius={3} marginBottom={10}>
         <Pane flex={1} alignItems="center" display="flex">
-          <Heading size={600} marginRight={10}><Link to="/">Home</Link></Heading>
+          <Heading size={600} ><Link to="/">Home</Link></Heading>
         </Pane>
 
         <Pane>
           {isLoggedIn && (
             <>        
-              <Link to={`/${user._id}`}><Button marginLeft={10} size="small">Profile</Button></Link>
+              <Link to={`/${user._id}`}><Button marginRight={3} size="small">Profile</Button></Link>
               <Button onClick={logOutUser} size="small">Logout</Button>
             </>
           )}
             
           {!isLoggedIn && (
             <>
-              <Link to="/signup"> <Button marginLeft={10} size="small">Sign Up</Button> </Link>
+              <Link to="/signup"> <Button marginRight={3} size="small">Sign Up</Button> </Link>
               <Link to="/login"> <Button size="small">Login</Button> </Link>
             </>
           )}
