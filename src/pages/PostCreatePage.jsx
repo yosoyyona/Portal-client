@@ -12,7 +12,7 @@ const PostCreatePage = () => {
   const [ post, setPost ] = useState([])
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate()
-
+  const storedToken = localStorage.getItem('authToken');
   const { user } = useContext(AuthContext)
   
     // ******** this method handles the file upload ********

@@ -13,7 +13,10 @@ function PostDetailsPage() {
   const [comment, setComment] = useState([])
   const navigate = useNavigate()
 
+  
+
   const { user } = useContext(AuthContext)
+  
 
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem('authToken');
@@ -34,30 +37,7 @@ function PostDetailsPage() {
     .catch((error) => console.log(error))
   }, [])
 
-  useEffect(() => {
-    const deletePost = (id) => {
-      setPost(post => {
-        const newPost = post.filter(post => {
-          return post._id !== id
-        })
-        return newPost
-      })
-
-      axios.delete(`http://localhost:5005/posts/${postId}`,
-      { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then(response => {
-        const deletePost = response.data
-
-        if(deletePost._id !== id){
-          throw 'something went wrong'
-        }
-        navigate('/posts')
-        
-      }).catch(err => {
-        console.error(err)
-      })
-  }
-  }, [])
+  
 
   const deletePost = (id) => {
       setPost(post => {
