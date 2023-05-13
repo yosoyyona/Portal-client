@@ -33,7 +33,9 @@ function PostDetailsPage() {
     axios.get(`${API_URL}/user`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-    .then((response) => console.log(response.data))
+    .then((response) => {
+      console.log({ post })
+      console.log(response.data)})
     .catch((error) => console.log(error))
   }, [])
 
