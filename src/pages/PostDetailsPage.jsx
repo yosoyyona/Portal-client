@@ -14,8 +14,6 @@ function PostDetailsPage() {
   const [newComment, setNewComment] = useState([])
   const navigate = useNavigate()
 
-  
-
   const { user } = useContext(AuthContext)
   
   const API_URL = "http://localhost:5005";
@@ -30,21 +28,12 @@ function PostDetailsPage() {
   }, [])
 
   useEffect(() => {
-    axios.get(`${API_URL}/user`,
-      { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
-    .then((response) => console.log(response.data))
-    .catch((error) => console.log(error))
-  }, [])
-
-
-  useEffect(() => {
     axios.get(`${API_URL}/posts/${postId}/comments`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
     .then((response) => setComments(response.data))
     .catch((error) => console.log(error))
-  }, [])
+  }, [newComment])
 
 
   const deletePost = (id) => {
@@ -75,8 +64,6 @@ function PostDetailsPage() {
     e.preventDefault()
     const form = e.target
 
-    const storedToken = localStorage.getItem('authToken');
-
     const requestBody = { 
       author: user._id, 
       message: form.message.value, 
@@ -88,7 +75,9 @@ function PostDetailsPage() {
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
         if (response.data) setNewComment(response.data)
+        navigate(`/posts/${postId}`)
       })
+      .catch((error) => console.log(error))
   }
 
 
@@ -106,6 +95,7 @@ function PostDetailsPage() {
       </Pane>
       
       <PostDetail post={post} />
+        {post.title} {/* 🍊 */}
 
 
       <div id="comments-list">

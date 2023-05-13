@@ -5,6 +5,8 @@ const PostDetail = ({post}) => {
 
   // author
 
+  let date = new Date(post.date)
+  let dateString = date.toDateString()
   
   let stars = post.rating
   let starRating = ""
@@ -20,6 +22,8 @@ const PostDetail = ({post}) => {
 
       <h2>{post.title}</h2>
       <h3>{post.gameName}</h3>
+      
+      <p>{dateString}</p>
       <h3>{post.genre}</h3>
       <p display="flex" className="text-start">{post.review}</p>
       
