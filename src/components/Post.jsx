@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
+import { Card } from 'evergreen-ui'
 
 const Post = ({post}) => {
 
@@ -9,28 +10,49 @@ const Post = ({post}) => {
   
   // author populate
   // review first 30 letters
-  // rating expressed with stars
+  
+  
+  let stars = post.rating
+  let starRating = ""
+  if(stars === 0) starRating = "☆☆☆☆☆"
+  if(stars === 1) starRating = "★☆☆☆☆"
+  if(stars === 2) starRating = "★★☆☆☆"
+  if(stars === 3) starRating = "★★★☆☆"
+  if(stars === 4) starRating = "★★★★☆"
+  if(stars === 5) starRating = "★★★★★"
   
   return (
     <Container className="post d-flex">
       <Link to={`/posts/${post._id}`}>
-        <div className=''>
-          <div className="vw-70 m-3">
-            <h2 className=''>{post.gameName}</h2>
+        <Card elevation={1} 
+        float="left"
+        width={260}
+        height={300}
+        margin={10}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column">
+          <div>
             
-            <h2>{post.title}</h2>
-
-            <p>{post.author}</p>
+            <h3>{post.title}</h3>
+            {post.gameName&&
+            <h4 className='mb-0'>about "{post.gameName}"</h4>}
             
-            <p>{post.rating}/5</p>
+            <div display="flex" className="justify-content-between mt-0">
+              {/* 🍊 */}
+              <p>{post.author.name}</p>
+              
+              <p>{starRating}</p>
+            </div>
             
-            <p>{post.review}</p>
+            <p className="overflow-hidden mt-0">{post.review}</p>
           </div>
           <div>
-            <img src={post.imageUrl} width={"200em"} className='img-fluid shadow-4' alt='...' />
+            <img src={post.imageUrl} width={"180em"} className='img-fluid shadow-4' alt='...' />
           </div>
-          <h4>{dateString}</h4>
-        </div>
+          <p>{dateString}</p>
+        </Card>
       </Link>
     </Container>
 

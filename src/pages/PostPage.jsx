@@ -33,7 +33,7 @@ function PostPage() {
         <Link to="/posts/create"><Button>Create Post</Button></Link>
         <div id="post-list">
           {posts.map(post => 
-          <Post key={post._id} post={post}></Post>
+          <Post key={post._id} post={post} />
           )}
         </div>
       </div>

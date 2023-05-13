@@ -3,18 +3,19 @@ import PostDetail from "../components/PostDetail";
 import Comment from '../components/Comment'
 import { AuthContext } from "../context/auth.context";
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Pane, Avatar, TextareaField, Button  } from 'evergreen-ui'
+import { Pane, TextareaField, Button  } from 'evergreen-ui'
 import axios from "axios";
 
 function PostDetailsPage() {
 
   const { postId } = useParams()
   const [post, setPost] = useState([])
-  const [comment, setComment] = useState([])
+  const [comments, setComments] = useState([])
+  const [newComment, setNewComment] = useState([])
   const navigate = useNavigate()
 
   const { user } = useContext(AuthContext)
-
+  
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem('authToken');
 
@@ -26,28 +27,59 @@ function PostDetailsPage() {
     .catch((error) => console.log(error))
   }, [])
 
-  const deletePost = (id) => {
-      setPost(post => {
-        const newPost = post.filter(post => {
-          return post._id !== id
-        })
-        return newPost
-      })
+  useEffect(() => {
+    axios.get(`${API_URL}/posts/${postId}/comments`,
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+    )
+    .then((response) => setComments(response.data))
+    .catch((error) => console.log(error))
+  }, [])
 
-      axios.delete(`http://localhost:5005/posts/${postId}`,
+
+  const deletePost = (id) => {
+    setPost(post => {
+      const newPost = post.filter(post => {
+        return post._id !== id
+      })
+      return newPost
+    })
+
+    axios.delete(`${API_URL}/posts/${postId}`,
+    { headers: { Authorization: `Bearer ${storedToken}` } })
+    .then(response => {
+      const deletePost = response.data
+
+      if(deletePost._id !== id){
+        throw 'something went wrong'
+      }
+      navigate('/posts')
+      
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  // to create new comment
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.target
+
+    const storedToken = localStorage.getItem('authToken');
+
+    const requestBody = { 
+      author: user._id, 
+      message: form.message.value, 
+      post: postId
+    }
+    console.log(requestBody)
+
+    axios.post(`${API_URL}/posts/${postId}/comments`, requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
-        const deletePost = response.data
-
-        if(deletePost._id !== id){
-          throw 'something went wrong'
-        }
-        navigate('/posts')
-        
-      }).catch(err => {
-        console.error(err)
+        if (response.data) setNewComment(response.data)
       })
   }
+
 
   return (
     <div>
@@ -63,13 +95,19 @@ function PostDetailsPage() {
       </Pane>
       
       <PostDetail post={post} />
-      <Comment post={post} />
+
+
+      <div id="comments-list">
+        <h4>Comments</h4>
+        {comments &&
+        comments.map(comment => <Comment key={comment._id} comment={comment} />)}
+      </div>
+      
       
       <Pane display="flex" className="align-top">
-        <Avatar name={user.name} size={30} marginRight={16} shape="square" />
-        <form>
+        <form  onSubmit={handleSubmit}>
           <TextareaField
-            isInvalid={false}
+            required isInvalid={false}
             label="Comment"
             name='message'
             type='text'

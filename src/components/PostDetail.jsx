@@ -5,6 +5,16 @@ const PostDetail = ({post}) => {
 
   // author
 
+  
+  let stars = post.rating
+  let starRating = ""
+  if(stars === 0) starRating = "☆☆☆☆☆"
+  if(stars === 1) starRating = "★☆☆☆☆"
+  if(stars === 2) starRating = "★★☆☆☆"
+  if(stars === 3) starRating = "★★★☆☆"
+  if(stars === 4) starRating = "★★★★☆"
+  if(stars === 5) starRating = "★★★★★"
+
   return (
     <Container>
 
@@ -13,7 +23,7 @@ const PostDetail = ({post}) => {
       <h3>{post.genre}</h3>
       <p display="flex" className="text-start">{post.review}</p>
       
-      <h4>{post.rating}</h4>
+      <h4>{starRating}</h4>
 
       <div>
         <img src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
