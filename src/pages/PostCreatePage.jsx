@@ -26,7 +26,8 @@ const PostCreatePage = () => {
     uploadData.append("imageUrl", e.target.files[0]);
 
     service
-      .uploadImage(uploadData)
+      .uploadImage(uploadData,
+        { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
