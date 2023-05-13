@@ -26,7 +26,9 @@ function QuizCreatePage() {
           difficulty: form.difficulty.value, 
           theme: form.theme.value, 
           question: form.question.value,
-          question2: form.question2.value
+          question2: form.question2.value,
+          question3: form.question3.value,
+          question4: form.question4.value
           
         }
         console.log(requestBody)
@@ -84,6 +86,21 @@ function QuizCreatePage() {
           required isInvalid={false}
           label="Bad answer"
           name='question2'
+          type='text'
+          validationMessage="This field is required"
+        />
+
+        <TextInputField
+          required isInvalid={false}
+          label="Bad answer"
+          name='question3'
+          type='text'
+          validationMessage="This field is required"
+        />
+        <TextInputField
+          required isInvalid={false}
+          label="Bad answer"
+          name='question4'
           type='text'
           validationMessage="This field is required"
         />

@@ -12,7 +12,7 @@ const PostCreatePage = () => {
   const [ post, setPost ] = useState([])
   const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate()
-
+  const storedToken = localStorage.getItem('authToken');
   const { user } = useContext(AuthContext)
   
     // ******** this method handles the file upload ********
@@ -26,7 +26,8 @@ const PostCreatePage = () => {
     uploadData.append("imageUrl", e.target.files[0]);
 
     service
-      .uploadImage(uploadData)
+      .uploadImage(uploadData,
+        { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state

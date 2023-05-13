@@ -14,6 +14,8 @@ function PostDetailsPage() {
   const [newComment, setNewComment] = useState([])
   const navigate = useNavigate()
 
+  
+
   const { user } = useContext(AuthContext)
   
   const API_URL = "http://localhost:5005";
@@ -26,6 +28,15 @@ function PostDetailsPage() {
     .then((response) => setPost(response.data))
     .catch((error) => console.log(error))
   }, [])
+
+  useEffect(() => {
+    axios.get(`${API_URL}/user`,
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+    )
+    .then((response) => console.log(response.data))
+    .catch((error) => console.log(error))
+  }, [])
+
 
   useEffect(() => {
     axios.get(`${API_URL}/posts/${postId}/comments`,
