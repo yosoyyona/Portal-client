@@ -19,8 +19,6 @@ const Post = ({post}) => {
             <h2 className=''>{post.gameName}</h2>
             
             <h2>{post.title}</h2>
-            
-            
 
             <p>{post.author}</p>
             
