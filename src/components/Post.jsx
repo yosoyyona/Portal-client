@@ -41,7 +41,7 @@ const Post = ({post}) => {
             
             <div display="flex" className="justify-content-between mt-0">
               {/* 🍊 */}
-              <p>{post.author.name}</p>
+              <p>{post.author/*the .name makes everything bug*/ }</p>
               
               <p>{starRating}</p>
             </div>

@@ -46,7 +46,7 @@ const PostCreatePage = () => {
 
     const requestBody = { 
       title: form.title.value, 
-      author: user._id, 
+      user: user._id, 
       gameName: form.gameName.value, 
       genre: form.genre.value, 
       review: form.review.value, 

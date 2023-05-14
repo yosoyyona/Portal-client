@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
@@ -14,6 +14,7 @@ function PostEditPage(props) {
   const { postId } = useParams()
   const { user } = useContext(AuthContext)
   const navigate = useNavigate()
+  const storedToken = localStorage.getItem('authToken');
 
   const [title, setTitle] = useState('')
   const [gameName, setGameName] = useState('')
@@ -22,6 +23,7 @@ function PostEditPage(props) {
   const [imageUrl, setImageUrl] = useState('')
   const [ rating, setRating] = useState(0)
 
+  // retrieve post data
   useEffect(() => {
     axios.get(`${API_URL}/posts/${postId}`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
@@ -38,15 +40,43 @@ function PostEditPage(props) {
     .catch((error) => console.log(error))
   }, [postId])
 
-  const handleFormSubmit = (e) => {
-    const storedToken = localStorage.getItem('authToken');
-    e.prevent.default
-    const requestBody = { title, gameName, genre, review, imageUrl, rating, author:user._id}
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
 
-    axios.put(`${API_URL}/api/posts/${projectId}/edit`,
+    const uploadData = new FormData();
+
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new post in POST route
+    uploadData.append("imageUrl", e.target.files[0]);
+
+    service
+      .uploadImage(uploadData,
+        { headers: { Authorization: `Bearer ${storedToken}` } })
+      .then(response => {
+        // console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setImageUrl(response.fileUrl);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+    }; 
+
+  const handleFormSubmit = (e) => {
+    
+    e.prevent.default
+    const requestBody = { 
+      title : form.title.value, 
+      gameName : form.gameName.value, 
+      genre: form.genre.value, 
+      review: form.review.value, 
+      imageUrl, 
+      rating: form.rating.value, 
+      user:user._id}
+
+    axios.put(`${API_URL}/posts/${postId}/edit`, requestBody,
     { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(() => {
-      navigate('/posts')
+      console.log('edit?')
+      navigate(`/posts/${postId}`)
     }).catch((err) => console.log(err));
   }
 
@@ -54,7 +84,7 @@ function PostEditPage(props) {
 
   return (
     <div>
-      <h2> Create a post📝 </h2>
+      <h2> Edit your Post </h2>
 
       <form onSubmit={handleFormSubmit}>
 
@@ -63,7 +93,9 @@ function PostEditPage(props) {
           label="Title"
           name='title'
           type='text'
+          defaultValue={title}
           validationMessage="This field is required"
+          
         />
         
         <TextInputField
@@ -72,6 +104,8 @@ function PostEditPage(props) {
           name='gameName'
           type='text'
           validationMessage="This field is required"
+          defaultValue={gameName}
+          
         /> {/* connecting to API? */}
 
         <SelectField
@@ -87,6 +121,7 @@ function PostEditPage(props) {
           <option value="Sports">Sports</option>
           <option value="Strategy">Strategy</option>
           <option value="ETC">ETC</option>
+          
         </SelectField>
         
         <TextareaField
@@ -94,6 +129,7 @@ function PostEditPage(props) {
           label="Review"
           name='review'
           type='text'
+          defaultValue={review}
           validationMessage="This field is required"
         />
         
