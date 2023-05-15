@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import { Pane, Avatar, Button } from 'evergreen-ui'
 import axios from 'axios'
@@ -14,20 +14,15 @@ const Comment = ({comment}) => {
   let date = new Date(comment.date)
   let dateString = date.toDateString()
   
-  
   const storedToken = localStorage.getItem('authToken');
   
-  const deleteComment = (id) => {
+  
+  const deleteComment = (commentId) => {
     axios.delete(`${API_URL}/posts/${postId}/comments/${commentId}`,
       { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then(response => {
-        const deleteComment = response.data
-
-        if(deleteComment._id !== id){
-          throw 'something went wrong'
-        }
-        
-      }).catch(err => {
+      .then(() => 
+        navigate(`${API_URL}/posts/${postId}`)
+      ).catch(err => {
         console.error(err)
       })
   }
@@ -42,7 +37,7 @@ const Comment = ({comment}) => {
         <Avatar name={comment.author.name} size={30} marginRight={16} shape="square" />
         <p>{comment.message}</p>
         <p>{dateString}</p>
-        <Button size="small" onClick={() => deleteComment(comment._id)}>Delete</Button>
+        <Button size="small" onClick={deleteComment}>Delete</Button>
       </Pane>
       
     </Container>
