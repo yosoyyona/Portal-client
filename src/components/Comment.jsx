@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import { Pane, Avatar, Button } from 'evergreen-ui'
 import axios from 'axios'
