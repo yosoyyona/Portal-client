@@ -13,6 +13,7 @@ function PostEditPage(props) {
 
   const { postId } = useParams()
   const { user } = useContext(AuthContext)
+
   const navigate = useNavigate()
   const storedToken = localStorage.getItem('authToken');
 
@@ -62,15 +63,8 @@ function PostEditPage(props) {
 
   const handleFormSubmit = (e) => {
     
-    e.prevent.default
-    const requestBody = { 
-      title : form.title.value, 
-      gameName : form.gameName.value, 
-      genre: form.genre.value, 
-      review: form.review.value, 
-      imageUrl, 
-      rating: form.rating.value, 
-      user:user._id}
+    e.prevent.default()
+    const requestBody = { title, gameName, genre, review, imageUrl, rating, user:user._id}
 
     axios.put(`${API_URL}/posts/${postId}/edit`, requestBody,
     { headers: { Authorization: `Bearer ${storedToken}` } })
