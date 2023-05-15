@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container';
 
-const PostDetail = ({post}) => {
+const PostDetail = ({post, authorName}) => {
 
   // author
 
@@ -22,6 +22,8 @@ const PostDetail = ({post}) => {
 
       <h2>{post.title}</h2>
       <h3>{post.gameName}</h3>
+
+      <h4>{authorName}</h4>
       
       <p>{dateString}</p>
       <h3>{post.genre}</h3>

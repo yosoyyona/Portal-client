@@ -12,8 +12,9 @@ function PostDetailsPage() {
   const [post, setPost] = useState([])
   const [comments, setComments] = useState([])
   const [newComment, setNewComment] = useState([])
+  const [authorName, setAuthorName] = useState([])
   const navigate = useNavigate()
-
+  
   const { user } = useContext(AuthContext)
   
   const API_URL = "http://localhost:5005";
@@ -23,7 +24,12 @@ function PostDetailsPage() {
     axios.get(`${API_URL}/posts/${postId}`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-    .then((response) => setPost(response.data))
+    .then((response) => {
+      setPost(response.data)
+      
+      const [authorArray] = [...response.data.author]
+      setAuthorName(authorArray.name)
+    })
     .catch((error) => console.log(error))
   }, [])
 
@@ -94,10 +100,8 @@ function PostDetailsPage() {
         </Pane>
       </Pane>
       
-      <PostDetail post={post} />
-        {post.title} {/* 🍊 */}
-
-
+      <PostDetail post={post} authorName={authorName} />
+        
       <div id="comments-list">
         <h4>Comments</h4>
         {comments &&
