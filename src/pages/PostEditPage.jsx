@@ -64,7 +64,7 @@ function PostEditPage(props) {
   const handleFormSubmit = (e) => {
     
     e.prevent.default()
-    const requestBody = { title, gameName, genre, review, imageUrl, rating, user:user._id}
+    const requestBody = { title, gameName, genre, review, imageUrl, rating, author:user._id}
 
     axios.put(`${API_URL}/posts/${postId}/edit`, requestBody,
     { headers: { Authorization: `Bearer ${storedToken}` } })

@@ -10,6 +10,8 @@ const Comment = ({comment}) => {
 
   const { postId } = useParams()
   const { commentId } = useParams()
+
+  const navigate = useNavigate()
   
   let date = new Date(comment.date)
   let dateString = date.toDateString()
