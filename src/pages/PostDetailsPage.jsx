@@ -27,17 +27,7 @@ function PostDetailsPage() {
     .catch((error) => console.log(error))
   }, [])
 
-  useEffect(() => {
-    axios.get(`${API_URL}/user`,
-      { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
-    .then((response) => {
-      console.log({ post })
-      console.log(response.data)})
-    .catch((error) => console.log(error))
-  }, [])
-
-
+  
   useEffect(() => {
     axios.get(`${API_URL}/posts/${postId}/comments`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
@@ -90,7 +80,6 @@ function PostDetailsPage() {
       })
       .catch((error) => console.log(error))
   }
-
 
   return (
     <div>
