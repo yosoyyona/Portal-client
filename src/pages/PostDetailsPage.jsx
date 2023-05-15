@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import PostDetail from "../components/PostDetail";
-import Comment from '../components/Comment'
+import CommentPage from './CommentPage'
 import { AuthContext } from "../context/auth.context";
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Pane, TextareaField, Button  } from 'evergreen-ui'
@@ -10,8 +10,6 @@ function PostDetailsPage() {
 
   const { postId } = useParams()
   const [post, setPost] = useState([])
-  const [comments, setComments] = useState([])
-  const [newComment, setNewComment] = useState([])
   const [authorName, setAuthorName] = useState([])
   const navigate = useNavigate()
   
@@ -34,15 +32,6 @@ function PostDetailsPage() {
   }, [])
 
   
-  useEffect(() => {
-    axios.get(`${API_URL}/posts/${postId}/comments`,
-      { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
-    .then((response) => setComments(response.data))
-    .catch((error) => console.log(error))
-  }, [newComment])
-
-
   const deletePost = (id) => {
     setPost(post => {
       const newPost = post.filter(post => {
@@ -66,26 +55,6 @@ function PostDetailsPage() {
     })
   }
 
-  // to create new comment
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const form = e.target
-
-    const requestBody = { 
-      author: user._id, 
-      message: form.message.value, 
-      post: postId
-    }
-    console.log(requestBody)
-
-    axios.post(`${API_URL}/posts/${postId}/comments`, requestBody,
-      { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then(response => {
-        if (response.data) setNewComment(response.data)
-        navigate(`/posts/${postId}`)
-      })
-      .catch((error) => console.log(error))
-  }
 
   return (
     <div>
@@ -102,25 +71,9 @@ function PostDetailsPage() {
       
       <PostDetail post={post} authorName={authorName} />
         
-      <div id="comments-list">
-        <h4>Comments</h4>
-        {comments &&
-        comments.map(comment => <Comment key={comment._id} comment={comment} />)}
-      </div>
-      
-      
-      <Pane display="flex" className="align-top">
-        <form  onSubmit={handleSubmit}>
-          <TextareaField
-            required isInvalid={false}
-            label="Comment"
-            name='message'
-            type='text'
-            validationMessage="This field is required"
-          />
-          <Button type="submit" size="small">Submit</Button>
-        </form>
-      </Pane>
+      <hr />
+
+      <CommentPage />
 
     </div>
   )

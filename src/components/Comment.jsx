@@ -33,6 +33,7 @@ const Comment = ({comment}) => {
     })
   }
 
+  
   // Task to do
   // 1. to show comment author' name(populated in server)
   // 2. to delete comment with deleteComment button
