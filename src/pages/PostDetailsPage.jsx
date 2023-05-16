@@ -6,6 +6,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Pane, TextareaField, Button  } from 'evergreen-ui'
 import axios from "axios";
 
+const API_URL = "http://localhost:5005";
+
 function PostDetailsPage() {
 
   const { postId } = useParams()
@@ -15,7 +17,7 @@ function PostDetailsPage() {
   
   const { user } = useContext(AuthContext)
   
-  const API_URL = "http://localhost:5005";
+  
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {
@@ -26,6 +28,7 @@ function PostDetailsPage() {
       setPost(response.data)
       
       const [authorArray] = [...response.data.author]
+      
       setAuthorName(authorArray.name)
     })
     .catch((error) => console.log(error))
