@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
+import { Pane, TextareaField, Button  } from 'evergreen-ui'
 import axios from 'axios'
 
 function UserPage() {
@@ -15,6 +16,8 @@ function UserPage() {
 
       <h3>Hello, {user.name}</h3>
 
+      <Button size="small">Edit profile</Button>
+      
     </div>
   )
 }
