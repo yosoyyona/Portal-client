@@ -63,7 +63,7 @@ function PostEditPage(props) {
 
   const handleFormSubmit = (e) => {
     
-    e.prevent.default()
+    e.preventDefault()
     const requestBody = { title, gameName, genre, review, imageUrl, rating, author:user._id}
 
     axios.put(`${API_URL}/posts/${postId}/edit`, requestBody,
@@ -88,6 +88,7 @@ function PostEditPage(props) {
           name='title'
           type='text'
           defaultValue={title}
+          onChange={(e) => setTitle(e.target.value)}
           validationMessage="This field is required"
           
         />

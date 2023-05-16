@@ -4,11 +4,13 @@ import Container from 'react-bootstrap/Container';
 import { Pane, Avatar, Button } from 'evergreen-ui'
 import axios from 'axios'
 
-const API_URL = "http://localhost:5005";
+
 
 const Comment = ({comment}) => {
 
   const { postId } = useParams()
+
+  console.log(comment)
   
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem('authToken');
@@ -22,6 +24,7 @@ const Comment = ({comment}) => {
     { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(response => {
       const deleteComment = response.data
+      console.log(response)
 
       if(deleteComment._id !== id){
         throw 'something went wrong'
@@ -43,7 +46,7 @@ const Comment = ({comment}) => {
         <Avatar name={comment.author.name} size={30} marginRight={16} shape="square" />
         <p>{comment.message}</p>
         <p>{dateString}</p>
-        <Button size="small" onClick={() => deleteComment(comment._id)}>Delete</Button>
+        <Button size="small" onClick={(comment) => deleteComment(comment._id)}>Delete</Button>
       </Pane>
       
     </Container>
