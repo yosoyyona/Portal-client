@@ -9,8 +9,7 @@ import { TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui
 const API_URL = "http://localhost:5005";
 
 function PostEditPage(props) {
-  const [post, setPost] = useState([])
-
+  
   const { postId } = useParams()
   const { user } = useContext(AuthContext)
 
@@ -19,10 +18,10 @@ function PostEditPage(props) {
 
   const [title, setTitle] = useState('')
   const [gameName, setGameName] = useState('')
-  const [ genre, setGenre] = useState("")
+  const [genre, setGenre] = useState("")
   const [review, setReview] = useState('')
   const [imageUrl, setImageUrl] = useState('')
-  const [ rating, setRating] = useState(0)
+  const [rating, setRating] = useState(0)
 
   // retrieve post data
   useEffect(() => {
@@ -42,8 +41,7 @@ function PostEditPage(props) {
   }, [postId])
 
   const handleFileUpload = (e) => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
-
+    
     const uploadData = new FormData();
 
     // imageUrl => this name has to be the same as in the model since we pass
@@ -69,12 +67,9 @@ function PostEditPage(props) {
     axios.put(`${API_URL}/posts/${postId}/edit`, requestBody,
     { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(() => {
-      console.log('edit?')
       navigate(`/posts/${postId}`)
     }).catch((err) => console.log(err));
   }
-
-  
 
   return (
     <div>
@@ -90,7 +85,6 @@ function PostEditPage(props) {
           defaultValue={title}
           onChange={(e) => setTitle(e.target.value)}
           validationMessage="This field is required"
-          
         />
         
         <TextInputField
@@ -109,7 +103,7 @@ function PostEditPage(props) {
           name="genre"
           onChange={(e) => setGenre(e.target.value)}
         >
-          <option value="Action" defaultValue>Action</option>
+          <option value="Action">Action</option>
           <option value="Adventure">Adventure</option>
           <option value="MMO">MMO</option>
           <option value="Puzzle">Puzzle</option>
@@ -118,9 +112,6 @@ function PostEditPage(props) {
           <option value="Sports">Sports</option>
           <option value="Strategy">Strategy</option>
           <option value="ETC">ETC</option>
-
-          
-          
         </SelectField>
         
         <TextareaField
@@ -142,7 +133,7 @@ function PostEditPage(props) {
           name="rating"
           onChange={(e) => setRating(e.target.value)}
         >
-          <option value="0" defaultValue>☆☆☆☆☆</option>
+          <option value="0">☆☆☆☆☆</option>
           <option value="1">★☆☆☆☆</option>
           <option value="2">★★☆☆☆</option>
           <option value="3">★★★☆☆</option>

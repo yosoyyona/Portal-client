@@ -5,12 +5,9 @@ import { Pane, Avatar, Button } from 'evergreen-ui'
 import axios from 'axios'
 
 
-
 const Comment = ({comment}) => {
 
   const { postId } = useParams()
-
-  console.log(comment)
   
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem('authToken');
