@@ -21,6 +21,7 @@ function HomePage() {
         </Link>
         
       </Pane>
+      
     </Pane>
 
   )
