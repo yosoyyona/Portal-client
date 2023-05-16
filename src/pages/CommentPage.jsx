@@ -27,6 +27,10 @@ function CommentPage() {
     .catch((error) => console.log(error))
   }, [newComment])
 
+  const deleteComment = (id) => {
+    
+  }
+
 
   // to create new comment
   const handleSubmit = (e) => {
@@ -43,6 +47,7 @@ function CommentPage() {
     axios.post(`${API_URL}/posts/${postId}/comments`, requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
+        console.warn(response.data)
         if (response.data) setNewComment(response.data)
         navigate(`/posts/${postId}`)
       })
