@@ -37,16 +37,13 @@ const Comment = ({comment}) => {
   }
 
   
-  // Task to do
-  // 1. to show comment author' name(populated in server)
-  // 2. to delete comment with deleteComment button
+  // Task to do - delete comment with deleteComment button
   
   return (
     <Container className="comment">
       
       <Pane>
         <Avatar name={comment.author.name} size={30} marginRight={16} shape="square" />
-        <p>{comment.author.name}</p>
         <p>{comment.message}</p>
         <p>{dateString}</p>
         <Button size="small" onClick={(comment) => deleteComment(comment._id)}>Delete</Button>

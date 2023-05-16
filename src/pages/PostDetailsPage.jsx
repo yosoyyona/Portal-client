@@ -6,18 +6,18 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Pane, TextareaField, Button  } from 'evergreen-ui'
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
 function PostDetailsPage() {
 
   const { postId } = useParams()
   const [post, setPost] = useState([])
   const [authorName, setAuthorName] = useState([])
+  const [authorId, setAuthorId] = useState([])
   const navigate = useNavigate()
   
   const { user } = useContext(AuthContext)
+  const userId = user._id
   
-  
+  const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {
@@ -27,9 +27,11 @@ function PostDetailsPage() {
     .then((response) => {
       setPost(response.data)
       
-      const [authorArray] = [...response.data.author]
-      
+      let [authorArray] = [...response.data.author]
+      console.log(authorArray)
+      console.log(user)
       setAuthorName(authorArray.name)
+      setAuthorId(authorArray._id)
     })
     .catch((error) => console.log(error))
   }, [])
@@ -66,9 +68,13 @@ function PostDetailsPage() {
           <Link to='/posts'><Button size="small" appearance="primary">Back</Button></Link>
         </Pane>
         <Pane>
-          {/* Below you can see the marginRight property on a Button. */}
-          <Link to={`/posts/${postId}/edit`}><Button marginRight={3} size="small">Edit</Button></Link>
-          <Link to='/posts'><Button size="small" onClick={() => deletePost(post._id)}>Delete</Button></Link>
+          {/* if author = user, show edit&delete button */}
+          {authorId === userId ?
+          <><Link to={`/posts/${postId}/edit`}><Button marginRight={3} size="small">Edit</Button></Link>
+          <Link to='/posts'><Button size="small" onClick={() => deletePost(post._id)}>Delete</Button></Link></>
+          :<></>
+          }
+          
         </Pane>
       </Pane>
       
