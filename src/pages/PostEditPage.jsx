@@ -99,6 +99,7 @@ function PostEditPage(props) {
           name='gameName'
           type='text'
           validationMessage="This field is required"
+          onChange={(e) => setGameName(e.target.value)}
           defaultValue={gameName}
           
         /> {/* connecting to API? */}
@@ -106,6 +107,7 @@ function PostEditPage(props) {
         <SelectField
           label="Genre of the game"
           name="genre"
+          onChange={(e) => setGenre(e.target.value)}
         >
           <option value="Action" defaultValue>Action</option>
           <option value="Adventure">Adventure</option>
@@ -116,6 +118,8 @@ function PostEditPage(props) {
           <option value="Sports">Sports</option>
           <option value="Strategy">Strategy</option>
           <option value="ETC">ETC</option>
+
+          
           
         </SelectField>
         
@@ -126,6 +130,7 @@ function PostEditPage(props) {
           type='text'
           defaultValue={review}
           validationMessage="This field is required"
+          onChange={(e) => setReview(e.target.value)}
         />
         
         {/* image */}
@@ -135,6 +140,7 @@ function PostEditPage(props) {
         <SelectField
           label="Rating"
           name="rating"
+          onChange={(e) => setRating(e.target.value)}
         >
           <option value="0" defaultValue>☆☆☆☆☆</option>
           <option value="1">★☆☆☆☆</option>
