@@ -19,6 +19,7 @@ import QuizPage from './pages/QuizPage';
 import QuizCreatePage from './pages/QuizCreatePage';
 
 import UserPage from './pages/UserPage';
+import UserEditPage from './pages/UserEditPage';
 
 import Error from './components/Error'
 
@@ -43,7 +44,8 @@ function App() {
 
       <Route path='/signup' element={<IsAnon> <SignupPage /> </IsAnon>} />
       <Route path='/login' element={<IsAnon> <LoginPage /> </IsAnon>} />
-      <Route path='/:userId' element={<IsPrivate> <UserPage /> </IsPrivate>} />
+      <Route path='/user/:userId' element={<IsPrivate> <UserPage /> </IsPrivate>} />
+      <Route path='/user/:userId/edit' element={<IsPrivate> <UserEditPage /> </IsPrivate>} />
     </Routes>
     
       {

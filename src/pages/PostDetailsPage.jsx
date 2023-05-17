@@ -28,8 +28,7 @@ function PostDetailsPage() {
       setPost(response.data)
       
       let [authorArray] = [...response.data.author]
-      console.log(authorArray)
-      console.log(user)
+      
       setAuthorName(authorArray.name)
       setAuthorId(authorArray._id)
     })

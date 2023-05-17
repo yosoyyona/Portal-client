@@ -17,7 +17,7 @@ function NavBar() {
         <Pane>
           {isLoggedIn && (
             <>        
-              <Link to={`/${user._id}`}><Button marginRight={3} size="small">Profile</Button></Link>
+              <Link to={`/user/${user._id}`}><Button marginRight={3} size="small">Profile</Button></Link>
               <Button onClick={logOutUser} size="small">Logout</Button>
             </>
           )}
