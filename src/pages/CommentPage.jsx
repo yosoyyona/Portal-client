@@ -27,9 +27,12 @@ function CommentPage() {
     .catch((error) => console.log(error))
   }, [newComment])
 
-  const deleteComment = (id) => {
-    
-  }
+  /*const deleteComment = (id) => {
+    setComments(comment => {
+      return toFormData._id !== id
+    })
+    return new
+  }*/
 
 
   // to create new comment
