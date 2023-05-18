@@ -27,15 +27,8 @@ function CommentPage() {
     .catch((error) => console.log(error))
   }, [newComment])
 
-  /*const deleteComment = (id) => {
-    setComments(comment => {
-      return toFormData._id !== id
-    })
-    return new
-  }*/
-
-
-  // to create new comment
+  
+  // create new comment
   const handleSubmit = (e) => {
     e.preventDefault()
     const form = e.target
@@ -50,19 +43,33 @@ function CommentPage() {
     axios.post(`${API_URL}/posts/${postId}/comments`, requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
-        console.warn(response.data)
         if (response.data) setNewComment(response.data)
         navigate(`/posts/${postId}`)
       })
       .catch((error) => console.log(error))
     }
 
+  // delete comment
+  const handleDelete = (commentId) => {
+
+    axios.delete(`${API_URL}/posts/${postId}/comments/${commentId}`,
+    { headers: { Authorization: `Bearer ${storedToken}` } })
+    .then(response => {
+      const handleDelete = response.data
+      navigate(`/posts/${postId}`)
+    })
+    .catch((error) => console.log(error))
+  }
+
+
   return (
     <div>
       <div id="comments-list">
         <h4>Comments</h4>
         {comments &&
-        comments.map(comment => <Comment key={comment._id} comment={comment} />)}
+          comments.map(comment => <Comment key={comment._id} comment={comment} 
+          handleDelete={() => handleDelete(comment._id)}
+        />)}
       </div>
       
       
