@@ -12,13 +12,19 @@ function PostDetailsPage() {
   const [post, setPost] = useState([])
   const [authorName, setAuthorName] = useState([])
   const [authorId, setAuthorId] = useState([])
+  const [userId, setUserId] = useState([])
   const navigate = useNavigate()
   
   const { user } = useContext(AuthContext)
-  const userId = user._id
+  
   
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem('authToken');
+
+  // userId...!
+  /* useEffect(() => {
+    if(user) setUserId = user._id
+  }, []) */
 
   useEffect(() => {
     axios.get(`${API_URL}/posts/${postId}`,
@@ -58,7 +64,6 @@ function PostDetailsPage() {
       console.error(err)
     })
   }
-
 
   return (
     <div>

@@ -27,23 +27,12 @@ function CommentPage() {
     .catch((error) => console.log(error))
   }, [newComment])
 
-  const deleteComment = (id) => {
-
-    axios.delete(`${API_URL}/posts/${postId}/comments}`, 
-    { headers: { Authorization: `Bearer ${storedToken}` } })
-    .then(response => {
-      const deleteComment = response.data
-      //console.log(response)
-
-      if(deleteComment._id !== id){
-        throw 'something went wrong'
-      }
-      navigate(`${API_URL}/posts/${postId}`)
-      
-    }).catch(err => {
-      console.error(err)
+  /*const deleteComment = (id) => {
+    setComments(comment => {
+      return toFormData._id !== id
     })
-  }
+    return new
+  }*/
 
 
   // to create new comment
@@ -61,19 +50,31 @@ function CommentPage() {
     axios.post(`${API_URL}/posts/${postId}/comments`, requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
-        console.warn(response.data)
         if (response.data) setNewComment(response.data)
         navigate(`/posts/${postId}`)
       })
       .catch((error) => console.log(error))
     }
 
+  // delete comment
+  const handleDelete = (commentId) => {
+
+    axios.delete(`${API_URL}/posts/${postId}/comments/${commentId}`,
+    { headers: { Authorization: `Bearer ${storedToken}` } })
+    .then(response => {
+      const handleDelete = response.data
+      navigate(`/posts/${postId}`)
+    })
+    .catch((error) => console.log(error))
+  }
+
+
   return (
     <div>
       <div id="comments-list">
         <h4>Comments</h4>
         {comments &&
-        comments.map(comment => <Comment key={comment._id} comment={comment} deleteComment={deleteComment} />)}
+        comments.map(comment => <Comment key={comment._id} comment={comment} />)}
       </div>
       
       

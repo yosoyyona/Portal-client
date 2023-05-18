@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React from 'react'
+import { useParams } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import { Pane, Avatar, Button } from 'evergreen-ui'
-import axios from 'axios'
 
-
-const Comment = ({comment, deleteComment}) => {
-
-  const { postId } = useParams()
-  
-  const API_URL = "http://localhost:5005";
-  const storedToken = localStorage.getItem('authToken');
+const Comment = ({comment, handleDelete}) => {
 
   let date = new Date(comment.date)
   let dateString = date.toDateString()
-  
-  
 
-  
   // Task to do - delete comment with deleteComment button
   
   return (

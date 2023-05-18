@@ -4,8 +4,6 @@ import { AuthContext } from "../context/auth.context";
 import { TextInputField, TextareaField, SelectField, Pane, FileUploader, FileCard, Button } from 'evergreen-ui'
 import axios from 'axios'
 
-
-
 const API_URL = "http://localhost:5005";
 
 function QuizPage() {
@@ -31,11 +29,10 @@ function QuizPage() {
   return (
     <div>
 
-       {isLoggedIn && 
+      {isLoggedIn && 
         <Link to='/quizzes/create'><button>create a quiz!!</button> </Link>
-       }
+      }
       
-
       <div id="post-list" >
         {quiz.map(quiz =>{
           return(
@@ -48,9 +45,7 @@ function QuizPage() {
                 <button>{quiz.question2} </button>
               </div>
             </div>
-          )
-        } 
-          
+          )} 
         )}
       </div>
     </div>

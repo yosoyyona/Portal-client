@@ -15,39 +15,37 @@ function QuizCreatePage() {
 
     const handleSubmit = (e) => {
     
-        e.preventDefault()
-        const form = e.target
-    
-        const storedToken = localStorage.getItem('authToken');
-    
-        const requestBody = { 
-          title: form.title.value, 
-          user: user._id, 
-          difficulty: form.difficulty.value, 
-          theme: form.theme.value, 
-          question: form.question.value,
-          question2: form.question2.value,
-          question3: form.question3.value,
-          question4: form.question4.value
-          
-        }
-        console.log(requestBody)
-    
-        
-        axios.post(`${API_URL}/quizzes/create`, requestBody,
-          { headers: { Authorization: `Bearer ${storedToken}` } })
-          .then(response => {
-            if (response.data) setQuiz(response.data)
-            navigate("/quizzes")
-          })
+      e.preventDefault()
+      const form = e.target
+  
+      const storedToken = localStorage.getItem('authToken');
+  
+      const requestBody = { 
+        title: form.title.value, 
+        author: user._id, 
+        difficulty: form.difficulty.value, 
+        theme: form.theme.value, 
+        question: form.question.value,
+        question2: form.question2.value,
+        question3: form.question3.value,
+        question4: form.question4.value
+      }
+      console.log(requestBody)
+      
+      axios.post(`${API_URL}/quizzes/create`, requestBody,
+        { headers: { Authorization: `Bearer ${storedToken}` } })
+        .then(response => {
+          if (response.data) setQuiz(response.data)
+          navigate("/quizzes")
+        })
     }
 
   
   return (
     <div>
-    <h2>Create your Quiz!!</h2>
-    <form onSubmit={handleSubmit}>
-    <TextInputField
+      <h2>Create your Quiz!!</h2>
+      <form onSubmit={handleSubmit}>
+        <TextInputField
           required isInvalid={false}
           label="Title"
           name='title'
@@ -61,30 +59,34 @@ function QuizCreatePage() {
           <option value="easy" defaultValue>Easy</option>
           <option value="intermediate">Intermediate</option>
           <option value="difficult">Difficult</option>
-          
         </SelectField>
 
         <SelectField
           label="Genre of the game"
           name="theme"
         >
-          <option value="retro" defaultValue>Retro</option>
-          <option value="new">New</option>
-          <option value="online">Online</option>
-          <option value="adventure">Adventure</option>
+          <option value="Action" defaultValue>Action</option>
+          <option value="Adventure">Adventure</option>
+          <option value="MMO">MMO</option>
+          <option value="Puzzle">Puzzle</option>
+          <option value="RolePlaying">Role-playing</option>
+          <option value="Simulation">Simulation</option>
+          <option value="Sports">Sports</option>
+          <option value="Strategy">Strategy</option>
+          <option value="ETC">ETC</option>
           
         </SelectField>
 
         <TextInputField
           required isInvalid={false}
-          label="Good answer"
+          label="Correct answer"
           name='question'
           type='text'
           validationMessage="This field is required"
         />
         <TextInputField
           required isInvalid={false}
-          label="Bad answer"
+          label="Wrong answer"
           name='question2'
           type='text'
           validationMessage="This field is required"
@@ -92,14 +94,14 @@ function QuizCreatePage() {
 
         <TextInputField
           required isInvalid={false}
-          label="Bad answer"
+          label="Wrong answer"
           name='question3'
           type='text'
           validationMessage="This field is required"
         />
         <TextInputField
           required isInvalid={false}
-          label="Bad answer"
+          label="Wrong answer"
           name='question4'
           type='text'
           validationMessage="This field is required"
@@ -107,7 +109,7 @@ function QuizCreatePage() {
         
         <Button type="submit">Submit</Button>
 
-    </form>
+      </form>
     </div>
   )
 }
