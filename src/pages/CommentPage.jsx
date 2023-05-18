@@ -27,13 +27,6 @@ function CommentPage() {
     .catch((error) => console.log(error))
   }, [newComment])
 
-  /*const deleteComment = (id) => {
-    setComments(comment => {
-      return toFormData._id !== id
-    })
-    return new
-  }*/
-
 
   // to create new comment
   const handleSubmit = (e) => {
@@ -74,9 +67,8 @@ function CommentPage() {
       <div id="comments-list">
         <h4>Comments</h4>
         {comments &&
-        comments.map(comment => <Comment key={comment._id} comment={comment} />)}
+        comments.map(comment => <Comment key={comment._id} comment={comment} handleDelete={handleDelete} />)}
       </div>
-      
       
       <Pane display="flex" className="align-top" style={{display:'flex', justifyContent:'center'}}>
         <form  onSubmit={handleSubmit}>
