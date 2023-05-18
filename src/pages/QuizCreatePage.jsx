@@ -21,14 +21,14 @@ function QuizCreatePage() {
       const storedToken = localStorage.getItem('authToken');
   
       const requestBody = { 
-        title: form.title.value, 
         author: user._id, 
+        question: form.question.value, 
+        genre: form.genre.value, 
         difficulty: form.difficulty.value, 
-        theme: form.theme.value, 
-        question: form.question.value,
-        question2: form.question2.value,
-        question3: form.question3.value,
-        question4: form.question4.value
+        answer: form.answer.value,
+        answer2: form.answer2.value,
+        answer3: form.answer3.value,
+        answer4: form.answer4.value
       }
       console.log(requestBody)
       
@@ -47,23 +47,15 @@ function QuizCreatePage() {
       <form onSubmit={handleSubmit}>
         <TextInputField
           required isInvalid={false}
-          label="Title"
-          name='title'
+          label="Question"
+          name='question'
           type='text'
           validationMessage="This field is required"
         />
-        <SelectField
-          label="Difficulty"
-          name="difficulty"
-        >
-          <option value="easy" defaultValue>Easy</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="difficult">Difficult</option>
-        </SelectField>
 
         <SelectField
           label="Genre of the game"
-          name="theme"
+          name="genre"
         >
           <option value="Action" defaultValue>Action</option>
           <option value="Adventure">Adventure</option>
@@ -74,20 +66,21 @@ function QuizCreatePage() {
           <option value="Sports">Sports</option>
           <option value="Strategy">Strategy</option>
           <option value="ETC">ETC</option>
-          
+        </SelectField>
+
+        <SelectField
+          label="Difficulty"
+          name="difficulty"
+        >
+          <option value="easy" defaultValue>Easy</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="difficult">Difficult</option>
         </SelectField>
 
         <TextInputField
           required isInvalid={false}
           label="Correct answer"
-          name='question'
-          type='text'
-          validationMessage="This field is required"
-        />
-        <TextInputField
-          required isInvalid={false}
-          label="Wrong answer"
-          name='question2'
+          name='answer'
           type='text'
           validationMessage="This field is required"
         />
@@ -95,14 +88,23 @@ function QuizCreatePage() {
         <TextInputField
           required isInvalid={false}
           label="Wrong answer"
-          name='question3'
+          name='answer2'
           type='text'
           validationMessage="This field is required"
         />
+
         <TextInputField
           required isInvalid={false}
-          label="Wrong answer"
-          name='question4'
+          label="Another wrong answer"
+          name='answer3'
+          type='text'
+          validationMessage="This field is required"
+        />
+        
+        <TextInputField
+          required isInvalid={false}
+          label="Last wrong answer"
+          name='answer4'
           type='text'
           validationMessage="This field is required"
         />

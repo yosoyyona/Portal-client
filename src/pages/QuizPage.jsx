@@ -1,7 +1,8 @@
 import React, { useState, useContext, useCallback, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
-import { TextInputField, TextareaField, SelectField, Pane, FileUploader, FileCard, Button } from 'evergreen-ui'
+import Quiz from '../components/Quiz'
+import { Pane, Button, Alert } from 'evergreen-ui'
 import axios from 'axios'
 
 const API_URL = "http://localhost:5005";
@@ -28,25 +29,19 @@ function QuizPage() {
 
   return (
     <div>
-
-      {isLoggedIn && 
-        <Link to='/quizzes/create'><button>create a quiz!!</button> </Link>
-      }
+      <Pane display="flex" padding={16}>
+        <Pane flex={1} alignItems="center" display="flex">
+          <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
+        </Pane>
+        <Pane>
+          {isLoggedIn && 
+            <Link to='/quizzes/create'><Button>Create a quiz!</Button> </Link>
+          }
+        </Pane>
+      </Pane>
       
-      <div id="post-list" >
-        {quiz.map(quiz =>{
-          return(
-            <div key={quiz._id} className='border'>
-              <h3>{quiz.title}</h3>
-              <p>{quiz.theme} </p>
-              <p>{quiz.title} </p>
-              <div>
-                <button>{quiz.question} </button>
-                <button>{quiz.question2} </button>
-              </div>
-            </div>
-          )} 
-        )}
+      <div id="quiz-list" >
+        {quiz.map(quiz => <Quiz key={quiz._id} quiz={quiz} /> )}
       </div>
     </div>
   )
