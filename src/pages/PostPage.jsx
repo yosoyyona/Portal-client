@@ -45,7 +45,7 @@ function PostPage() {
       }
 
       {!isLoggedIn && (
-        <div id="post-list">
+        <div className="d-flex p-3">
         {posts.map(post => 
         <Post key={post._id} post={post}></Post>
         )}

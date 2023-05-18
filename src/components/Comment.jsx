@@ -5,7 +5,7 @@ import { Pane, Avatar, Button } from 'evergreen-ui'
 import axios from 'axios'
 
 
-const Comment = ({comment}) => {
+const Comment = ({comment, deleteComment}) => {
 
   const { postId } = useParams()
   
@@ -15,23 +15,7 @@ const Comment = ({comment}) => {
   let date = new Date(comment.date)
   let dateString = date.toDateString()
   
-  const deleteComment = (id) => {
-
-    axios.delete(`${API_URL}/posts/${postId}/comments}`,
-    { headers: { Authorization: `Bearer ${storedToken}` } })
-    .then(response => {
-      const deleteComment = response.data
-      //console.log(response)
-
-      if(deleteComment._id !== id){
-        throw 'something went wrong'
-      }
-      navigate(`${API_URL}/posts/${postId}`)
-      
-    }).catch(err => {
-      console.error(err)
-    })
-  }
+  
 
   
   // Task to do - delete comment with deleteComment button
@@ -39,11 +23,19 @@ const Comment = ({comment}) => {
   return (
     <Container className="comment">
       
-      <Pane>
-        <Avatar name={comment.author.name} size={30} marginRight={16} shape="square" />
-        <p>{comment.message}</p>
-        <p>{dateString}</p>
-        <Button size="small" onClick={() => deleteComment(comment._id)}>Delete</Button>
+      <Pane style={{backgroundColor:''}}>
+          <div style={{display:'flex', padding:'20px 0px 0px 20px'}}>
+            <Avatar name={comment.author.name} size={30} marginRight={16} shape="square" />
+            <p>{dateString}</p>
+            <Button style={{margin: '0 0 0px 30px'}} size="small" onClick={() => deleteComment(comment._id)}>Delete</Button>
+          </div>
+          <div>
+            <p style={{display:'flex', padding:'10px 0px 0px 70px' }}>{comment.message}</p>
+          </div>
+        
+        
+        
+        
       </Pane>
       
     </Container>

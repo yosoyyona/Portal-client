@@ -55,7 +55,15 @@ function UserPage() {
           <hr />
 
           <h4>My posts</h4>
-          {posts.map(post => <p>{post.title}</p>)}
+          <hr></hr>
+          {posts.map(post => (
+
+             <Link to={`/posts/${post._id}`} >
+              <p>{post.title}</p>
+              <hr></hr>
+             </Link> 
+
+          ))}
 
         </>
         :<>

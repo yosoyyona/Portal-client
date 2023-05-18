@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import { Card } from 'evergreen-ui'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Post = ({post}) => {
 
@@ -22,36 +25,43 @@ const Post = ({post}) => {
   if(stars === 5) starRating = "★★★★★"
   
   return (
-    <Container className="post d-flex">
+    <Container style={{display:'flex', alignItems:"center", justifyContent:"center"}}>
       <Link to={`/posts/${post._id}`}>
         <Card elevation={1} 
-        float="left"
-        width={260}
-        height={300}
-        margin={10}
+        width={800}
+        height="auto"
+        margin={30}
+        padding={15}
         display="flex"
         justifyContent="center"
         alignItems="center"
         flexDirection="column">
           <div>
-            
-            <h3>{post.title}</h3>
             {post.gameName&&
-            <h4 className='mb-0'>about "{post.gameName}"</h4>}
+            <div>
             
-            <div display="flex" className="justify-content-between mt-0">
+              <div>
+                <h3>{post.title}</h3>
+                <img src={post.imageUrl} width={"180em"} className='img-fluid shadow-4' style={{}} alt='...' />
+              </div>
+              <div>
+                  <h4 className='mb-0'>about "{post.gameName}"</h4>
+                  <p>{dateString}</p>
+                  {/*<p>by : {post.author.name}</p>*/}
+              </div>
+            </div>
+            
+            }
+            
+            <div className=" d-flex justify-content-between mt-0">
               {/* 🍊 */}
-              <p>{post.author.name}</p>
+              
               
               <p>{starRating}</p>
             </div>
             
-            <p className="overflow-hidden mt-0">{post.review}</p>
           </div>
-          <div>
-            <img src={post.imageUrl} width={"180em"} className='img-fluid shadow-4' alt='...' />
-          </div>
-          <p>{dateString}</p>
+          
         </Card>
       </Link>
     </Container>

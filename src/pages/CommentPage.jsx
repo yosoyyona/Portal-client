@@ -27,12 +27,23 @@ function CommentPage() {
     .catch((error) => console.log(error))
   }, [newComment])
 
-  /*const deleteComment = (id) => {
-    setComments(comment => {
-      return toFormData._id !== id
+  const deleteComment = (id) => {
+
+    axios.delete(`${API_URL}/posts/${postId}/comments}`, 
+    { headers: { Authorization: `Bearer ${storedToken}` } })
+    .then(response => {
+      const deleteComment = response.data
+      //console.log(response)
+
+      if(deleteComment._id !== id){
+        throw 'something went wrong'
+      }
+      navigate(`${API_URL}/posts/${postId}`)
+      
+    }).catch(err => {
+      console.error(err)
     })
-    return new
-  }*/
+  }
 
 
   // to create new comment
@@ -62,11 +73,11 @@ function CommentPage() {
       <div id="comments-list">
         <h4>Comments</h4>
         {comments &&
-        comments.map(comment => <Comment key={comment._id} comment={comment} />)}
+        comments.map(comment => <Comment key={comment._id} comment={comment} deleteComment={deleteComment} />)}
       </div>
       
       
-      <Pane display="flex" className="align-top">
+      <Pane display="flex" className="align-top" style={{display:'flex', justifyContent:'center'}}>
         <form  onSubmit={handleSubmit}>
           <TextareaField
             required isInvalid={false}
