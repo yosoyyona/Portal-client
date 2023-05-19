@@ -55,7 +55,7 @@ function CommentPage() {
     axios.delete(`${API_URL}/posts/${postId}/comments/${commentId}`,
     { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(response => {
-      const handleDelete = response.data
+      if (response.data) setNewComment(response.data)
       navigate(`/posts/${postId}`)
     })
     .catch((error) => console.log(error))
