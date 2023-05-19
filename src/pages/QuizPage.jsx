@@ -35,7 +35,7 @@ function QuizPage() {
         </Pane>
         <Pane>
           {isLoggedIn && 
-            <Link to='/quizzes/create'><Button>Create a quiz!</Button> </Link>
+            <Link to='/quizzes/create'><Button size="small">Create a quiz!</Button> </Link>
           }
         </Pane>
       </Pane>
