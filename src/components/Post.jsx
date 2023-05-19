@@ -38,11 +38,11 @@ const Post = ({post}) => {
         flexDirection="column">
           <div>
             {post.gameName&&
-            <div>
+            <div style={{}}>
             
               <div>
                 <h3>{post.title}</h3>
-                <img src={post.imageUrl} width={"180em"} className='img-fluid shadow-4' style={{}} alt='...' />
+                <img src={post.imageUrl} width={"180em"} style={{borderRadius:'10px', width:'30rem'}} className='img-fluid shadow-4' alt='...' />
               </div>
               <div>
                   <h4 className='mb-0'>about "{post.gameName}"</h4>
