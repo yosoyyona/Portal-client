@@ -67,7 +67,9 @@ function CommentPage() {
       <div id="comments-list">
         <h4>Comments</h4>
         {comments &&
-        comments.map(comment => <Comment key={comment._id} comment={comment} handleDelete={handleDelete} />)}
+          comments.map(comment => <Comment key={comment._id} comment={comment} 
+          handleDelete={() => handleDelete(comment._id)}
+        />)}
       </div>
       
       <Pane display="flex" className="align-top" style={{display:'flex', justifyContent:'center'}}>
