@@ -1,24 +1,13 @@
 import React, { useContext } from 'react'
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { Button, Pane, majorScale } from 'evergreen-ui'
 
 const QuizSelectPage = () => {
-
-  const [searchParams, setSearchParams] = useSearchParams();
+  
   const { isLoggedIn } = useContext(AuthContext);
-
-  const difficulty = searchParams.get("difficulty");
-  const genre  = searchParams.get("genre");
-
-  function handleParams(event) {
-    event.preventDefault();
-    
-    let params = serializeFormQuery(event.target);
-    setSearchParams(params);
-  }
 
   return (
     <div>
@@ -36,7 +25,7 @@ const QuizSelectPage = () => {
       <Pane alignItems="center" marginX={majorScale(2)}>
         
         <Pane height={180} width={240} display="flex" alignItems="center" justifyContent="center" border="default">
-          <Link to="/">
+          <Link to="/quizzes/random">
             Random
           </Link>
         </Pane>  

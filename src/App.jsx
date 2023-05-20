@@ -18,6 +18,7 @@ import PostEditPage from './pages/PostEditPage';
 import QuizPage from './pages/QuizPage';
 import QuizCreatePage from './pages/QuizCreatePage';
 import QuizSelectPage from './pages/QuizSelectPage';
+import QuizRandomPage from './pages/QuizRandomPage'
 
 import SearchPage from './pages/SearchPage';
 
@@ -44,7 +45,7 @@ function App() {
 
       <Route path='/quizzes' element={<QuizSelectPage />} />
       <Route path='/quizzes/create' element={<QuizCreatePage />} />
-      <Route path='/quizzes/random' element={<QuizPage />} />
+      <Route path='/quizzes/random' element={<QuizRandomPage />} />
       <Route path='/quizzes/:quizId' element={<QuizPage />} />
       <Route path='/quizzes/:quizId/edit' element={<QuizPage />} />
       {/* 🍊 check below! */}
