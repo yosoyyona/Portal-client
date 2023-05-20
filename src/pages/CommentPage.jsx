@@ -12,8 +12,8 @@ function CommentPage() {
   const [comments, setComments] = useState([])
   const [newComment, setNewComment] = useState([])
 
-  const [authorId, setAuthorId] = useState([])
-  const [userId, setUserId] = useState([])
+  /*const [authorId, setAuthorId] = useState([])
+  const [userId, setUserId] = useState([])*/
 
   const navigate = useNavigate()
 
@@ -29,9 +29,9 @@ function CommentPage() {
     )
     .then((response) => {
       setComments(response.data)
-      let [authorArray] = [...response.data.author]
-      setAuthorId(authorArray._id)
-      console.log(authorId)
+      //let [authorArray] = [...response.data.author]
+      //setAuthorId(authorArray._id)
+      //console.log(authorId)
     })
     .catch((error) => console.log(error))
   }, [newComment])
@@ -42,12 +42,16 @@ function CommentPage() {
     e.preventDefault()
     const form = e.target
 
+    
+
     const requestBody = { 
       author: user._id, 
       message: form.message.value, 
       post: postId
     }
-    console.log(requestBody)
+
+    e.target.reset()
+    //console.log(requestBody)
 
     axios.post(`${API_URL}/posts/${postId}/comments`, requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -60,7 +64,7 @@ function CommentPage() {
 
   // delete comment
 
-  console.log(user._id)
+ // console.log(user._id)
   const handleDelete = (commentId) => {
 
     axios.delete(`${API_URL}/posts/${postId}/comments/${commentId}`,
