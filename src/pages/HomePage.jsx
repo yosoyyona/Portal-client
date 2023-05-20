@@ -7,18 +7,21 @@ function HomePage() {
     
     <Pane alignItems="center" marginX={majorScale(2)}>
 
-      <Pane height={180} width={240} display="flex" alignItems="center" justifyContent="center" border="default">
+      <Pane height={150} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
         <Link to="/posts">
           Post
         </Link>
       </Pane>  
-      <Pane height={180} width={240} display="flex" alignItems="center" justifyContent="center" border="default">
+      <Pane height={150} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
         <Link to="/quizzes">
           Quiz
         </Link>
-        
       </Pane>
-      
+      <Pane height={150} width={240} display="flex" alignItems="center" justifyContent="center" border="default">
+        <Link to="/search">
+          Search
+        </Link>
+      </Pane>
     </Pane>
 
   )
