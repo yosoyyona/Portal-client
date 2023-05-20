@@ -19,6 +19,8 @@ import QuizPage from './pages/QuizPage';
 import QuizCreatePage from './pages/QuizCreatePage';
 import QuizSelectPage from './pages/QuizSelectPage';
 
+import SearchPage from './pages/SearchPage';
+
 import UserPage from './pages/UserPage';
 import UserEditPage from './pages/UserEditPage';
 
@@ -45,13 +47,18 @@ function App() {
       <Route path='/quizzes/random' element={<QuizPage />} />
       <Route path='/quizzes/:quizId' element={<QuizPage />} />
       <Route path='/quizzes/:quizId/edit' element={<QuizPage />} />
+      {/* 🍊 check below! */}
+      <Route path='/quizzes/difficulty/:easy' element={<QuizPage />} />
+      <Route path='/quizzes/genre/:genre' element={<QuizPage />} />
 
+      <Route path='/search' element={<SearchPage />} />
 
       <Route path='/signup' element={<IsAnon> <SignupPage /> </IsAnon>} />
       <Route path='/login' element={<IsAnon> <LoginPage /> </IsAnon>} />
       <Route path='/user/:userId' element={<IsPrivate> <UserPage /> </IsPrivate>} />
       <Route path='/user/:userId/edit' element={<IsPrivate> <UserEditPage /> </IsPrivate>} />
 
+      <Route path="*" element={ <Error /> } />
     </Routes>
     
       {

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -7,7 +7,18 @@ import { Button, Pane, majorScale } from 'evergreen-ui'
 
 const QuizSelectPage = () => {
 
+  const [searchParams, setSearchParams] = useSearchParams();
   const { isLoggedIn } = useContext(AuthContext);
+
+  const difficulty = searchParams.get("difficulty");
+  const genre  = searchParams.get("genre");
+
+  function handleParams(event) {
+    event.preventDefault();
+    
+    let params = serializeFormQuery(event.target);
+    setSearchParams(params);
+  }
 
   return (
     <div>
@@ -35,9 +46,9 @@ const QuizSelectPage = () => {
             By Difficulty
           </Pane>} 
           position="center">
-          <Link to='/'><Button>Easy</Button></Link>
-          <Link to='/'><Button>Intermediate</Button></Link>
-          <Link to='/'><Button>Difficult</Button></Link>
+          <Link to='/quizzes/difficulty/:easy'><Button>Easy</Button></Link>
+          <Link to='/quizzes/difficulty/:intermediate'><Button>Intermediate</Button></Link>
+          <Link to='/quizzes/difficulty/:difficult'><Button>Difficult</Button></Link>
         </Popup>
 
         <Popup trigger={
@@ -45,14 +56,14 @@ const QuizSelectPage = () => {
             By Genre
           </Pane>} 
           position="center">
-          <Link to='/'><Button>Action</Button></Link>
-          <Link to='/'><Button>Adventure</Button></Link>
-          <Link to='/'><Button>MMO</Button></Link>
-          <Link to='/'><Button>Puzzle</Button></Link>
-          <Link to='/'><Button>RolePlaying</Button></Link>
-          <Link to='/'><Button>Simulation</Button></Link>
-          <Link to='/'><Button>Sports</Button></Link>
-          <Link to='/'><Button>Strategy</Button></Link>
+          <Link to='/quizzes/genre/:action'><Button>Action</Button></Link>
+          <Link to='/quizzes/genre/:adventure'><Button>Adventure</Button></Link>
+          <Link to='/quizzes/genre/:mmo'><Button>MMO</Button></Link>
+          <Link to='/quizzes/genre/:puzzle'><Button>Puzzle</Button></Link>
+          <Link to='/quizzes/genre/:roleplaying'><Button>RolePlaying</Button></Link>
+          <Link to='/quizzes/genre/:simulation'><Button>Simulation</Button></Link>
+          <Link to='/quizzes/genre/:sports'><Button>Sports</Button></Link>
+          <Link to='/quizzes/genre/:strategy'><Button>Strategy</Button></Link>
         </Popup>
 
       </Pane>
