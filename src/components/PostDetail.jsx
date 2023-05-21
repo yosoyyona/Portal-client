@@ -3,8 +3,6 @@ import Container from 'react-bootstrap/Container';
 
 const PostDetail = ({post, authorName}) => {
 
-  // author
-
   let date = new Date(post.date)
   let dateString = date.toDateString()
   

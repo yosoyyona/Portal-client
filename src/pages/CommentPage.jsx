@@ -42,8 +42,6 @@ function CommentPage() {
     e.preventDefault()
     const form = e.target
 
-    
-
     const requestBody = { 
       author: user._id, 
       message: form.message.value, 
@@ -64,7 +62,6 @@ function CommentPage() {
 
   // delete comment
 
- // console.log(user._id)
   const handleDelete = (commentId) => {
 
     axios.delete(`${API_URL}/posts/${postId}/comments/${commentId}`,

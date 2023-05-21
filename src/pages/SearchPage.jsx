@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useSearchParams } from "react-router-dom";
-import { Pane, SearchInput, Button } from 'evergreen-ui'
+import SearchPost from '../components/SearchPost';
+import SearchQuiz from '../components/SearchQuiz';
+import SearchUser from '../components/SearchUser';
+import SearchComment from '../components/SearchComment'
+import { Pane, SearchInput } from 'evergreen-ui'
 import axios from "axios";
 
 const API_URL = "http://localhost:5005";
@@ -14,9 +18,10 @@ const SearchPage = () => {
 
   const storedToken = localStorage.getItem('authToken');
 
-  const handleKeyword = e => {
-    setSearchParams({keyword: e.target.value})
-    setKeyword(e.target.value)
+  const handleSearch = e => {
+    const lowercaseKeyword = e.target.value.toLowerCase()
+    setSearchParams({keyword: lowercaseKeyword})
+    setKeyword(lowercaseKeyword)
   }
 
   const getResult = () => {
@@ -24,29 +29,63 @@ const SearchPage = () => {
       { headers: { Authorization: `Bearer ${storedToken}` }, params: {keyword: keyword}}
     )
     .then((response) => {
-      console.log(response.data)
       if(response.data) setResults(response.data)
+      console.log(results)
     })
     .catch((error) => console.log(error))
   }
 
   useEffect(() => {
-    if(!keyword.length == "") getResult()
+    if(!keyword == "") getResult()
   }, [keyword])
 
   return (
     <div>
-      <form role="search">
-        <SearchInput type="text" value={keyword} onChange={handleKeyword} placeholder="Enter a keyword" />
-        
+      <form role="search" className='mb-3'>
+        <SearchInput type="text" value={keyword} onChange={handleSearch} placeholder="Search..." />
       </form>
       
+      { !keyword == "" &&
+        <div>
+          <h4> Search Result with "{keyword}" </h4>
+          <hr />
+        </div>
+      }
 
-      {results.length > 0 &&
-        <div id="result-list">
-          <h4>Searched result with "{keyword}"</h4> 
-        
-          {/* {results.map(result => <p>{result}</p>)} */}
+      { results.posts && 
+        <div>
+          <h4>Post</h4> 
+          <div id="post-list">
+            {results.posts.map(post => <SearchPost key={post._id} post={post}/>)}
+          </div>
+          <hr />
+        </div>
+      }
+      { results.quizzes && 
+        <div>
+          <h4>Quiz</h4> 
+          <div id="quiz-list">
+            {results.quizzes.map(quiz => <SearchQuiz key={quiz._id} quiz={quiz} />)}
+          </div>
+          <hr />
+        </div>
+      }
+      { results.users && 
+        <div>
+          <h4>User</h4> 
+          <div id="user-list">
+            {results.users.map(user => <SearchUser key={user._id} user={user} />)}
+          </div>
+          <hr />
+        </div>
+      }
+      { results.comments && 
+        <div>
+          <h4>Comment</h4> 
+          <div id="comment-list">
+            {results.comments.map(comment => <SearchComment key={comment._id} comment={comment} />)}
+          </div>
+          <hr />
         </div>
       }
       
