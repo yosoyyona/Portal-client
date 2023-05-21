@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useSearchParams } from "react-router-dom";
-import { Pane, SearchInput } from 'evergreen-ui'
+import { Pane, SearchInput, Button } from 'evergreen-ui'
 import axios from "axios";
 
 const API_URL = "http://localhost:5005";
@@ -21,28 +21,31 @@ const SearchPage = () => {
 
   const getResult = () => {
     axios.get(`${API_URL}/search`,
-      { headers: { Authorization: `Bearer ${storedToken}` } }
+      { headers: { Authorization: `Bearer ${storedToken}` }, params: {keyword: keyword}}
     )
-    .then((response) => {setResults(response.data)
-    console.log(response.data)})
+    .then((response) => {
+      console.log(response.data)
+      if(response.data) setResults(response.data)
+    })
     .catch((error) => console.log(error))
   }
 
   useEffect(() => {
-    getResult()
-  }, [])
+    if(!keyword.length == "") getResult()
+  }, [keyword])
 
   return (
     <div>
       <form role="search">
         <SearchInput type="text" value={keyword} onChange={handleKeyword} placeholder="Enter a keyword" />
+        
       </form>
       
-      {/* <h4>Searched result with "{keyword}"</h4> */}
 
-      {results &&
+      {results.length > 0 &&
         <div id="result-list">
-        <p>result</p>
+          <h4>Searched result with "{keyword}"</h4> 
+        
           {/* {results.map(result => <p>{result}</p>)} */}
         </div>
       }
