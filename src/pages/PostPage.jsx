@@ -9,6 +9,7 @@ const API_URL = "http://localhost:5005";
 
 function PostPage() {
   const [posts, setPosts] = useState([])
+  const [sortedPost, setSortedPost] = useState([])
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   const storedToken = localStorage.getItem('authToken');
@@ -17,13 +18,19 @@ function PostPage() {
     axios.get(`${API_URL}/posts`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-    .then((response) => setPosts(response.data))
+    .then((response) => {
+      setPosts(response.data)
+      
+    })
     .catch((error) => console.log(error))
   }
 
   useEffect(() => {
     getAllPost()
+
   }, [])
+
+  
 
   return (
     <div>

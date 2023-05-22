@@ -7,7 +7,9 @@ const Quiz = ({quiz}) => {
   // active to change color depending on good bad answer
   const [active, setActive] = useState(false)
 
-  
+  const [response, setResponse] = useState('')
+
+  const [message, setMessage] = useState('')
 
   // to make an array of answer
   const [answerList, setAnswerList] = useState([])
@@ -18,7 +20,6 @@ const Quiz = ({quiz}) => {
      answerArray.sort(() => Math.random() - 0.5)
      setAnswerList(answerArray)
 
-    console.log(answerArray, quiz.answer)
   },[])
 
 
@@ -27,9 +28,17 @@ const Quiz = ({quiz}) => {
 
 
 
-  const handleClick = () => {
-    setActive(!active);
+  const handleClick = (answer) => {
+    if(quiz.answer === answer){
+      setResponse('Good Answer!')
+      setMessage(quiz.message)
+      
+    }else{
+      setResponse('Bad Answer! :(')
+    }
+    
   };
+  
 
   return (
     
@@ -39,12 +48,14 @@ const Quiz = ({quiz}) => {
       <p>{quiz.difficulty} </p>
       {answerList.map(answer => {
         return(
-          <div style={{display:'flex', flexDirection:'row'}}>
-            <Button type="submit" 
-               /*onClick={quiz.answer === answer ? alert("Good answer! Try again") : alert("Wrong answer! Try again")}*/>{answer} </Button>
+          <div style={{}}>
+            <Button type="button" 
+               onClick={() => handleClick(answer)} >{answer} </Button>
           </div>
         )
       })}
+      <p>{response}</p>
+      <p>{message}</p>
 
       {/*<div>
         <Button type="submit" marginRight={3} 

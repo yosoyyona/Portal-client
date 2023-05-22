@@ -28,7 +28,8 @@ function QuizCreatePage() {
         answer: form.answer.value,
         answer2: form.answer2.value,
         answer3: form.answer3.value,
-        answer4: form.answer4.value
+        answer4: form.answer4.value,
+        message: form.message.value
       }
       console.log(requestBody)
       
@@ -105,6 +106,14 @@ function QuizCreatePage() {
           required isInvalid={false}
           label="Last wrong answer"
           name='answer4'
+          type='text'
+          validationMessage="This field is required"
+        />
+
+        <TextareaField
+          required isInvalid={false}
+          label="message"
+          name='message'
           type='text'
           validationMessage="This field is required"
         />
