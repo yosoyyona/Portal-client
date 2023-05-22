@@ -1,13 +1,12 @@
-import React, { useState, useContext, useCallback, useEffect } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import React, { useState, useContext, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
 import Quiz from '../components/Quiz'
-import { Pane, Button } from 'evergreen-ui'
+import { Pane, Button, Alert } from 'evergreen-ui'
 import axios from 'axios'
 
-function QuizPage() {
+function QuizByDifficultyPage() {
   
-  const { quizId } = useParams()
   const [quiz, setQuiz] = useState([])
   const { isLoggedIn } = useContext(AuthContext);
   
@@ -15,10 +14,13 @@ function QuizPage() {
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get(`${API_URL}/quizzes/${quizId}`,
+    axios.get(`${API_URL}/quizzes/easy`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-    .then((response) => setQuiz(response.data))
+    .then((response) => {
+      console.log(response.data)
+      setQuiz(response.data)
+    })
     .catch((error) => console.log(error))
   }, [])
 
@@ -37,10 +39,10 @@ function QuizPage() {
       </Pane>
       
       <div id="quiz-list" >
-        <Quiz key={quiz._id} quiz={quiz} />
+        {quiz.map(quiz => <Quiz key={quiz._id} quiz={quiz} /> )}
       </div>
     </div>
   )
 }
 
-export default QuizPage
+export default QuizByDifficultyPage
