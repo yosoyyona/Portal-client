@@ -5,11 +5,9 @@ import { Card } from 'evergreen-ui'
 
 const SearchUser = ({user}) => {
   
-  //🍊 Link!
-
   return (
     <Container style={{display:'flex', alignItems:"center", justifyContent:"center"}}>
-      <Link to={`/`}>
+      <Link to={`/user/${user._id}`}>
         <Card elevation={1} 
         width={260}
         height="auto"

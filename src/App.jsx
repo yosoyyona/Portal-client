@@ -49,7 +49,7 @@ function App() {
       <Route path='/quizzes/:quizId' element={<QuizPage />} />
       <Route path='/quizzes/:quizId/edit' element={<QuizPage />} />
       {/* 🍊 check below! */}
-      <Route path='/quizzes/difficulty/:easy' element={<QuizPage />} />
+      <Route path='/quizzes/easy' element={<QuizPage />} />
       <Route path='/quizzes/genre/:genre' element={<QuizPage />} />
 
       <Route path='/search' element={<SearchPage />} />

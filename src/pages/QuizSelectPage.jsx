@@ -35,9 +35,9 @@ const QuizSelectPage = () => {
             By Difficulty
           </Pane>} 
           position="center">
-          <Link to='/quizzes/difficulty/:easy'><Button>Easy</Button></Link>
-          <Link to='/quizzes/difficulty/:intermediate'><Button>Intermediate</Button></Link>
-          <Link to='/quizzes/difficulty/:difficult'><Button>Difficult</Button></Link>
+          <Link to='/quizzes/easy'><Button>Easy</Button></Link>
+          <Link to='/quizzes/intermediate'><Button>Intermediate</Button></Link>
+          <Link to='/quizzes/difficult'><Button>Difficult</Button></Link>
         </Popup>
 
         <Popup trigger={

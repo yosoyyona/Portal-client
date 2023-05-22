@@ -69,7 +69,7 @@ function PostDetailsPage() {
     <div>
       <Pane display="flex" padding={16}>
         <Pane flex={1} alignItems="center" display="flex">
-          <Link to='/posts'><Button size="small" appearance="primary">Back</Button></Link>
+          <Link to='/posts'><Button size="small" appearance="primary">To Posts List</Button></Link>
         </Pane>
         <Pane>
           {/* if author = user, show edit&delete button */}
