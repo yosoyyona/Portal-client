@@ -36,30 +36,18 @@ function PostPage() {
     <div>
         
       {isLoggedIn && 
-      <div>
-        <Link to="/posts/create"><Button size="small">Create Post</Button></Link>
-        <div id="post-list">
-          {posts.map(post => 
-          <Post key={post._id} post={post} />
-          )}
+        <div>
+          <Link to="/posts/create"><Button size="small">Create Post</Button></Link>
         </div>
-      </div>
-        
       }
 
       {
         !posts.length && <></>
       }
 
-      {!isLoggedIn && (
-        <div className="d-flex p-3">
-        {posts.map(post => 
-        <Post key={post._id} post={post}></Post>
-        )}
+      <div id="post-list">
+        {posts.map(post => <Post key={post._id} post={post} />)}
       </div>
-      )}
-
-      
 
     </div>
   )
