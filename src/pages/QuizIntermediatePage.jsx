@@ -10,7 +10,7 @@ function QuizIntermediatePage() {
   const [quiz, setQuiz] = useState([])
   const { isLoggedIn } = useContext(AuthContext);
   
-  const API_URL = "http://localhost:5005";
+  const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {

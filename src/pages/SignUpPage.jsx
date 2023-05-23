@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Pane, Button, TextInputField } from 'evergreen-ui'
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");

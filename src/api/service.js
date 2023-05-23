@@ -4,7 +4,7 @@ const storedToken = localStorage.getItem('authToken');
 
 const api = axios.create({
   
-  baseURL: "http://localhost:5005/",
+  baseURL: "https://vast-jade-woodpecker-sock.cyclic.app",
   // 🍊check ↓
   headers: { Authorization: `Bearer ${storedToken}`} 
 

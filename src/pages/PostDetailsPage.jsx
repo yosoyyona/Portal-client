@@ -17,7 +17,7 @@ function PostDetailsPage() {
   const { user } = useContext(AuthContext)
   const userId = user._id
   
-  const API_URL = "http://localhost:5005";
+  const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {

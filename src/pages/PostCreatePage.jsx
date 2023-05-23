@@ -5,7 +5,7 @@ import { TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui
 import axios from 'axios'
 import service from "../api/service";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
 const PostCreatePage = () => {
   
