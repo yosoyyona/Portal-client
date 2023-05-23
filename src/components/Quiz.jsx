@@ -40,14 +40,16 @@ const Quiz = ({quiz}) => {
       <h3>{quiz.question}</h3>
       <p>{quiz.genre} </p>
       <p>{quiz.difficulty} </p>
+
+      <div id='answerOption' /*style={{display:'grid', gridTemplateColumns:'10rem 10rem 10rem 10rem', margin:'20px'}}*/>
       {answerList.map(answer => {
         return(
-          <div style={{}}>
             <Button type="button" 
               onClick={() => handleClick(answer)} >{answer} </Button>
-          </div>
         )
       })}
+      </div>
+      
       <p>{response}</p>
       <p>{message}</p>
 

@@ -31,37 +31,36 @@ const Post = ({post}) => {
         width={800}
         height="auto"
         margin={30}
-        padding={15}
+        padding={10}
         display="flex"
         justifyContent="center"
         alignItems="center"
-        flexDirection="column">
-          <div>
+        flexDirection="column"
+        backgroundColor='white'
+        >
+          <div style={{color:'black', width:'75rem'}}>
             {post.gameName&&
-            <div style={{}}>
+            <div style={{display:'flex', margin:'20px'}}>
 
-              <div style={{display:'flex'}}>
+              <div style={{marginRight:'10rem'}}>
                   <h4 className='mb-0'>about "{post.gameName}"</h4>
-                  <p>{dateString}</p>
+                  <img src={post.imageUrl} width={"180em"} style={{borderRadius:'10px', width:'20rem'}} className='img-fluid shadow-4' alt='...' />
                   {/*<p>by : {post.author.name}</p>*/}
               </div>
             
-              <div style={{display:'inline-flex', justifyContent:'center'}}>
-              <img src={post.imageUrl} width={"180em"} style={{borderRadius:'10px', width:'20rem'}} className='img-fluid shadow-4' alt='...' />
-                <h3>{post.title}</h3>
-                
+              <div style={{display:'flex', justifyContent:'center', flexDirection:'column'}}>
+                  <h3>{post.title}</h3>
+                  <p>{starRating}</p>
+                  <p>{dateString}</p>
               </div>
               
             </div>
             
             }
             
-            <div className=" d-flex justify-content-between mt-0">
-              {/* 🍊 */}
-              
-              
-              <p>{starRating}</p>
-            </div>
+            {/*<div className=" d-flex justify-content-between mt-0">
+              🍊
+            </div>*/}
             
           </div>
           
