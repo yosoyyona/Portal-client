@@ -53,7 +53,7 @@ function App() {
       <Route path='/quizzes/all' element={<QuizListPage />} />
       <Route path='/quizzes/random' element={<QuizRandomPage />} />
       <Route path='/quizzes/:quizId' element={<QuizPage />} />
-      <Route path='/quizzes/:quizId/edit' />
+      <Route path='/quizzes/:quizId/edit'element={<QuizEditPage />} />
       
       <Route path='/quizzes/difficulty/easy' element={<QuizEasyPage />} />
       <Route path='/quizzes/difficulty/intermediate' element={<QuizIntermediatePage />} />

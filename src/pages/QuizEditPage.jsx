@@ -8,7 +8,7 @@ import { TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui
 
 const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
-function QuizEditPage(props) {
+function QuizEditPage() {
   
   const { quizId } = useParams()
   const { user } = useContext(AuthContext)
@@ -70,7 +70,6 @@ function QuizEditPage(props) {
           type='text'
           defaultValue={question}
           onChange={(e) => setQuestion(e.target.value)}
-          validationMessage="This field is required"
         />
         
         <SelectField
@@ -89,53 +88,49 @@ function QuizEditPage(props) {
           <option value="ETC">ETC</option>
         </SelectField>
         
-        <TextareaField
-          required isInvalid={false}
+        <SelectField
           label="Difficulty"
           name='difficulty'
-          type='text'
-          defaultValue={difficulty}
-          validationMessage="This field is required"
           onChange={(e) => setDifficulty(e.target.value)}
-        />
+        >
+          <option value="easy">Easy</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="hard">Hard</option>
+        </SelectField>
         
-        <TextareaField
+        <TextInputField
           required isInvalid={false}
           label="Correct answer"
           name='answer'
           type='text'
           defaultValue={answer}
-          validationMessage="This field is required"
           onChange={(e) => setAnswer(e.target.value)}
         />
         
-        <TextareaField
+        <TextInputField
           required isInvalid={false}
           label="Wrong answer"
           name='answer2'
           type='text'
           defaultValue={answer2}
-          validationMessage="This field is required"
           onChange={(e) => setAnswer2(e.target.value)}
         />
 
-        <TextareaField
+        <TextInputField
           required isInvalid={false}
           label="Another wrong answer"
           name='answer3'
           type='text'
           defaultValue={answer3}
-          validationMessage="This field is required"
           onChange={(e) => setAnswer3(e.target.value)}
         />
 
-        <TextareaField
+        <TextInputField
           required isInvalid={false}
           label="Last wrong answer"
           name='answer'
           type='text'
           defaultValue={answer4}
-          validationMessage="This field is required"
           onChange={(e) => setAnswer4(e.target.value)}
         />
 

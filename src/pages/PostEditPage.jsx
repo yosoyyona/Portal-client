@@ -84,7 +84,6 @@ function PostEditPage(props) {
           type='text'
           defaultValue={title}
           onChange={(e) => setTitle(e.target.value)}
-          validationMessage="This field is required"
         />
         
         <TextInputField
@@ -92,7 +91,6 @@ function PostEditPage(props) {
           label="Game Name"
           name='gameName'
           type='text'
-          validationMessage="This field is required"
           onChange={(e) => setGameName(e.target.value)}
           defaultValue={gameName}
           
@@ -120,7 +118,6 @@ function PostEditPage(props) {
           name='review'
           type='text'
           defaultValue={review}
-          validationMessage="This field is required"
           onChange={(e) => setReview(e.target.value)}
         />
         
