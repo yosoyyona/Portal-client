@@ -21,19 +21,12 @@ const QuizRandomPage = () => {
     .catch((error) => console.log(error))
   }, [])
 
-  function refreshPage(){
-    window.location.reload();
-}
-
   
   return (
     <div>
       <Pane display="flex" padding={16}>
-        <Pane flex={1} alignItems="center" display="flex">
-          <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
-        </Pane>
         <Pane>
-          <Link to='/quizzes/random'><Button size="small" color="info" marginRight={3} onClick={refreshPage}>Get another!</Button></Link>
+          
           {isLoggedIn && 
             <Link to='/quizzes/create'><Button size="small">Create a quiz!</Button> </Link>
           }
@@ -43,6 +36,11 @@ const QuizRandomPage = () => {
       <div id="random-quiz" >
         <Quiz key={quiz._id} quiz={quiz} />
       </div>
+
+      <Pane flex={1} alignItems="center" display="flex">
+          <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
+          <Link to='/quizzes/random'><Button size="small" color="info" marginRight={3}>Get another!</Button></Link>
+      </Pane>
     </div>
   )
 }

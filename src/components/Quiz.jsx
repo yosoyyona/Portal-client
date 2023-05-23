@@ -42,18 +42,20 @@ const Quiz = ({quiz}) => {
 
   return (
     
-    <div className='border'>
+    <div style={{border:'1px solid grey', borderRadius:'10px', padding:'20px 0 20px 0', width:'90vh', }}>
       <h3>{quiz.question}</h3>
       <p>{quiz.genre} </p>
       <p>{quiz.difficulty} </p>
-      {answerList.map(answer => {
-        return(
-          <div style={{}}>
-            <Button type="button" 
-               onClick={() => handleClick(answer)} >{answer} </Button>
-          </div>
-        )
-      })}
+      <div style={{display:'flex', flexWrap:'wrap'}}>
+        {answerList.map(answer => {
+          return(
+            
+              <Button type="button" style={{ }}
+                onClick={() => handleClick(answer)} >{answer} </Button>
+            
+          )
+        })}
+      </div>
       <p>{response}</p>
       <p>{message}</p>
 
