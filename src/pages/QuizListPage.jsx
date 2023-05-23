@@ -1,25 +1,23 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
 import Quiz from '../components/Quiz'
-import { Pane, Button, Alert } from 'evergreen-ui'
+import { Pane, Button } from 'evergreen-ui'
 import axios from 'axios'
 
-function QuizDifficultPage() {
+function QuizListPage() {
   
-  const [quiz, setQuiz] = useState([])
+  const [quizzes, setQuizzes] = useState([])
   const { isLoggedIn } = useContext(AuthContext);
   
   const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get(`${API_URL}/quizzes/difficulty/difficult`,
+    axios.get(`${API_URL}/quizzes/all`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-    .then((response) => {
-      setQuiz(response.data)
-    })
+    .then((response) => setQuizzes(response.data))
     .catch((error) => console.log(error))
   }, [])
 
@@ -28,7 +26,7 @@ function QuizDifficultPage() {
     <div>
       <Pane display="flex" padding={16}>
         <Pane flex={1} alignItems="center" display="flex">
-          <Link to='/quizzes'><Button size="small" appearance="primary">Back</Button></Link>
+          <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
         </Pane>
         <Pane>
           {isLoggedIn && 
@@ -38,10 +36,10 @@ function QuizDifficultPage() {
       </Pane>
       
       <div id="quiz-list" >
-        <Quiz key={quiz._id} quiz={quiz} />
+        {quizzes.map(quiz=> <Quiz key={quiz._id} quiz={quiz} />)}
       </div>
     </div>
   )
 }
 
-export default QuizDifficultPage
+export default QuizListPage

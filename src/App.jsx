@@ -18,10 +18,11 @@ import PostEditPage from './pages/PostEditPage';
 import QuizPage from './pages/QuizPage';
 import QuizCreatePage from './pages/QuizCreatePage';
 import QuizSelectPage from './pages/QuizSelectPage';
+import QuizListPage from './pages/QuizListPage';
 import QuizRandomPage from './pages/QuizRandomPage';
 import QuizEasyPage from './pages/QuizEasyPage';
 import QuizIntermediatePage from './pages/QuizIntermediatePage';
-import QuizDifficultPage from './pages/QuizDifficultPage';
+import QuizHardPage from './pages/QuizHardPage';
 
 import SearchPage from './pages/SearchPage';
 
@@ -48,13 +49,14 @@ function App() {
 
       <Route path='/quizzes' element={<QuizSelectPage />} />
       <Route path='/quizzes/create' element={<QuizCreatePage />} />
+      <Route path='/quizzes/all' element={<QuizListPage />} />
       <Route path='/quizzes/random' element={<QuizRandomPage />} />
       <Route path='/quizzes/:quizId' element={<QuizPage />} />
       <Route path='/quizzes/:quizId/edit' /> {/* 🍊 */}
       
       <Route path='/quizzes/difficulty/easy' element={<QuizEasyPage />} />
       <Route path='/quizzes/difficulty/intermediate' element={<QuizIntermediatePage />} />
-      <Route path='/quizzes/difficulty/difficult' element={<QuizDifficultPage />}  />
+      <Route path='/quizzes/difficulty/hard' element={<QuizHardPage />}  />
       
       {/* 🍊 by genre! */}
       <Route path='/quizzes/genre/:genre'  />

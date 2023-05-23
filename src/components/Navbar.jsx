@@ -9,7 +9,7 @@ function NavBar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-      <Pane display="flex" padding={16} background="tint2" borderRadius={3} marginBottom={10}>
+      <Pane display="flex" className="navbar" padding={16} background="tint2" borderRadius={3} marginBottom={10}>
         <Pane flex={1} alignItems="center" display="flex">
           <Heading size={600} ><Link to="/">Portal</Link></Heading>
         </Pane>

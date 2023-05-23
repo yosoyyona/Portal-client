@@ -9,28 +9,18 @@ const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
 function PostPage() {
   const [posts, setPosts] = useState([])
-  const [sortedPost, setSortedPost] = useState([])
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   const storedToken = localStorage.getItem('authToken');
 
-  const getAllPost = () => {
+  useEffect(() => {
     axios.get(`${API_URL}/posts`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-    .then((response) => {
-      setPosts(response.data)
-      
-    })
+    .then((response) => 
+      setPosts(response.data))
     .catch((error) => console.log(error))
-  }
-
-  useEffect(() => {
-    getAllPost()
-
   }, [])
-
-  
 
   return (
     <div>

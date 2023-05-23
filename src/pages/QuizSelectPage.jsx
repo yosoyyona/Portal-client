@@ -25,23 +25,29 @@ const QuizSelectPage = () => {
 
       <Pane alignItems="center" marginX={majorScale(2)}>
         
-        <Pane height={180} width={240} display="flex" alignItems="center" justifyContent="center" border="default">
+        <Pane height={180} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
+          <Link to="/quizzes/all">
+            All
+          </Link>
+        </Pane> 
+
+        <Pane height={180} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
           <Link to="/quizzes/random">
             Random
           </Link>
         </Pane>  
         
         <Popup trigger={
-          <Pane height={180} width={240} display="flex" alignItems="center" justifyContent="center" border="default">
-            By Difficulty
+          <Pane height={180} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
+            Random By Difficulty
           </Pane>} 
           position="center">
           <Link to='/quizzes/difficulty/easy'><Button>Easy</Button></Link>
           <Link to='/quizzes/difficulty/intermediate'><Button>Intermediate</Button></Link>
-          <Link to='/quizzes/difficulty/difficult'><Button>Difficult</Button></Link>
+          <Link to='/quizzes/difficulty/hard'><Button>Hard</Button></Link>
         </Popup>
 
-        <Popup trigger={
+{/*         <Popup trigger={
           <Pane height={180} width={240} display="flex" alignItems="center" justifyContent="center" border="default">
             By Genre
           </Pane>} 
@@ -54,7 +60,7 @@ const QuizSelectPage = () => {
           <Link to='/quizzes/genre/:simulation'><Button>Simulation</Button></Link>
           <Link to='/quizzes/genre/:sports'><Button>Sports</Button></Link>
           <Link to='/quizzes/genre/:strategy'><Button>Strategy</Button></Link>
-        </Popup>
+        </Popup> */}
 
       </Pane>
     </div>

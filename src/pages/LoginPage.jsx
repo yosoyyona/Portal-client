@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import { Pane, Button, TextInputField } from 'evergreen-ui'
+import { Pane, Button, TextInputField, WarningSignIcon  } from 'evergreen-ui'
 import axios from "axios";
 
 const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
@@ -65,10 +65,19 @@ function LoginPage(props) {
 
         <Button type="submit">Login</Button>
       </form>
-      { errorMessage && <p className="error-message">{errorMessage}</p> }
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <hr />
+      { errorMessage && 
+        <Pane marginTop={10}>
+          <WarningSignIcon color="danger" />
+          <p className="error-message">{errorMessage}</p> 
+          
+        </Pane>
+      }
+      <div>
+        <h5>Don't have an account yet?</h5>
+        <Button size="small" ><Link to="/signup">Sign Up</Link></Button>
+      </div>
     </Pane>
   )
 }

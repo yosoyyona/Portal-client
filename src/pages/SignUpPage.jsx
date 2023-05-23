@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Pane, Button, TextInputField } from 'evergreen-ui'
+import { Pane, Button, TextInputField, WarningSignIcon } from 'evergreen-ui'
 import axios from "axios";
 
 const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
@@ -65,7 +65,7 @@ function SignupPage(props) {
           label="Password"
           name='password'
           type="password"
-          hint="Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter."
+          hint="At least 6 characters and at least one number, one lowercase and one uppercase letter."
           value={password}
           onChange={handlePassword}
           validationMessage="This field is required"
@@ -73,10 +73,18 @@ function SignupPage(props) {
         <Button type="submit">Sign Up</Button>
       </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <hr />
+      { errorMessage && 
+        <Pane marginTop={10}>
+          <WarningSignIcon color="danger" />
+          <p className="error-message">{errorMessage}</p> 
+          
+        </Pane>
+      }
+      <div className="py-3">
+        <h5>Already have an account?</h5>
+        <Button size="small" ><Link to="/login">Login</Link></Button>
+      </div>
     </Pane>
   );
 }
