@@ -20,7 +20,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #e7e8f3f1;
+  color: #f1f1f9f1;
 }
 
 body {
@@ -29,7 +29,7 @@ body {
   /* min-width: 320px;
   min-height: 100vh; */
   height: 100%;
-  background-color: #d2e1ee;
+  background-color: #ffffff;
   
 }
 

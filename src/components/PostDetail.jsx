@@ -16,22 +16,23 @@ const PostDetail = ({post, authorName}) => {
   if(stars === 5) starRating = "★★★★★"
 
   return (
-    <Container>
-
-      <h2>{post.title}</h2>
-      <h3>{post.gameName}</h3>
-
-      <h4>{authorName}</h4>
-      
-      <p>{dateString}</p>
-      <h3>{post.genre}</h3>
-      <p display="flex" className="text-start">{post.review}</p>
-      
-      <h4>{starRating}</h4>
-
-      <div>
-        <img src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
+    <Container style={{margin:'3rem', marginBottom:'7rem'}}>
+      <div style={{display:'flex'}}>
+        <h4 style={{marginRight:'10px'}}>{post.gameName} / </h4>
+        <h4 style={{marginRight:'10px'}}>genre : {post.genre} /</h4>
+        <h4> by : {authorName}</h4>
       </div>
+
+      <div style={{display:'flex', marginTop:'4rem'}}>
+        <img style={{maxWidth:'30rem', minWidth:'50rem', height:'auto' ,borderRadius:'10px'}} src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
+        <div style={{display:'flex', flexDirection:'column',alignItems:'center', justifyContent:'center'}}>
+          <h2 style={{marginBottom:'3rem'}}>{post.title}</h2>
+          <p display="flex" className="text-start" style={{width:'70%'}}>{post.review}</p>
+          <h4>{starRating}</h4>
+          <p>{dateString}</p>
+        </div>
+      </div>
+        
     </Container>
   )
 }
