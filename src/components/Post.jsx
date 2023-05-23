@@ -12,7 +12,6 @@ const Post = ({post}) => {
   let dateString = date.toDateString()
   
   // author populate
-  // review first 30 letters
   
   
   let stars = post.rating
@@ -39,27 +38,21 @@ const Post = ({post}) => {
         >
           <div style={{color:'black', width:'50rem'}}>
             {post.gameName&&
-            <div style={{display:'flex', margin:'20px'}}>
+              <div style={{display:'flex', margin:'20px'}}>
 
-              <div>
-                  <h4 className='mb-0'>about "{post.gameName}"</h4>
-                  <img src={post.imageUrl} style={{borderRadius:'10px', minWidth:'20rem', maxWidth:'20rem', height:'auto'}} className='img-fluid shadow-4' alt='...' />
-              </div>
-            
-              <div style={{marginLeft:'10rem' ,display:'flex', justifyContent:'center', flexDirection:'column'}}>
-                  <h3>{post.title}</h3>
-                  <p>{starRating}</p>
-                  {/* <p>{post.author.name}</p> */}
-                  <p>{dateString}</p>
-              </div>
-
-              <div>
-                  <h4 className='mb-0'>about "{post.gameName}"</h4>
-                  <img src={post.imageUrl} width={"180em"} style={{borderRadius:'10px', width:'20rem'}} className='img-fluid shadow-4' alt='...' />
-              </div>
+                <div>
+                    <h4 className='mb-0'>about "{post.gameName}"</h4>
+                    <img src={post.imageUrl} style={{borderRadius:'10px', minWidth:'20rem', maxWidth:'20rem', height:'auto'}} className='img-fluid shadow-4' alt='...' />
+                    {/*<p>by : {post.author.name}</p>*/}
+                </div>
               
-            </div>
-            
+                <div style={{marginLeft:'10rem' ,display:'flex', justifyContent:'center', flexDirection:'column'}}>
+                    <h3>{post.title}</h3>
+                    <p>{starRating}</p>
+                    <p>{dateString}</p>
+                </div>
+                
+              </div>
             }
             
             {/*<div className=" d-flex justify-content-between mt-0">
