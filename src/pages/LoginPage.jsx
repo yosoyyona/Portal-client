@@ -4,7 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import { Pane, Button, TextInputField } from 'evergreen-ui'
 import axios from "axios";
 
-const API_URL = "https://portal-project.netlify.app";
+const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
 
 function LoginPage(props) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = "https://portal-project.netlify.app";
+const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
 const AuthContext = React.createContext();
 

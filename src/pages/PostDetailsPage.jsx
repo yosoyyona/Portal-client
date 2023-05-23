@@ -17,7 +17,7 @@ function PostDetailsPage() {
   
   const { user } = useContext(AuthContext)
   
-  const API_URL = "https://portal-project.netlify.app";
+  const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {

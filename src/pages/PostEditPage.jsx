@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import service from "../api/service";
 import { TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui'
 
-const API_URL = "https://portal-project.netlify.app";
+const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
 function PostEditPage(props) {
   

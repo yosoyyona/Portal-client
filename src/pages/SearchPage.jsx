@@ -6,7 +6,7 @@ import SearchUser from '../components/SearchUser';
 import { Pane, SearchInput } from 'evergreen-ui'
 import axios from "axios";
 
-const API_URL = "https://portal-project.netlify.app";
+const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
 const SearchPage = () => {
 
