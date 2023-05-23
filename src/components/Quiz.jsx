@@ -22,8 +22,6 @@ const Quiz = ({quiz}) => {
 
   },[])
 
-
-
   const handleClick = (answer) => {
     if(quiz.answer === answer) {
       setResponse('Good Answer!')
@@ -33,7 +31,6 @@ const Quiz = ({quiz}) => {
     }
   };
   
-
   return (
     
     <div className='border'>
