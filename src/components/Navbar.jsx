@@ -17,14 +17,14 @@ function NavBar() {
         <Pane>
           {isLoggedIn && (
             <>        
-              <Link to={`/user/${user._id}`}><Button marginRight={3} size="small">Profile</Button></Link>
+              <Link to={`/user/${user._id}`}><Button marginRight={5} size="small">Profile</Button></Link>
               <Button onClick={logOutUser} size="small">Logout</Button>
             </>
           )}
             
           {!isLoggedIn && (
             <>
-              <Link to="/signup"> <Button marginRight={3} size="small">Sign Up</Button> </Link>
+              <Link to="/signup"> <Button marginRight={5} size="small">Sign Up</Button> </Link>
               <Link to="/login"> <Button size="small">Login</Button> </Link>
             </>
           )}

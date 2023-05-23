@@ -1,7 +1,7 @@
-import React, { useState, useContext, useCallback } from 'react'
+import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
-import { TextInputField, TextareaField, SelectField, Pane, FileUploader, FileCard, Button } from 'evergreen-ui'
+import { TextInputField, TextareaField, SelectField, Pane, Button } from 'evergreen-ui'
 import axios from 'axios'
 
 const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
@@ -112,10 +112,9 @@ function QuizCreatePage() {
 
         <TextareaField
           isInvalid={false}
-          label="message"
+          label="Message"
           name='message'
           type='text'
-          validationMessage="This field is required"
         />
         
         <Button type="submit">Submit</Button>

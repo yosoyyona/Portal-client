@@ -70,14 +70,23 @@ function UserPage() {
               <h4>My posts</h4>
             </Pane>
             <Pane>
-              <Link to="/posts/create"><Button size="small" marginBottom={5}>Create Post</Button></Link>
+              <Link to="/posts/create">
+                <Button size="small" marginBottom={5} appearance="primary">Create Post</Button>
+              </Link>
             </Pane>
           </Pane>
 
           {posts.map(post => (
-            <Link to={`/posts/${post._id}`} >
-              <p>{post.title}</p>
-            </Link> 
+            <Pane display="flex" alignItems="center" >
+              <Pane flex={1} display="flex">
+                <Link to={`/posts/${post._id}`} >
+                <p>{post.title}</p>
+              </Link> 
+              </Pane>
+              <Pane>
+                <Link to={`/posts/${post._id}/edit`}><Button size="small" marginBottom={5} marginRight={5}>Edit</Button></Link>
+              </Pane>
+            </Pane>
           ))}
 
           <hr></hr>
@@ -87,14 +96,26 @@ function UserPage() {
               <h4>My quizzes</h4>
             </Pane>
             <Pane>
-              <Link to="/quizzes/create"><Button size="small" marginBottom={5}>Create Quiz</Button></Link>
+              <Link to="/quizzes/create">
+                <Button size="small" marginBottom={5} appearance="primary">Create Quiz</Button>
+              </Link>
             </Pane>
           </Pane>
           
           {quizzes.map(quiz => (
-            <Link to={`/quizzes/${quiz._id}`} >
+            <Pane display="flex" alignItems="center" >
+              <Pane flex={1} display="flex">
+              <Link to={`/quizzes/${quiz._id}`} >
               <p>{quiz.question}</p>
             </Link> 
+              </Pane>
+              <Pane>
+                <Link to={`/quizzes/${quiz._id}/edit`}>
+                  <Button size="small" marginBottom={5} marginRight={5}>Edit</Button>
+                </Link>
+              </Pane>
+            </Pane>
+
           ))}
 
         </div>
