@@ -37,7 +37,7 @@ function PostPage() {
         
       {isLoggedIn && 
       <div>
-        <Link to="/posts/create"><Button>Create Post</Button></Link>
+        <Link to="/posts/create"><Button size="small">Create Post</Button></Link>
         <div id="post-list">
           {posts.map(post => 
           <Post key={post._id} post={post} />

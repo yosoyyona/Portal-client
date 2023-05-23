@@ -87,11 +87,9 @@ function CommentPage() {
       <Pane display="flex" className="align-top" style={{display:'flex', justifyContent:'center'}}>
         <form  onSubmit={handleSubmit}>
           <TextareaField
-            required isInvalid={false}
-            label="Comment"
+            label="Leave your comment"
             name='message'
             type='text'
-            validationMessage="This field is required"
           />
           <Button type="submit" size="small">Submit</Button>
         </form>

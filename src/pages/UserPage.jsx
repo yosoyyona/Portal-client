@@ -14,6 +14,7 @@ function UserPage() {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [posts, setPosts] = useState([])
+  const [quizzes, setQuizzes] = useState([])
 
   const { user } = useContext(AuthContext)
   const storedToken = localStorage.getItem('authToken');
@@ -23,7 +24,6 @@ function UserPage() {
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
     .then((response) => {
-      console.log(response.data)
       setName(response.data.name)
       setDescription(response.data.description)
     })
@@ -34,45 +34,100 @@ function UserPage() {
     axios.get(`${API_URL}/user/${userId}/posts`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-    .then((response) => {
-      console.log(response.data)
-      setPosts(response.data)
-    })
+    .then((response) => setPosts(response.data))
     .catch((error) => console.log(error))
   }, [])
   
+  useEffect(() => {
+    axios.get(`${API_URL}/user/${userId}/quizzes`,
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+    )
+    .then((response) => setQuizzes(response.data))
+    .catch((error) => console.log(error))
+  }, [])
   
   return (
     <div id='user'>
 
       {userId === user._id?
-        <>
-          <h3>Hello, {name}</h3>
+        <div>
+
+          <Pane display="flex" alignItems="center" >
+            <Pane flex={1} display="flex">
+              <h3>Hello, {name}</h3>
+            </Pane>
+            <Pane>
+              <Link to={`/user/${userId}/edit`}><Button size="small" marginTop={7} marginLeft={8}>Edit profile</Button></Link>
+            </Pane>
+          </Pane>
+
           <p>{description}</p>
-          
-          <Link to={`/user/${userId}/edit`}><Button size="small">Edit profile</Button></Link>
 
           <hr />
 
-          <h4>My posts</h4>
-          <hr></hr>
-          {posts.map(post => (
+          <Pane display="flex" alignItems="center" >
+            <Pane flex={1} display="flex">
+              <h4>My posts</h4>
+            </Pane>
+            <Pane>
+              <Link to="/posts/create"><Button size="small" marginBottom={5}>Create Post</Button></Link>
+            </Pane>
+          </Pane>
 
+          {posts.map(post => (
             <Link to={`/posts/${post._id}`} >
               <p>{post.title}</p>
-              <hr></hr>
             </Link> 
-
           ))}
 
-        </>
+          <hr></hr>
+
+          <Pane display="flex" alignItems="center" >
+            <Pane flex={1} display="flex">
+              <h4>My quizzes</h4>
+            </Pane>
+            <Pane>
+              <Link to="/quizzes/create"><Button size="small" marginBottom={5}>Create Quiz</Button></Link>
+            </Pane>
+          </Pane>
+          
+          {quizzes.map(quiz => (
+            <Link to={`/quizzes/${quiz._id}`} >
+              <p>{quiz.question}</p>
+            </Link> 
+          ))}
+
+        </div>
         :<>
-          <h3>{name}' page</h3>
+          <Pane display="flex" alignItems="center" >
+            <Pane flex={1} display="flex">
+              <h3>{name}' page</h3>
+            </Pane>
+            <Pane>
+              <Button size="small" marginTop={7} marginLeft={8}>Follow</Button>
+            </Pane>
+          </Pane>
+
           <p>{description}</p>
-          <Button size="small">Follow</Button>
+
           <hr />
           <h4>{name}' posts</h4>
-          {posts.map(post => <p key={post._id}>{post.title}</p>)}
+          
+          {posts.map(post => (
+            <Link to={`/posts/${post._id}`} >
+              <p>{post.title}</p>
+            </Link> 
+          ))}
+
+          <hr />
+          <h4>{name}' quizzes</h4>
+
+          {quizzes.map(quiz => (
+            <Link to={`/quizzes/${quiz._id}`} >
+              <p>{quiz.question}</p>
+            </Link> 
+          ))}
+
         </>
       }
 

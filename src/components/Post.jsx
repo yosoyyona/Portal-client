@@ -28,7 +28,6 @@ const Post = ({post}) => {
     <Container style={{display:'flex', alignItems:"center", justifyContent:"center"}}>
       <Link to={`/posts/${post._id}`}>
         <Card elevation={1} 
-        width={800}
         height="auto"
         margin={30}
         padding={10}
@@ -38,20 +37,20 @@ const Post = ({post}) => {
         flexDirection="column"
         backgroundColor='white'
         >
-          <div style={{color:'black', width:'75rem'}}>
+          <div style={{color:'black', width:'50rem'}}>
             {post.gameName&&
             <div style={{display:'flex', margin:'20px'}}>
 
-              <div style={{marginRight:'10rem'}}>
-                  <h4 className='mb-0'>about "{post.gameName}"</h4>
-                  <img src={post.imageUrl} width={"180em"} style={{borderRadius:'10px', width:'20rem'}} className='img-fluid shadow-4' alt='...' />
-                  {/*<p>by : {post.author.name}</p>*/}
-              </div>
-            
-              <div style={{display:'flex', justifyContent:'center', flexDirection:'column'}}>
+              <div style={{display:'flex', justifyContent:'center', flexDirection:'column', marginRight:'5rem'}}>
                   <h3>{post.title}</h3>
                   <p>{starRating}</p>
+                  {/* <p>{post.author.name}</p> */}
                   <p>{dateString}</p>
+              </div>
+
+              <div>
+                  <h4 className='mb-0'>about "{post.gameName}"</h4>
+                  <img src={post.imageUrl} width={"180em"} style={{borderRadius:'10px', width:'20rem'}} className='img-fluid shadow-4' alt='...' />
               </div>
               
             </div>

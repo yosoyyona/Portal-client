@@ -12,10 +12,10 @@ function PostDetailsPage() {
   const [post, setPost] = useState([])
   const [authorName, setAuthorName] = useState([])
   const [authorId, setAuthorId] = useState([])
-  const [userId, setUserId] = useState([])
   const navigate = useNavigate()
   
   const { user } = useContext(AuthContext)
+  const userId = user._id
   
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem('authToken');
@@ -48,12 +48,7 @@ function PostDetailsPage() {
     { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(response => {
       const deletePost = response.data
-
-      if(deletePost._id !== id){
-        throw 'something went wrong'
-      }
       navigate('/posts')
-      
     }).catch(err => {
       console.error(err)
     })
