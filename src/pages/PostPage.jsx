@@ -5,7 +5,7 @@ import { AuthContext } from "../context/auth.context";
 import { Button } from 'evergreen-ui'
 import Post from '../components/Post'
 
-const API_URL = "https://portal-project.netlify.app/";
+const API_URL = "https://portal-project.netlify.app";
 
 function PostPage() {
   const [posts, setPosts] = useState([])

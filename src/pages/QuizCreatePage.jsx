@@ -4,7 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import { TextInputField, TextareaField, SelectField, Pane, FileUploader, FileCard, Button } from 'evergreen-ui'
 import axios from 'axios'
 
-const API_URL = "https://portal-project.netlify.app/";
+const API_URL = "https://portal-project.netlify.app";
 
 function QuizCreatePage() {
     const [ quiz, setQuiz ] = useState([])

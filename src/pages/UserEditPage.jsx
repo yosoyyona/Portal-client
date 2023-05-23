@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { TextInputField, TextareaField, Button } from 'evergreen-ui'
 
-const API_URL = "https://portal-project.netlify.app/";
+const API_URL = "https://portal-project.netlify.app";
 
 const UserEditPage = () => {
 
