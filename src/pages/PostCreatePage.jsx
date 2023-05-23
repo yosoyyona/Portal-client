@@ -5,7 +5,7 @@ import { TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui
 import axios from 'axios'
 import service from "../api/service";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://portal-project.netlify.app/";
 
 const PostCreatePage = () => {
   
