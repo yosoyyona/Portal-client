@@ -3,7 +3,6 @@ import { Link, useSearchParams } from "react-router-dom";
 import SearchPost from '../components/SearchPost';
 import SearchQuiz from '../components/SearchQuiz';
 import SearchUser from '../components/SearchUser';
-import SearchComment from '../components/SearchComment'
 import { Pane, SearchInput } from 'evergreen-ui'
 import axios from "axios";
 
@@ -30,7 +29,6 @@ const SearchPage = () => {
     )
     .then((response) => {
       if(response.data) setResults(response.data)
-      console.log(results)
     })
     .catch((error) => console.log(error))
   }
@@ -79,15 +77,7 @@ const SearchPage = () => {
           <hr />
         </div>
       }
-      { results.comments && 
-        <div>
-          <h4>Comment</h4> 
-          <div id="comment-list">
-            {results.comments.map(comment => <SearchComment key={comment._id} comment={comment} />)}
-          </div>
-          <hr />
-        </div>
-      }
+      
       
     </div>
   )

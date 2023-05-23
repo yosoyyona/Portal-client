@@ -17,14 +17,8 @@ function PostDetailsPage() {
   
   const { user } = useContext(AuthContext)
   
-  
   const API_URL = "http://localhost:5005";
   const storedToken = localStorage.getItem('authToken');
-
-  // userId...!
-  /* useEffect(() => {
-    if(user) setUserId = user._id
-  }, []) */
 
   useEffect(() => {
     axios.get(`${API_URL}/posts/${postId}`,
@@ -69,7 +63,7 @@ function PostDetailsPage() {
     <div>
       <Pane display="flex" padding={16}>
         <Pane flex={1} alignItems="center" display="flex">
-          <Link to='/posts'><Button size="small" appearance="primary">Back</Button></Link>
+          <Link to='/posts'><Button size="small" appearance="primary">To Posts List</Button></Link>
         </Pane>
         <Pane>
           {/* if author = user, show edit&delete button */}

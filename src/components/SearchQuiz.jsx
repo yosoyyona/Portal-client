@@ -5,11 +5,9 @@ import { Card } from 'evergreen-ui'
 
 const SearchQuiz = ({quiz}) => {
   
-  //🍊 Link!
-
   return (
     <Container style={{display:'flex', alignItems:"center", justifyContent:"center"}}>
-      <Link to={`/`}>
+      <Link to={`/quizzes/${quiz._id}`}>
         <Card elevation={1} 
         width={260}
         height="auto"

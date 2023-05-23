@@ -111,7 +111,7 @@ function QuizCreatePage() {
         />
 
         <TextareaField
-          required isInvalid={false}
+          isInvalid={false}
           label="message"
           name='message'
           type='text'

@@ -16,27 +16,21 @@ const Quiz = ({quiz}) => {
   
   useEffect(() => {
 
-     const answerArray = [...[quiz.answer,quiz.answer2, quiz.answer3, quiz.answer4]]
-     answerArray.sort(() => Math.random() - 0.5)
-     setAnswerList(answerArray)
+    const answerArray = [...[quiz.answer,quiz.answer2, quiz.answer3, quiz.answer4]]
+    answerArray.sort(() => Math.random() - 0.5)
+    setAnswerList(answerArray)
 
   },[])
 
 
-  
-
-
-
 
   const handleClick = (answer) => {
-    if(quiz.answer === answer){
+    if(quiz.answer === answer) {
       setResponse('Good Answer!')
       setMessage(quiz.message)
-      
-    }else{
+    } else {
       setResponse('Bad Answer! :(')
     }
-    
   };
   
 
@@ -46,30 +40,18 @@ const Quiz = ({quiz}) => {
       <h3>{quiz.question}</h3>
       <p>{quiz.genre} </p>
       <p>{quiz.difficulty} </p>
-      <div style={{display:'flex', flexWrap:'wrap'}}>
-        {answerList.map(answer => {
-          return(
-            
-              <Button type="button" style={{ }}
-                onClick={() => handleClick(answer)} >{answer} </Button>
-            
-          )
-        })}
-      </div>
+      {answerList.map(answer => {
+        return(
+          <div style={{}}>
+            <Button type="button" 
+              onClick={() => handleClick(answer)} >{answer} </Button>
+          </div>
+        )
+      })}
       <p>{response}</p>
       <p>{message}</p>
 
-      {/*<div>
-        <Button type="submit" marginRight={3} 
-        onClick={() => alert("Correct answer!")}>{quiz.answer} </Button>
-        
-        <Button type="submit" 
-        onClick={() => alert("Wrong answer! Try again")}>{quiz.answer2} </Button>
-        <Button type="submit" 
-        onClick={() => alert("Wrong answer! Try again")}>{quiz.answer3} </Button>
-        <Button type="submit" 
-        onClick={() => alert("Wrong answer! Try again")}>{quiz.answer4} </Button>
-      </div>*/}
+      
     </div>
 
   )

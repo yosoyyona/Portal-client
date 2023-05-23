@@ -18,7 +18,8 @@ import PostEditPage from './pages/PostEditPage';
 import QuizPage from './pages/QuizPage';
 import QuizCreatePage from './pages/QuizCreatePage';
 import QuizSelectPage from './pages/QuizSelectPage';
-import QuizRandomPage from './pages/QuizRandomPage'
+import QuizRandomPage from './pages/QuizRandomPage';
+import QuizByDifficultyPage from './pages/QuizByDifficultyPage';
 
 import SearchPage from './pages/SearchPage';
 
@@ -47,10 +48,13 @@ function App() {
       <Route path='/quizzes/create' element={<QuizCreatePage />} />
       <Route path='/quizzes/random' element={<QuizRandomPage />} />
       <Route path='/quizzes/:quizId' element={<QuizPage />} />
-      <Route path='/quizzes/:quizId/edit' element={<QuizPage />} />
+      <Route path='/quizzes/:quizId/edit' />
       {/* 🍊 check below! */}
-      <Route path='/quizzes/difficulty/:easy' element={<QuizPage />} />
-      <Route path='/quizzes/genre/:genre' element={<QuizPage />} />
+      
+      <Route path='/quizzes/easy' element={<QuizByDifficultyPage />} />
+      <Route path='/quizzes/intermediate' />
+      <Route path='/quizzes/difficult'  />
+      <Route path='/quizzes/genre/:genre'  />
 
       <Route path='/search' element={<SearchPage />} />
 
