@@ -5,7 +5,6 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Pane, TextareaField, Button  } from 'evergreen-ui'
 import axios from "axios";
 
-
 function CommentPage() {
 
   const { postId } = useParams()

@@ -3,11 +3,8 @@ import axios from "axios";
 const storedToken = localStorage.getItem('authToken');
 
 const api = axios.create({
-  
   baseURL: "https://vast-jade-woodpecker-sock.cyclic.app",
-  // 🍊check ↓
   headers: { Authorization: `Bearer ${storedToken}`} 
-
 });
 
 const errorHandler = (err) => {
@@ -19,12 +16,6 @@ const uploadImage = (file) => {
     .then(res => res.data)
     .catch(errorHandler);
 };
-
-/* const createPost = (newPost) => {
-  return api.post("/posts/create", newPost)
-    .then(res => res.data)
-    .catch(errorHandler);
-}; */
 
 export default {
   uploadImage,

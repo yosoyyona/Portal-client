@@ -41,17 +41,12 @@ const Post = ({post}) => {
             {post.gameName&&
             <div style={{display:'flex', margin:'20px'}}>
 
-<<<<<<< HEAD
-              <div style={{display:'flex', justifyContent:'center', flexDirection:'column', marginRight:'5rem'}}>
-=======
-              <div style={{/*marginRight:'10rem'*/}}>
+              <div>
                   <h4 className='mb-0'>about "{post.gameName}"</h4>
                   <img src={post.imageUrl} style={{borderRadius:'10px', minWidth:'20rem', maxWidth:'20rem', height:'auto'}} className='img-fluid shadow-4' alt='...' />
-                  {/*<p>by : {post.author.name}</p>*/}
               </div>
             
               <div style={{marginLeft:'10rem' ,display:'flex', justifyContent:'center', flexDirection:'column'}}>
->>>>>>> cc3190dc48869d89bc1ffedbeead32ffa8b3ae8d
                   <h3>{post.title}</h3>
                   <p>{starRating}</p>
                   {/* <p>{post.author.name}</p> */}
