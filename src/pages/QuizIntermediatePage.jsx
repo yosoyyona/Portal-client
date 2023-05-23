@@ -5,7 +5,7 @@ import Quiz from '../components/Quiz'
 import { Pane, Button, Alert } from 'evergreen-ui'
 import axios from 'axios'
 
-function QuizByDifficultyPage() {
+function QuizIntermediatePage() {
   
   const [quiz, setQuiz] = useState([])
   const { isLoggedIn } = useContext(AuthContext);
@@ -14,22 +14,20 @@ function QuizByDifficultyPage() {
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {
-    axios.get(`${API_URL}/quizzes/easy`,
+    axios.get(`${API_URL}/quizzes/difficulty/intermediate`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
     .then((response) => {
-      console.log(response.data)
       setQuiz(response.data)
     })
     .catch((error) => console.log(error))
   }, [])
 
-
   return (
     <div>
       <Pane display="flex" padding={16}>
         <Pane flex={1} alignItems="center" display="flex">
-          <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
+          <Link to='/quizzes'><Button size="small" appearance="primary">Back</Button></Link>
         </Pane>
         <Pane>
           {isLoggedIn && 
@@ -39,10 +37,10 @@ function QuizByDifficultyPage() {
       </Pane>
       
       <div id="quiz-list" >
-        {quiz.map(quiz => <Quiz key={quiz._id} quiz={quiz} /> )}
+        <Quiz key={quiz._id} quiz={quiz} />
       </div>
     </div>
   )
 }
 
-export default QuizByDifficultyPage
+export default QuizIntermediatePage
