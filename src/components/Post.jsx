@@ -36,27 +36,23 @@ const Post = ({post}) => {
         flexDirection="column"
         backgroundColor='white'
         >
-          <div style={{color:'black', width:'50rem'}}>
+          
             {post.gameName&&
-              <div style={{display:'flex', margin:'20px'}}>
+              <div style={{display:'flex', margin:'20px',color:'black', width:'90rem', justifyContent:'flex-start', textAlign:'center'}}>
 
-              <div style={{/*marginRight:'10rem'*/}}>
-                  <h4 className='mb-0'>about "{post.gameName}"</h4>
-                  <img src={post.imageUrl} style={{borderRadius:'20px', minWidth:'20rem', maxWidth:'40rem', height:'auto'}} className='img-fluid shadow-4' alt='...' />
-                  {/*<p>by : {post.author.name}</p>*/}
-              </div>
-            
-              <div style={{marginLeft:'10rem' ,display:'flex', justifyContent:'center', flexDirection:'column'}}>
-                  <h3>{post.title}</h3>
-                  <p>{starRating}</p>
-                  <p>{dateString}</p>
-              </div>
+                <div style={{marginRight:'10rem'}}>
+                    <h4 className='mb-0'>about "{post.gameName}"</h4>
+                    <img src={post.imageUrl} style={{borderRadius:'20px', maxWidth:'40rem',width:'auto',maxHeight:'40rem', height:'auto'}} className='img-fluid shadow-4' alt='...' />
+                    {/*<p>by : {post.author.name}</p>*/}
+                </div>
               
-                <div style={{marginLeft:'10rem' ,display:'flex', justifyContent:'center', flexDirection:'column'}}>
+                <div style={{display:'flex', justifyContent:'center', flexDirection:'column'}}>
                     <h3>{post.title}</h3>
                     <p>{starRating}</p>
                     <p>{dateString}</p>
                 </div>
+                
+                
                 
               </div>
             }
@@ -65,7 +61,7 @@ const Post = ({post}) => {
               🍊
             </div>*/}
             
-          </div>
+          
           
         </Card>
       </Link>

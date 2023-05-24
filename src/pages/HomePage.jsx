@@ -5,9 +5,10 @@ import { Button, Pane, majorScale } from 'evergreen-ui'
 function HomePage() {
   return (
     
-    <Pane alignItems="center" marginX={majorScale(2)}>
+    <Pane alignItems="center" justifyContent='center' marginX={majorScale(2)}>
 
-      <Pane height={150} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
+      <div style={{display:'flex', alignItems:'center', flexDirection:'column'}}>
+        <Pane height={150} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
         <Link to="/posts">
           Post
         </Link>
@@ -22,6 +23,8 @@ function HomePage() {
           Search
         </Link>
       </Pane>
+      </div>
+      
     </Pane>
 
   )

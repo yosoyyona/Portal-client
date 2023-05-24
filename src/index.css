@@ -15,7 +15,7 @@
 }
 
 .navbar {
-  min-width: 90vw
+  min-width: 80vw
 } 
 
 a {
@@ -30,7 +30,7 @@ a:hover {
 
 body {
   margin: auto;
-  display: flex;
+  /*display: flex;
   /* min-width: 320px;
   min-height: 100vh; */
   height: 100%;

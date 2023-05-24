@@ -54,7 +54,7 @@ function UserPage() {
 
           <Pane display="flex" alignItems="center" >
             <Pane flex={1} display="flex">
-              <h3>Hello, {name}</h3>
+              <h3>Hello, {user.name}</h3>
             </Pane>
             <Pane>
               <Link to={`/user/${userId}/edit`}><Button size="small" marginTop={7} marginLeft={8}>Edit profile</Button></Link>
