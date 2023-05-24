@@ -1,28 +1,31 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button, Pane, majorScale } from 'evergreen-ui'
+import { Heading, Pane, majorScale } from 'evergreen-ui'
 
 
 function HomePage() {
   return (
     
-    <Pane alignItems="center" justifyContent='center' marginX={majorScale(2)}>
+    <Pane alignItems="center" justifyContent='center' textAlign='center' marginX={majorScale(2)}>
 
-      <div style={{display:'flex', alignItems:'center', flexDirection:'column'}}>
-        <Pane height={150} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
+      <div style={{display:'flex', maxWidth:'80vw', alignItems:'center', flexDirection:'column', paddingTop:'20px'}}>
+        
         <Link to="/posts">
-          Post
+          <Pane width="50vw" height="15rem" marginBottom='8px' display="flex" alignItems="center" justifyContent="center" border="default">
+            <Heading size={700} color="747bff">Post</Heading>
+          </Pane>  
         </Link>
-      </Pane>  
-      <Pane height={150} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
+
         <Link to="/quizzes">
-          Quiz
+          <Pane width="50vw" height="15rem" marginBottom='8px' display="flex" alignItems="center" justifyContent="center" border="default">
+            <Heading size={700} color="747bff">Quiz</Heading>
+          </Pane>  
         </Link>
-      </Pane>
-      <Pane height={150} width={240} display="flex" alignItems="center" justifyContent="center" border="default">
+
         <Link to="/search">
-          Search
+          <Pane width="50vw" height="15rem" marginBottom='8px' display="flex" alignItems="center" justifyContent="center" border="default">
+            <Heading size={700} color="747bff">Search</Heading>
+          </Pane>
         </Link>
-      </Pane>
       </div>
       
     </Pane>

@@ -25,7 +25,7 @@ function QuizIntermediatePage() {
 
   return (
     <div>
-      <Pane display="flex" padding={16}>
+      <Pane display="flex" padding={16} marginLeft="3rem" marginRight="3rem">
         <Pane flex={1} alignItems="center" display="flex">
           <Link to='/quizzes'><Button size="small" appearance="primary">Back</Button></Link>
         </Pane>

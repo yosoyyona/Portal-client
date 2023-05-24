@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState, useEffect, useContext } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import service from "../api/service";
-import { TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui'
+import { Pane, TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui'
 
 const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
@@ -71,11 +71,32 @@ function PostEditPage(props) {
     }).catch((err) => console.log(err));
   }
 
+  const deletePost = (postId) => {
+
+    axios.delete(`${API_URL}/posts/${postId}`,
+    { headers: { Authorization: `Bearer ${storedToken}` } })
+    .then(response => {
+      const deletePost = response.data
+      navigate('/posts')
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
   return (
     <div>
       <h2> Edit your Post </h2>
+      <Pane display="flex" marginLeft="3rem" marginRight="3rem">
+        <Pane flex={1} alignItems="center" display="flex">
+          <Link to={`/posts/${postId}`}><Button size="small" appearance="primary">To Post List</Button></Link>
+        </Pane>
+        <Pane>
+          <Button size="small" marginBottom={5} intent="danger" onClick={() => deletePost(postId)}>Delete</Button>
+        </Pane>
+      </Pane>
 
-      <form onSubmit={handleFormSubmit}>
+      <div style={{display:'flex', alignItems:'center', flexDirection:'column', paddingTop:'20px'}}>
+        <form onSubmit={handleFormSubmit} style={{width:'70vw'}}>
 
         <TextInputField
           required isInvalid={false}
@@ -85,7 +106,7 @@ function PostEditPage(props) {
           defaultValue={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        
+
         <TextInputField
         required isInvalid={false}
           label="Game Name"
@@ -111,7 +132,7 @@ function PostEditPage(props) {
           <option value="Strategy">Strategy</option>
           <option value="ETC">ETC</option>
         </SelectField>
-        
+
         <TextareaField
           required isInvalid={false}
           label="Review"
@@ -120,10 +141,10 @@ function PostEditPage(props) {
           defaultValue={review}
           onChange={(e) => setReview(e.target.value)}
         />
-        
+
         {/* image */}
         <input type="file" onChange={(e) => handleFileUpload(e)} />
-        
+
         {/* star rating */}
         <SelectField
           label="Rating"
@@ -139,7 +160,9 @@ function PostEditPage(props) {
         </SelectField>
 
         <Button type="submit">Submit</Button>
-      </form>
+        </form>
+      </div>
+      
 
     </div>
   )

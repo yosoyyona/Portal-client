@@ -7,20 +7,23 @@ const SearchUser = ({user}) => {
   
   return (
     <Container style={{display:'flex', alignItems:"center", justifyContent:"center"}}>
-      <Link to={`/user/${user._id}`}>
-        <Card elevation={1} 
-        width={260}
+      <Card elevation={1} 
+        width="70vw"
         height="auto"
         margin={10}
         padding={15}
         display="flex"
         justifyContent="center"
         alignItems="center"
-        flexDirection="column">
+        flexDirection="column"
+      >
+        <Link to={`/user/${user._id}`}>
           <h4>{user.name}</h4>
-          <h5>{user.description}</h5>
-        </Card>
-      </Link>
+          {user.description&&
+            <h5>{user.description}</h5>
+          }
+        </Link>
+      </Card>
     </Container>
   )
 }

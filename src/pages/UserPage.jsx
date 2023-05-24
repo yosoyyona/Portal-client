@@ -45,12 +45,12 @@ function UserPage() {
     .then((response) => setQuizzes(response.data))
     .catch((error) => console.log(error))
   }, [])
-  
+
   return (
     <div id='user'>
 
       {userId === user._id?
-        <div>
+        <div style={{marginLeft:'5rem', marginRight:'5rem'}}>
 
           <Pane display="flex" alignItems="center" >
             <Pane flex={1} display="flex">
@@ -113,6 +113,7 @@ function UserPage() {
                 <Link to={`/quizzes/${quiz._id}/edit`}>
                   <Button size="small" marginBottom={5} marginRight={5}>Edit</Button>
                 </Link>
+                
               </Pane>
             </Pane>
 

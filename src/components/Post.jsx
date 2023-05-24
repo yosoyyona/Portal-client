@@ -11,9 +11,6 @@ const Post = ({post}) => {
   let date = new Date(post.date)
   let dateString = date.toDateString()
   
-  // author populate
-  
-  
   let stars = post.rating
   let starRating = ""
   if(stars === 0) starRating = "☆☆☆☆☆"
@@ -25,48 +22,39 @@ const Post = ({post}) => {
   
   return (
     <Container style={{display:'flex', alignItems:"center", justifyContent:"center"}}>
-      <Link to={`/posts/${post._id}`}>
         <Card elevation={1} 
-        height="auto"
-        margin={30}
-        padding={10}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-        backgroundColor='white'
+          width="80vw"
+          height="auto"
+          margin={20}
+          padding={10}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+          backgroundColor='white'
         >
-          
-            {post.gameName&&
-              <div style={{display:'flex', margin:'20px',color:'black', width:'90rem', justifyContent:'flex-start', textAlign:'center'}}>
+        <Link to={`/posts/${post._id}`}>
+          {post.gameName&&
+        
+            <div style={{display:'flex', marginBottom:'20px', color:'black', justifyContent:'space-between', textAlign:'center'}}>
 
-                <div style={{marginRight:'10rem'}}>
-                    <h4 className='mb-0'>about "{post.gameName}"</h4>
-                    <img src={post.imageUrl} style={{borderRadius:'20px', maxWidth:'40rem',width:'auto',maxHeight:'40rem', height:'auto'}} className='img-fluid shadow-4' alt='...' />
-                    {/*<p>by : {post.author.name}</p>*/}
-                </div>
-              
-                <div style={{display:'flex', justifyContent:'center', flexDirection:'column'}}>
-                    <h3>{post.title}</h3>
-                    <p>{starRating}</p>
-                    <p>{dateString}</p>
-                </div>
-                
-                
-                
+              <div style={{marginRight:'3rem', maxWidth:'35vw'}}>
+                <h4 className='mb-0'>about "{post.gameName}"</h4>
+                <img src={post.imageUrl} style={{borderRadius:'20px', maxHeight:'40rem', height:'auto'}} className='img-fluid shadow-4' alt='...' />
+                {/*<p>by : {post.author.name}</p>*/}
               </div>
-            }
             
-            {/*<div className=" d-flex justify-content-between mt-0">
-              🍊
-            </div>*/}
-            
-          
-          
-        </Card>
-      </Link>
+              <div style={{display:'flex', justifyContent:'center', flexDirection:'column', maxWidth:'40vw'}}>
+                <h3>{post.title}</h3>
+                <p>{starRating}</p>
+                <p>{dateString}</p>
+              </div>
+              
+            </div>
+          }
+        </Link>
+      </Card>
     </Container>
-
   )
 }
 

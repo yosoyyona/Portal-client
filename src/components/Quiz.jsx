@@ -24,21 +24,21 @@ const Quiz = ({quiz}) => {
 
   const handleClick = (answer) => {
     if(quiz.answer === answer) {
-      setResponse('Good Answer!')
+      setResponse('🥳Good Answer🎉')
       setMessage(quiz.message)
     } else {
-      setResponse('Bad Answer! :(')
+      setResponse('Bad Answer!🥲')
     }
   };
   
   return (
     
-    <div style={{border:'1px solid grey', borderRadius:'10px', padding:'20px 0 20px 0', width:'90vh', }}>
+    <div style={{border:'1px solid grey', borderRadius:'10px', padding:'20px 0 20px 0', width:'90vw', marginBottom: '15px'}}>
       <h3>{quiz.question}</h3>
       <p>{quiz.genre} </p>
       <p>{quiz.difficulty} </p>
 
-      <div id='answerOption' /*style={{display:'grid', gridTemplateColumns:'10rem 10rem 10rem 10rem', margin:'20px'}}*/>
+      <div id='answerOption'>
       {answerList.map(answer => {
         return(
             <Button type="button" 

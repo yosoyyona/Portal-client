@@ -20,7 +20,6 @@
 
 a {
   font-weight: 500;
-  color: #2952CC;
   text-decoration: inherit;
 }
 
@@ -88,9 +87,13 @@ img {
 
 #answerOption {
   display:grid;
-  grid-template-columns: repeat(2, 30rem);
+  grid-template-columns: repeat(2, 15rem);
   grid-auto-rows:minmax(50px, auto); ;
   justify-content: space-evenly;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   
+}
+
+.popup-content {
+  color: #747bff;
 }

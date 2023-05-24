@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
 import { TextInputField, TextareaField, SelectField, Pane, Button } from 'evergreen-ui'
 import axios from 'axios'
@@ -45,81 +45,90 @@ function QuizCreatePage() {
   return (
     <div>
       <h2>Create your Quiz!!</h2>
-      <form onSubmit={handleSubmit}>
-        <TextInputField
-          required isInvalid={false}
-          label="Question"
-          name='question'
-          type='text'
-          validationMessage="This field is required"
-        />
+      <Pane display="flex" marginLeft="3rem" marginRight="3rem">
+        <Pane flex={1} alignItems="center" display="flex">
+          <Link to={`/quizzes`}><Button size="small" appearance="primary">To Quiz List</Button></Link>
+        </Pane>
+        <Pane></Pane>
+      </Pane>
 
-        <SelectField
-          label="Genre of the game"
-          name="genre"
-        >
-          <option value="Action" defaultValue>Action</option>
-          <option value="Adventure">Adventure</option>
-          <option value="MMO">MMO</option>
-          <option value="Puzzle">Puzzle</option>
-          <option value="RolePlaying">Role-playing</option>
-          <option value="Simulation">Simulation</option>
-          <option value="Sports">Sports</option>
-          <option value="Strategy">Strategy</option>
-          <option value="ETC">ETC</option>
-        </SelectField>
+      <div style={{display:'flex', alignItems:'center', flexDirection:'column', paddingTop:'20px'}}>
+        <form onSubmit={handleSubmit} style={{width:'70vw'}}>
+          <TextInputField
+            required isInvalid={false}
+            label="Question"
+            name='question'
+            type='text'
+            validationMessage="This field is required"
+          />
 
-        <SelectField
-          label="Difficulty"
-          name="difficulty"
-        >
-          <option value="easy" defaultValue>Easy</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="difficult">Difficult</option>
-        </SelectField>
+          <SelectField
+            label="Genre of the game"
+            name="genre"
+          >
+            <option value="Action" defaultValue>Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="MMO">MMO</option>
+            <option value="Puzzle">Puzzle</option>
+            <option value="RolePlaying">Role-playing</option>
+            <option value="Simulation">Simulation</option>
+            <option value="Sports">Sports</option>
+            <option value="Strategy">Strategy</option>
+            <option value="ETC">ETC</option>
+          </SelectField>
 
-        <TextInputField
-          required isInvalid={false}
-          label="Correct answer"
-          name='answer'
-          type='text'
-          validationMessage="This field is required"
-        />
+          <SelectField
+            label="Difficulty"
+            name="difficulty"
+          >
+            <option value="easy" defaultValue>Easy</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="difficult">Difficult</option>
+          </SelectField>
 
-        <TextInputField
-          required isInvalid={false}
-          label="Wrong answer"
-          name='answer2'
-          type='text'
-          validationMessage="This field is required"
-        />
+          <TextInputField
+            required isInvalid={false}
+            label="Correct answer"
+            name='answer'
+            type='text'
+            validationMessage="This field is required"
+          />
 
-        <TextInputField
-          required isInvalid={false}
-          label="Another wrong answer"
-          name='answer3'
-          type='text'
-          validationMessage="This field is required"
-        />
-        
-        <TextInputField
-          required isInvalid={false}
-          label="Last wrong answer"
-          name='answer4'
-          type='text'
-          validationMessage="This field is required"
-        />
+          <TextInputField
+            required isInvalid={false}
+            label="Wrong answer"
+            name='answer2'
+            type='text'
+            validationMessage="This field is required"
+          />
 
-        <TextareaField
-          isInvalid={false}
-          label="Message"
-          name='message'
-          type='text'
-        />
-        
-        <Button type="submit">Submit</Button>
+          <TextInputField
+            required isInvalid={false}
+            label="Another wrong answer"
+            name='answer3'
+            type='text'
+            validationMessage="This field is required"
+          />
+          
+          <TextInputField
+            required isInvalid={false}
+            label="Last wrong answer"
+            name='answer4'
+            type='text'
+            validationMessage="This field is required"
+          />
 
-      </form>
+          <TextareaField
+            isInvalid={false}
+            label="Message"
+            name='message'
+            type='text'
+          />
+          
+          <Button type="submit">Submit</Button>
+
+        </form>
+      </div>
     </div>
   )
 }

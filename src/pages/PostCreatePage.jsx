@@ -1,7 +1,7 @@
-import React, { useState, useContext, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
-import { TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui'
+import { Pane, TextInputField, TextareaField, SelectField, Button } from 'evergreen-ui'
 import axios from 'axios'
 import service from "../api/service";
 
@@ -67,66 +67,75 @@ const PostCreatePage = () => {
   return (
     <div>
       <h2> Create a post📝 </h2>
+      <Pane display="flex" marginLeft="3rem" marginRight="3rem">
+        <Pane flex={1} alignItems="center" display="flex">
+          <Link to={`/posts`}><Button size="small" appearance="primary">Back</Button></Link>
+        </Pane>
+        <Pane></Pane>
+      </Pane>
 
-      <form onSubmit={handleSubmit}>
+      <div style={{display:'flex', alignItems:'center', flexDirection:'column', paddingTop:'20px'}}>
+        <form onSubmit={handleSubmit} style={{width:'70vw'}}>
 
-        <TextInputField
+          <TextInputField
+            required isInvalid={false}
+            label="Title"
+            name='title'
+            type='text'
+            validationMessage="This field is required"
+          />
+
+          <TextInputField
           required isInvalid={false}
-          label="Title"
-          name='title'
-          type='text'
-          validationMessage="This field is required"
-        />
-        
-        <TextInputField
-        required isInvalid={false}
-          label="Game Name"
-          name='gameName'
-          type='text'
-          validationMessage="This field is required"
-        /> {/* connecting to API? */}
+            label="Game Name"
+            name='gameName'
+            type='text'
+            validationMessage="This field is required"
+          /> {/* connecting to API? */}
 
-        <SelectField
-          label="Genre of the game"
-          name="genre"
-        >
-          <option value="Action" defaultValue>Action</option>
-          <option value="Adventure">Adventure</option>
-          <option value="MMO">MMO</option>
-          <option value="Puzzle">Puzzle</option>
-          <option value="RolePlaying">Role-playing</option>
-          <option value="Simulation">Simulation</option>
-          <option value="Sports">Sports</option>
-          <option value="Strategy">Strategy</option>
-          <option value="ETC">ETC</option>
-        </SelectField>
-        
-        <TextareaField
-          required isInvalid={false}
-          label="Review"
-          name='review'
-          type='text'
-          validationMessage="This field is required"
-        />
-        
-        {/* image */}
-        <input type="file" onChange={(e) => handleFileUpload(e)} />
-        
-        {/* star rating */}
-        <SelectField
-          label="Rating"
-          name="rating"
-        >
-          <option value="0" defaultValue>☆☆☆☆☆</option>
-          <option value="1">★☆☆☆☆</option>
-          <option value="2">★★☆☆☆</option>
-          <option value="3">★★★☆☆</option>
-          <option value="4">★★★★☆</option>
-          <option value="5">★★★★★</option>
-        </SelectField>
+          <SelectField
+            label="Genre of the game"
+            name="genre"
+          >
+            <option value="Action" defaultValue>Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="MMO">MMO</option>
+            <option value="Puzzle">Puzzle</option>
+            <option value="RolePlaying">Role-playing</option>
+            <option value="Simulation">Simulation</option>
+            <option value="Sports">Sports</option>
+            <option value="Strategy">Strategy</option>
+            <option value="ETC">ETC</option>
+          </SelectField>
 
-        <Button type="submit">Submit</Button>
-      </form>
+          <TextareaField
+            required isInvalid={false}
+            label="Review"
+            name='review'
+            type='text'
+            validationMessage="This field is required"
+          />
+
+          {/* image */}
+          <input type="file" onChange={(e) => handleFileUpload(e)} />
+
+          {/* star rating */}
+          <SelectField
+            label="Rating"
+            name="rating"
+          >
+            <option value="0" defaultValue>☆☆☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="4">★★★★☆</option>
+            <option value="5">★★★★★</option>
+          </SelectField>
+
+          <Button type="submit">Submit</Button>
+          </form>
+      </div>
+      
 
     </div>
   )

@@ -16,6 +16,7 @@ function PostDetailsPage() {
   
   const { user } = useContext(AuthContext)
   console.log('hello', authorId, user._id)
+  
   const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
   const storedToken = localStorage.getItem('authToken');
 
@@ -55,10 +56,10 @@ function PostDetailsPage() {
 
   return (
     <div>
-      <Pane display="flex" padding={16}>
+      <Pane display="flex" padding={16} marginLeft="3rem" marginRight="3rem">
 
         <Pane flex={1} alignItems="center" display="flex">
-          <Link to='/posts'><Button size="small" appearance="primary">To Posts List</Button></Link>
+          <Link to='/posts'><Button size="small" appearance="primary">To Post List</Button></Link>
         </Pane>
         <Pane>
           {/* if author = user, show edit&delete button */}

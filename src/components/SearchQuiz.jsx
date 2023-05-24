@@ -9,7 +9,7 @@ const SearchQuiz = ({quiz}) => {
     <Container style={{display:'flex', alignItems:"center", justifyContent:"center"}}>
       <Link to={`/quizzes/${quiz._id}`}>
         <Card elevation={1} 
-        width={260}
+        width="70vw"
         height="auto"
         margin={10}
         padding={15}

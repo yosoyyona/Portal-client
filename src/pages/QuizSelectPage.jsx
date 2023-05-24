@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import { Button, Pane, majorScale } from 'evergreen-ui'
+import { Heading, Button, Pane, majorScale } from 'evergreen-ui'
 
 const QuizSelectPage = () => {
   
@@ -12,7 +12,7 @@ const QuizSelectPage = () => {
 
   return (
     <div>
-      <Pane display="flex" padding={16}>
+      <Pane display="flex" padding={16} marginLeft="3rem" marginRight="3rem">
         <Pane flex={1} alignItems="center" display="flex">
           <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
         </Pane>
@@ -24,44 +24,31 @@ const QuizSelectPage = () => {
       </Pane>
 
       <Pane alignItems="center" marginX={majorScale(2)}>
-        
-        <Pane height={180} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
+        <div style={{display:'flex', maxWidth:'80vw', alignItems:'center', flexDirection:'column', paddingTop:'20px'}}>
+          
           <Link to="/quizzes/all">
-            All
+            <Pane width="50vw" height="15rem" marginBottom='8px' display="flex" alignItems="center" justifyContent="center" border="default">
+              <Heading size={700} color="747bff">All</Heading>
+            </Pane>  
           </Link>
-        </Pane> 
-
-        <Pane height={180} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
+          
           <Link to="/quizzes/random">
-            Random
+            <Pane width="50vw" height="15rem" marginBottom='8px' display="flex" alignItems="center" justifyContent="center" border="default">
+              <Heading size={700} color="747bff">Random</Heading>
+            </Pane>  
           </Link>
-        </Pane>  
+
+          <Popup trigger={
+            <Pane width="50vw" height="15rem" marginBottom='8px' display="flex" alignItems="center" justifyContent="center" border="default">
+              <Heading size={700} color="747bff">Random By Difficulty</Heading>
+            </Pane> } 
+            position="center">
+            <Link to='/quizzes/difficulty/easy'><Button>Easy</Button></Link>
+            <Link to='/quizzes/difficulty/intermediate'><Button>Intermediate</Button></Link>
+            <Link to='/quizzes/difficulty/hard'><Button>Hard</Button></Link>
+          </Popup>
+        </div>
         
-        <Popup trigger={
-          <Pane height={180} width={240} marginBottom={5} display="flex" alignItems="center" justifyContent="center" border="default">
-            Random By Difficulty
-          </Pane>} 
-          position="center">
-          <Link to='/quizzes/difficulty/easy'><Button>Easy</Button></Link>
-          <Link to='/quizzes/difficulty/intermediate'><Button>Intermediate</Button></Link>
-          <Link to='/quizzes/difficulty/hard'><Button>Hard</Button></Link>
-        </Popup>
-
-{/*         <Popup trigger={
-          <Pane height={180} width={240} display="flex" alignItems="center" justifyContent="center" border="default">
-            By Genre
-          </Pane>} 
-          position="center">
-          <Link to='/quizzes/genre/:action'><Button>Action</Button></Link>
-          <Link to='/quizzes/genre/:adventure'><Button>Adventure</Button></Link>
-          <Link to='/quizzes/genre/:mmo'><Button>MMO</Button></Link>
-          <Link to='/quizzes/genre/:puzzle'><Button>Puzzle</Button></Link>
-          <Link to='/quizzes/genre/:roleplaying'><Button>RolePlaying</Button></Link>
-          <Link to='/quizzes/genre/:simulation'><Button>Simulation</Button></Link>
-          <Link to='/quizzes/genre/:sports'><Button>Sports</Button></Link>
-          <Link to='/quizzes/genre/:strategy'><Button>Strategy</Button></Link>
-        </Popup> */}
-
       </Pane>
     </div>
   )

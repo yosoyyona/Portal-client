@@ -7,22 +7,23 @@ const SearchPost = ({post}) => {
   
   return (
     <Container style={{display:'flex', alignItems:"center", justifyContent:"center"}}>
-      <Link to={`/posts/${post._id}`}>
-        <Card elevation={1} 
-        width={260}
+      <Card elevation={1} 
+        width="70vw"
         height="auto"
         margin={10}
         padding={15}
         display="flex"
         justifyContent="center"
         alignItems="center"
-        flexDirection="column">
+        flexDirection="column"
+      >
+        <Link to={`/posts/${post._id}`}>
           <h4>{post.title}</h4>
           <h5>{post.gameName}</h5>
           <h5>{post.genre}</h5>
-          <h6>{post.review}</h6>
-        </Card>
-      </Link>
+          
+        </Link>
+      </Card>
     </Container>
   )
 }
