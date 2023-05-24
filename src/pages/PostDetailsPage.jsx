@@ -15,8 +15,7 @@ function PostDetailsPage() {
   const navigate = useNavigate()
   
   const { user } = useContext(AuthContext)
-  const userId = user._id
-  
+  console.log('hello', authorId, user._id)
   const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
   const storedToken = localStorage.getItem('authToken');
 
@@ -57,12 +56,13 @@ function PostDetailsPage() {
   return (
     <div>
       <Pane display="flex" padding={16}>
+
         <Pane flex={1} alignItems="center" display="flex">
           <Link to='/posts'><Button size="small" appearance="primary">To Posts List</Button></Link>
         </Pane>
         <Pane>
           {/* if author = user, show edit&delete button */}
-          {authorId === userId ?
+          {authorId === user._id ?
           <><Link to={`/posts/${postId}/edit`}><Button marginRight={3} size="small">Edit</Button></Link>
           <Link to='/posts'><Button size="small" onClick={() => deletePost(post._id)}>Delete</Button></Link></>
           :<></>

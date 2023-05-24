@@ -17,6 +17,7 @@ const PostDetail = ({post, authorName}) => {
 
   return (
     <Container style={{margin:'3rem', marginBottom:'7rem'}}>
+    
       <div style={{display:'flex'}}>
         <h4 style={{marginRight:'10px'}}>{post.gameName} / </h4>
         <h4 style={{marginRight:'10px'}}>genre : {post.genre} /</h4>
@@ -24,7 +25,7 @@ const PostDetail = ({post, authorName}) => {
       </div>
 
       <div style={{display:'flex', marginTop:'4rem'}}>
-        <img style={{maxWidth:'30rem', minWidth:'50rem', height:'auto' ,borderRadius:'10px'}} src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
+        <img style={{maxWidth:'40rem', minWidth:'30rem', height:'auto' ,borderRadius:'10px'}} src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
         <div style={{display:'flex', flexDirection:'column',alignItems:'center', justifyContent:'center'}}>
           <h2 style={{marginBottom:'3rem'}}>{post.title}</h2>
           <p display="flex" className="text-start" style={{width:'70%'}}>{post.review}</p>
