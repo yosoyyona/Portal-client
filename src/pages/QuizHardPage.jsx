@@ -40,6 +40,12 @@ function QuizHardPage() {
       <div id="quiz-list" >
         <Quiz key={quiz._id} quiz={quiz} />
       </div>
+
+      <Pane flex={1} alignItems="center" display="flex" justifyContent='center' marginTop={5} >
+        <Link to='/quizzes/difficulty/easy'><Button size="small" intent="success" marginRight="8px">Easy</Button></Link>
+        <Link to='/quizzes/difficulty/intermediate'><Button size="small" color="info" marginRight="8px">Intermediate</Button></Link>
+      </Pane>
+
     </div>
   )
 }

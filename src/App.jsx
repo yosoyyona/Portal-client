@@ -43,25 +43,22 @@ function App() {
     <Routes>
       <Route path='/' element={<HomePage />} />
       
-      <Route path='/posts' element={<PostPage />} />
-      <Route path='/posts/create' element={<PostCreatePage />} />
-      <Route path='/posts/:postId' element={<PostDetailsPage />} />
-      <Route path='/posts/:postId/edit' element={<PostEditPage />} />
+      <Route path='/posts' element={<IsPrivate> <PostPage /> </IsPrivate>} />
+      <Route path='/posts/create' element={<IsPrivate> <PostCreatePage /> </IsPrivate>} />
+      <Route path='/posts/:postId' element={<IsPrivate> <PostDetailsPage /> </IsPrivate>} />
+      <Route path='/posts/:postId/edit' element={<IsPrivate> <PostEditPage /> </IsPrivate>} />
 
       <Route path='/quizzes' element={<QuizSelectPage />} />
-      <Route path='/quizzes/create' element={<QuizCreatePage />} />
-      <Route path='/quizzes/all' element={<QuizListPage />} />
-      <Route path='/quizzes/random' element={<QuizRandomPage />} />
-      <Route path='/quizzes/:quizId' element={<QuizPage />} />
-      <Route path='/quizzes/:quizId/edit'element={<QuizEditPage />} />
+      <Route path='/quizzes/create' element={<IsPrivate> <QuizCreatePage /> </IsPrivate>} />
+      <Route path='/quizzes/all' element={<IsPrivate> <QuizListPage /> </IsPrivate>} />
+      <Route path='/quizzes/random' element={<IsPrivate> <QuizRandomPage /> </IsPrivate>} />
+      <Route path='/quizzes/:quizId' element={<IsPrivate> <QuizPage /> </IsPrivate>} />
+      <Route path='/quizzes/:quizId/edit'element={<IsPrivate> <QuizEditPage /> </IsPrivate>} />
       
-      <Route path='/quizzes/difficulty/easy' element={<QuizEasyPage />} />
-      <Route path='/quizzes/difficulty/intermediate' element={<QuizIntermediatePage />} />
-      <Route path='/quizzes/difficulty/hard' element={<QuizHardPage />}  />
+      <Route path='/quizzes/difficulty/easy' element={<IsPrivate> <QuizEasyPage /> </IsPrivate>} />
+      <Route path='/quizzes/difficulty/intermediate' element={<IsPrivate> <QuizIntermediatePage /> </IsPrivate>} />
+      <Route path='/quizzes/difficulty/hard' element={<IsPrivate> <QuizHardPage /> </IsPrivate>}  />
       
-      {/* 🍊 by genre! */}
-      <Route path='/quizzes/genre/:genre'  />
-
       <Route path='/search' element={<SearchPage />} />
 
       <Route path='/signup' element={<IsAnon> <SignupPage /> </IsAnon>} />

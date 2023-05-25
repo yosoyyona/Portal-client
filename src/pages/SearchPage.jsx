@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import SearchPost from '../components/SearchPost';
 import SearchQuiz from '../components/SearchQuiz';
 import SearchUser from '../components/SearchUser';
-import { Pane, SearchInput } from 'evergreen-ui'
+import { Pane, Button, SearchInput } from 'evergreen-ui'
 import axios from "axios";
 
 const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
@@ -39,6 +39,12 @@ const SearchPage = () => {
 
   return (
     <div>
+      <Pane display="flex" padding={16} marginLeft="3rem" marginRight="3rem">
+        <Pane flex={1} alignItems="center" display="flex">
+          <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
+        </Pane>
+      </Pane>
+
       <form role="search" className='mb-3'>
         <SearchInput type="text" value={keyword} onChange={handleSearch} placeholder="Search..." />
       </form>

@@ -36,7 +36,7 @@ function QuizPage() {
         </Pane>
       </Pane>
       
-      <div id="quiz-list" >
+      <div id="quiz-list">
         <Quiz key={quiz._id} quiz={quiz} />
       </div>
     </div>

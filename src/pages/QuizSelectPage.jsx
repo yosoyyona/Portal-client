@@ -24,7 +24,7 @@ const QuizSelectPage = () => {
       </Pane>
 
       <Pane alignItems="center" marginX={majorScale(2)}>
-        <div style={{display:'flex', maxWidth:'80vw', alignItems:'center', flexDirection:'column', paddingTop:'20px'}}>
+        <div style={{display:'flex', alignItems:'center', flexDirection:'column', paddingTop:'20px'}}>
           
           <Link to="/quizzes/all">
             <Pane width="50vw" height="15rem" marginBottom='8px' display="flex" alignItems="center" justifyContent="center" border="default">

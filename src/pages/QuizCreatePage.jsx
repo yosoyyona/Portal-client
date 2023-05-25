@@ -83,7 +83,7 @@ function QuizCreatePage() {
           >
             <option value="easy" defaultValue>Easy</option>
             <option value="intermediate">Intermediate</option>
-            <option value="difficult">Difficult</option>
+            <option value="hard">Hard</option>
           </SelectField>
 
           <TextInputField
