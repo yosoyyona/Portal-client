@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { AuthContext } from "../context/auth.context";
-import { Pane, TextareaField, Button } from 'evergreen-ui'
+import { Pane, Heading, TextareaField, Button } from 'evergreen-ui'
 import axios from 'axios'
 
 const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
@@ -47,25 +47,25 @@ function UserPage() {
   }, [])
 
   return (
-    <div id='user'>
+    <div className='userPage'>
 
       {userId === user._id?
-        <div style={{marginLeft:'5rem', marginRight:'5rem'}}>
+        <div>
 
-          <Pane display="flex" alignItems="center" >
+          <Pane display="flex" alignItems="center" marginTop="20px">
             <Pane flex={1} display="flex">
-              <h3>Hello, {user.name}</h3>
+              <Heading size={800} >Hello, {user.name}</Heading>
             </Pane>
             <Pane>
               <Link to={`/user/${userId}/edit`}><Button size="small" marginTop={7} marginLeft={8}>Edit profile</Button></Link>
             </Pane>
           </Pane>
 
-          <p>{description}</p>
-
+          <Heading size={600} margin="20px" color="#696f8c">{description}</Heading>
+          
           <hr />
 
-          <Pane display="flex" alignItems="center" >
+          <Pane display="flex" alignItems="center">
             <Pane flex={1} display="flex">
               <h4>My posts</h4>
             </Pane>

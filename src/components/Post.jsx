@@ -8,6 +8,8 @@ import Col from 'react-bootstrap/Col';
 
 const Post = ({post}) => {
 
+  let reviewShorten = post.review.substring(0, 40)
+
   let date = new Date(post.date)
   let dateString = date.toDateString()
   
@@ -48,6 +50,7 @@ const Post = ({post}) => {
                 <h3>{post.title}</h3>
                 <p>{starRating}</p>
                 <p>{dateString}</p>
+                <p>{reviewShorten}...</p>
               </div>
               
             </div>

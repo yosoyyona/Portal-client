@@ -99,14 +99,14 @@ img {
 }
 
 @media screen and (max-width: 600px) {
-  .SignupPage, .LoginPage {
+  .SignupPage, .LoginPage, .userPage {
     margin-left: 3rem;
     margin-right: 3rem;
   }
 }
 
 @media screen and (min-width: 601px) {
-  .SignupPage, .LoginPage {
+  .SignupPage, .LoginPage, .userPage {
     margin-left: 10rem;
     margin-right: 10rem;
   }

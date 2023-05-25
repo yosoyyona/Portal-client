@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 
-const PostDetail = ({post, authorName}) => {
+const PostDetail = ({post, authorName, authorId}) => {
 
   let date = new Date(post.date)
   let dateString = date.toDateString()
@@ -21,7 +22,7 @@ const PostDetail = ({post, authorName}) => {
       <div style={{display:'flex'}}>
         <h4 style={{marginRight:'10px'}}>{post.gameName} / </h4>
         <h4 style={{marginRight:'10px'}}>genre : {post.genre} /</h4>
-        <h4> by : {authorName}</h4>
+        <h4> by : <Link to={`/user/${authorId}`}>{authorName}</Link></h4>
       </div>
 
       <div style={{display:'flex', marginTop:'4rem'}}>

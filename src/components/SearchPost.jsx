@@ -5,6 +5,8 @@ import { Card } from 'evergreen-ui'
 
 const SearchPost = ({post}) => {
   
+  const reviewShorten = post.review.substring(0, 50)
+
   return (
     <Container style={{display:'flex', alignItems:"center", justifyContent:"center"}}>
       <Card elevation={1} 
@@ -21,7 +23,7 @@ const SearchPost = ({post}) => {
           <h4>{post.title}</h4>
           <h5>{post.gameName}</h5>
           <h5>{post.genre}</h5>
-          
+          <h6>{reviewShorten}...</h6>
         </Link>
       </Card>
     </Container>
