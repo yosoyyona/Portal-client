@@ -30,6 +30,7 @@ import SearchPage from './pages/SearchPage';
 import UserPage from './pages/UserPage';
 import UserEditPage from './pages/UserEditPage';
 
+import AboutPage from './pages/AboutPage'
 import Error from './components/Error'
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
       <Route path='/user/:userId' element={<IsPrivate> <UserPage /> </IsPrivate>} />
       <Route path='/user/:userId/edit' element={<IsPrivate> <UserEditPage /> </IsPrivate>} />
 
+      <Route path='/about' element={<AboutPage />} />
       <Route path="*" element={ <Error /> } />
     </Routes>
     

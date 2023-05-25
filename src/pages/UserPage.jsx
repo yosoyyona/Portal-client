@@ -125,9 +125,6 @@ function UserPage() {
             <Pane flex={1} display="flex">
               <h3>{name}' page</h3>
             </Pane>
-            <Pane>
-              <Button size="small" marginTop={7} marginLeft={8}>Follow</Button>
-            </Pane>
           </Pane>
 
           <p>{description}</p>
