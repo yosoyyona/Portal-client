@@ -4,6 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import Quiz from '../components/Quiz'
 import { Pane, Button  } from 'evergreen-ui'
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const QuizRandomPage = () => {
   
@@ -12,6 +13,7 @@ const QuizRandomPage = () => {
   
   const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
   const storedToken = localStorage.getItem('authToken');
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get(`${API_URL}/quizzes/random`,
@@ -22,7 +24,7 @@ const QuizRandomPage = () => {
   }, [])
 
   function refreshPage(){
-    window.location.reload();
+    navigate('/quizzes/random')
   }
   
   return (
@@ -44,7 +46,7 @@ const QuizRandomPage = () => {
 
       <Pane flex={1} alignItems="center" display="flex" justifyContent='center' marginTop={5} >
           
-          <Button size="small" color="info" onClick={refreshPage} >Get another!</Button>
+          <Button size="small" color="info" onClick={navigate('/quizzes/random')} >Get another!</Button>
       </Pane>
     </div>
   )
