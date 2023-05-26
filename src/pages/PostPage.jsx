@@ -60,13 +60,24 @@ function PostPage() {
 
   return (
     <div>
-        
-      {isLoggedIn && 
-        <div>
-        <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
-          <Link to="/posts/create"><Button size="small">Create Post</Button></Link>
-          
-        </div>
+      
+      <Pane display="flex" padding={16} marginLeft="3rem" marginRight="3rem">
+        <Pane flex={1} alignItems="center" display="flex">
+          <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
+        </Pane>
+        <Pane>
+          {isLoggedIn && 
+            <Link to="/posts/create"><Button size="small">Create Post</Button></Link>
+          }
+        </Pane>
+      </Pane>
+
+      {
+        filteredPosts.length > 0 ?
+          <div id="post-list">
+            {filteredPosts.map(post => <Post key={post._id} post={post} />)}
+          </div>
+          : <Heading size={700}>Loading...</Heading>
       }
 
       {

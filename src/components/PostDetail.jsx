@@ -7,6 +7,8 @@ const PostDetail = ({post, authorName, authorId}) => {
   let date = new Date(post.date)
   let dateString = date.toDateString()
   
+  let altImageUrl = "/images/portal-alt-img.png"
+
   let stars = post.rating
   let starRating = ""
   if(stars === 0) starRating = "☆☆☆☆☆"
@@ -34,8 +36,11 @@ const PostDetail = ({post, authorName, authorId}) => {
         </div>
       </div>
       
-      <img style={{maxWidth:'40rem', width:'100%', height:'auto', borderRadius:'10px'}} src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
-        
+      { !post.imageUrl==""?
+          <img src={post.imageUrl} style={{maxWidth:'40rem', width:'100%', height:'auto', borderRadius:'10px'}} className='img-fluid shadow-4' alt='...' />
+          : <img src={altImageUrl} style={{maxWidth:'40rem', width:'100%', height:'auto', borderRadius:'10px'}} className='img-fluid shadow-4' alt='...' />
+      }
+      
     </Container>
   )
 }
