@@ -38,7 +38,7 @@ const QuizRandomPage = () => {
         </Pane>
       </Pane>
       
-      <div id="random-quiz" >
+      <div className="quiz-page" >
         <Quiz key={quiz._id} quiz={quiz} />
       </div>
 
