@@ -81,7 +81,7 @@ function QuizListPage() {
       
       {
         quizzes.length > 5 &&
-        <div>
+        <div style={{marginTop: "10px"}}>
           <Heading size={400} marginBottom="10px">Page {page}</Heading>
         </div>
       }

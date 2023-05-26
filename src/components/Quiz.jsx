@@ -32,8 +32,8 @@ const Quiz = ({quiz}) => {
   };
   
   return (
-    
-    <div style={{border:'1px solid grey', width: '80vw', borderRadius:'10px', padding:'2rem 0', marginBottom: '15px'}}>
+    <div style={{marginTop: '20px', marginBottom: '20px'}}>
+      <div style={{maxWidth: '75vw', padding:'2rem 1rem', margin:'auto', border:'1px solid grey', borderRadius:'10px'}}>
       <h3>{quiz.question}</h3>
       <p>{quiz.genre} </p>
       <p>{quiz.difficulty} </p>
@@ -49,9 +49,10 @@ const Quiz = ({quiz}) => {
       
       <p>{response}</p>
       <p>{message}</p>
-
       
     </div>
+    </div>
+    
 
   )
 }
