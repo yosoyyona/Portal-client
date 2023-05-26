@@ -76,7 +76,7 @@ function QuizListPage() {
           <div className="quiz-page">
             {filteredQuizzes.map(quiz => <Quiz key={quiz._id} quiz={quiz} />)}
           </div>
-          : <Heading size={700}>No quizzes present!</Heading>
+          : <Heading size={700}>Loading...</Heading>
       }
       
       {

@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import { Card } from 'evergreen-ui'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 const Post = ({post}) => {
 
@@ -12,6 +9,8 @@ const Post = ({post}) => {
 
   let date = new Date(post.date)
   let dateString = date.toDateString()
+  
+  let altImageUrl = "/images/portal-alt-img.png"
   
   let stars = post.rating
   let starRating = ""
@@ -42,8 +41,14 @@ const Post = ({post}) => {
 
               <div style={{marginRight:'3rem', maxWidth:'35vw'}}>
                 <h4 className='mb-0'>about "{post.gameName}"</h4>
-                <img src={post.imageUrl} style={{borderRadius:'20px', maxHeight:'40rem', height:'auto'}} className='img-fluid shadow-4' alt='...' />
-                {/*<p>by : {post.author.name}</p>*/}
+
+                { !post.imageUrl==""?
+                <img src={post.imageUrl} style={{borderRadius:'20px', maxHeight:'40rem', height:'auto'}} className='img-fluid shadow-4' alt="..." />
+                : <img src={altImageUrl} style={{borderRadius:'20px', maxHeight:'40rem', height:'auto'}} className='img-fluid shadow-4' alt="..." />
+                }
+
+                
+                
               </div>
             
               <div style={{display:'flex', justifyContent:'center', flexDirection:'column', maxWidth:'40vw'}}>

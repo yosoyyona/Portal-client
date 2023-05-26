@@ -77,7 +77,7 @@ function PostPage() {
           <div id="post-list">
             {filteredPosts.map(post => <Post key={post._id} post={post} />)}
           </div>
-          : <Heading size={700}>No posts present!</Heading>
+          : <Heading size={700}>Loading...</Heading>
       }
 
       {
