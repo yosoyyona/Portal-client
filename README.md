@@ -164,7 +164,6 @@ message - [String]
     - email
     - password
 - POST /auth/verify
-  - body: (empty)
 
 ### User route
 - Get /user/:userId
