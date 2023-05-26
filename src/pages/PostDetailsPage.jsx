@@ -72,7 +72,9 @@ function PostDetailsPage() {
         </Pane>
       </Pane>
       
-      <PostDetail post={post} authorName={authorName} authorId={authorId} />
+      <div className="post-detail-page" >
+        <PostDetail post={post} authorName={authorName} authorId={authorId} />
+      </div>
         
       <hr />
 

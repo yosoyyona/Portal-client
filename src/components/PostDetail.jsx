@@ -17,7 +17,7 @@ const PostDetail = ({post, authorName, authorId}) => {
   if(stars === 5) starRating = "★★★★★"
 
   return (
-    <Container style={{margin:'3rem', marginBottom:'7rem'}}>
+    <Container style={{width: '100%', marginBottom:'5rem'}}>
     
       <div style={{display:'flex'}}>
         <h4 style={{marginRight:'10px'}}>{post.gameName} / </h4>
@@ -25,15 +25,16 @@ const PostDetail = ({post, authorName, authorId}) => {
         <h4> by : <Link to={`/user/${authorId}`}>{authorName}</Link></h4>
       </div>
 
-      <div style={{display:'flex', marginTop:'4rem'}}>
-        <img style={{maxWidth:'40rem',width:'auto', height:'auto' ,borderRadius:'10px'}} src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
-        <div style={{display:'flex', flexDirection:'column',alignItems:'center', justifyContent:'center'}}>
+      <div style={{display:'flex', marginTop:'4rem', marginBottom:'10px'}}>
+        <div style={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
           <h2 style={{marginBottom:'3rem'}}>{post.title}</h2>
-          <p display="flex" className="text-start" style={{width:'70%'}}>{post.review}</p>
+          <p display="flex" style={{width:'70%'}}>{post.review}</p>
           <h4>{starRating}</h4>
           <p>{dateString}</p>
         </div>
       </div>
+      
+      <img style={{maxWidth:'40rem', width:'100%', height:'auto', borderRadius:'10px'}} src={post.imageUrl} className='img-fluid shadow-4' alt='...' />
         
     </Container>
   )
