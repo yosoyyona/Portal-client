@@ -127,7 +127,7 @@ function UserPage() {
             </Pane>
           </Pane>
 
-          <p>{description}</p>
+          <Heading size={600} margin="20px" color="#696f8c">{description}</Heading>
 
           <hr />
           <h4>{name}' posts</h4>

@@ -18,6 +18,5 @@ const uploadImage = (file) => {
 };
 
 export default {
-  uploadImage,
-  // createPost
+  uploadImage
 };
