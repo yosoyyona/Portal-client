@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const QuizRandomPage = () => {
   
   const [quiz, setQuiz] = useState([])
+  const [randomQuiz, setRandomQuiz] = useState([])
   const { isLoggedIn } = useContext(AuthContext);
   
   const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
@@ -20,12 +21,27 @@ const QuizRandomPage = () => {
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
     .then((response) => setQuiz(response.data))
+    
     .catch((error) => console.log(error))
   }, [])
+  
+  useEffect(() => {
+    axios.get(`${API_URL}/quizzes/all`,
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+    )
+    .then((response) => setRandomQuiz(response.data))
+    
+    .catch((error) => console.log(error))
+  }, [])
+  
 
   function refreshPage(){
-    navigate('/quizzes/random')
+     //return setQuiz(randomQuiz)
+     let random = randomQuiz[Math.floor(Math.random() * randomQuiz.length)]
+     
+     return setQuiz(random)
   }
+
   
   return (
     <div>
@@ -46,7 +62,7 @@ const QuizRandomPage = () => {
 
       <Pane flex={1} alignItems="center" display="flex" justifyContent='center' marginTop={5} >
           
-          <Button size="small" color="info" onClick={navigate('/quizzes/random')} >Get another!</Button>
+          <Button size="small" color="info" onClick={refreshPage} >Get another!</Button>
       </Pane>
     </div>
   )
