@@ -8,23 +8,26 @@ import axios from 'axios'
 function QuizListPage() {
   
   const [quizzes, setQuizzes] = useState([])
-  const { isLoggedIn } = useContext(AuthContext);
+  const [page, setPage] = useState(1)
+  const [filteredQuizzes, setFilteredQuizzes] = useState([])
+  const [backButtonStyle, setBackButtonStyle] = useState("")
+  const [nextButtonStyle, setNextButtonStyle] = useState("")
   
   const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
+  const { isLoggedIn } = useContext(AuthContext);
   const storedToken = localStorage.getItem('authToken');
 
   useEffect(() => {
     axios.get(`${API_URL}/quizzes/all`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-    .then((response) => setQuizzes(response.data))
+    .then((response) => {
+      const reversedQuizzes = response.data.reverse();
+      setQuizzes(reversedQuizzes);
+      setFilteredQuizzes(pagination(page, reversedQuizzes));
+    })
     .catch((error) => console.log(error))
   }, [])
-
-  const [page, setPage] = useState(1)
-  const [filteredQuizzes, setFilteredQuizzes] = useState(quizzes)
-  const [backButtonStyle, setBackButtonStyle] = useState("")
-  const [nextButtonStyle, setNextButtonStyle] = useState("")
 
   const displayButtons = (backButton, nextButton) => {
     if (backButton) setBackButtonStyle("visible")
@@ -48,12 +51,12 @@ function QuizListPage() {
   useEffect(() => {
     setCurrentPage(page)
   }, [])
-
+  
   useEffect(() => {
-    setFilteredQuizzes(pagination(page))
-  }, [page])
+    setFilteredQuizzes(pagination(page, quizzes))
+  }, [page, quizzes])
 
-  const pagination = page => quizzes.slice((page - 1) * 5, 5 * page)
+  const pagination = page => quizzes.slice((page - 1) * 5, page * 5)
 
   return (
     <div>
@@ -70,12 +73,12 @@ function QuizListPage() {
       
       {
         filteredQuizzes.length > 0 ?
-        <div id="quiz-list">
-          {filteredQuizzes.map(quiz => <Quiz key={quiz._id} quiz={quiz} />)}
-        </div>
-        : <Heading size={700}>No Quizzes present!</Heading>
+          <div id="quiz-list">
+            {filteredQuizzes.map(quiz => <Quiz key={quiz._id} quiz={quiz} />)}
+          </div>
+          : <Heading size={700}>No quizzes present!</Heading>
       }
-
+      
       {
         quizzes.length > 5 &&
         <div>

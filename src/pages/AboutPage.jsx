@@ -11,7 +11,7 @@ const AboutPage = () => {
       
       <Heading size={800} marginTop='100px' marginBottom='20px'>Who created Portal</Heading>
       <Heading size={600} marginBottom='10px'><Link to={`/user/645f648a98746513db57e357`}>Apolline✨</Link></Heading>
-      <Heading size={600} ><Link to={`/user/646d144472b00cf793e86d6d`}>Yona🍊</Link></Heading>
+      <Heading size={600} ><Link to={`/user/646fc012f34e6b62ec03614e`}>Yona🍊</Link></Heading>
       
     </div>
   )

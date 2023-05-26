@@ -2,13 +2,17 @@ import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-import { Button, Heading } from 'evergreen-ui'
+import { Pane, Button, Heading } from 'evergreen-ui'
 import Post from '../components/Post'
-
-const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
 
 function PostPage() {
   const [posts, setPosts] = useState([])
+  const [page, setPage] = useState(1)
+  const [filteredPosts, setFilteredPosts] = useState([])
+  const [backButtonStyle, setBackButtonStyle] = useState("")
+  const [nextButtonStyle, setNextButtonStyle] = useState("")
+  
+  const API_URL = "https://vast-jade-woodpecker-sock.cyclic.app";
   const { isLoggedIn } = useContext(AuthContext);
   const storedToken = localStorage.getItem('authToken');
 
@@ -16,15 +20,13 @@ function PostPage() {
     axios.get(`${API_URL}/posts`,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
-    .then((response) => 
-      setPosts(response.data.reverse()))
+    .then((response) => {
+      const reversedPosts = response.data.reverse();
+      setPosts(reversedPosts);
+      setFilteredPosts(pagination(page, reversedPosts));
+    })
     .catch((error) => console.log(error))
   }, [])
-
-  const [page, setPage] = useState(1)
-  const [filteredPosts, setFilteredPosts] = useState(posts)
-  const [backButtonStyle, setBackButtonStyle] = useState("")
-  const [nextButtonStyle, setNextButtonStyle] = useState("")
 
 
   const displayButtons = (backButton, nextButton) => {
@@ -34,7 +36,7 @@ function PostPage() {
     else setNextButtonStyle("disabled")
   }
 
-  const setCurrentPage = currentPage => {
+  const setCurrentPage = (currentPage) => {
 
     if (posts.length <= 5) displayButtons(false, false)
     else {
@@ -51,26 +53,31 @@ function PostPage() {
   }, [])
 
   useEffect(() => {
-    setFilteredPosts(pagination(page))
-  }, [page])
+    setFilteredPosts(pagination(page, posts))
+  }, [page, posts])
 
-  const pagination = page => posts.slice((page - 1) * 5, 5 * page)
+  const pagination = (page, posts) => posts.slice((page - 1) * 5, page * 5)
 
   return (
     <div>
-        
-      {isLoggedIn && 
-        <div>
-          <Link to="/posts/create"><Button size="small">Create Post</Button></Link>
-        </div>
-      }
+      
+      <Pane display="flex" padding={16} marginLeft="3rem" marginRight="3rem">
+        <Pane flex={1} alignItems="center" display="flex">
+          <Link to='/'><Button size="small" appearance="primary">Back</Button></Link>
+        </Pane>
+        <Pane>
+          {isLoggedIn && 
+            <Link to="/posts/create"><Button size="small">Create Post</Button></Link>
+          }
+        </Pane>
+      </Pane>
 
       {
         filteredPosts.length > 0 ?
-        <div id="post-list">
-          {filteredPosts.map(post => <Post key={post._id} post={post} />)}
-        </div>
-        : <Heading size={700}>No posts present!</Heading>
+          <div id="post-list">
+            {filteredPosts.map(post => <Post key={post._id} post={post} />)}
+          </div>
+          : <Heading size={700}>No posts present!</Heading>
       }
 
       {

@@ -111,3 +111,7 @@ img {
     margin-right: 10rem;
   }
 }
+
+.disabled{
+  display: none;
+}
